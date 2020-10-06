@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="?attr/actionBarSize"
+    android:background="@color/grey_bg"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/tvNoOfItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_7sdp"
+        android:textStyle="bold"
+        android:text="0 items"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_16sdp"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10ssp"
+        android:layoutDirection="locale"
+        android:nestedScrollingEnabled="false"
+
+        android:textDirection="locale">
+
+
+    </androidx.recyclerview.widget.RecyclerView>
+    <TextView
+        android:id="@+id/tvNoRecord"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/no_record"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:visibility="gone"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        >
+        <Button
+            android:id="@+id/btnInquire"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_gravity="bottom"
+            android:layout_height="wrap_content"
+            android:text="@string/inquire_now"
+            android:background="@drawable/button"
+            android:textColor="@color/white"
+            android:layout_margin="@dimen/_7sdp"
+            />
+    </LinearLayout>
+</LinearLayout>

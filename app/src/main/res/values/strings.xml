@@ -1,0 +1,174 @@
+<resources>
+    <string name="app_name">ULowgic Organization</string>
+
+    <string name="home">Home</string>
+    <string name="category">Category</string>
+    <string name="my_courses">My Courses</string>
+    <string name="cart">Cart</string>
+    <string name="account">Account</string>
+    <string name="jon_now">Join Now</string>
+
+    <string name="view_all">View all</string>
+    <string name="top_category">Top Categories</string>
+
+    <string name="search_by_cat">Search by Category</string>
+    <string name="trending_course">Trending Courses</string>
+    <string name="action_settings">Settings</string>
+    <string name="popular_instructor">Popular Instructors</string>
+
+    <string name="total_courses">Total Courses</string>
+    <string name="subscribers">Subscribers</string>
+
+    <string name="description">Description</string>
+    <string name="view_more">View More</string>
+    <string name="popular_instuctor">Popular Instructors</string>
+    <string name="courses">Courses</string>
+    <string name="course">Course</string>
+    <string name="instructor_profile">Instructor Profile</string>
+    <string name="show_more">Show More</string>
+    <string name="course_includes">Course Includes</string>
+    <string name="buy_now">Buy Now</string>
+    <string name="enroll_now">Enroll Now</string>
+    <string name="add_to_cart">Add to cart</string>
+    <string name="whishlist">Wishlist</string>
+    <string name="curriculum">Curriculum</string>
+    <string name="preview">Preview</string>
+    <string name="course_detail">Course Detail</string>
+    <string name="more_section">More Section</string>
+    <string name="create_by">Create By</string>
+    <string name="students">Students</string>
+    <string name="view_profile">View Profile</string>
+    <string name="logo">LOGO</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_in">Sign In</string>
+    <string name="full_name">Full Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="new_pwd">New Password</string>
+
+    <string name="forgot_pwd">Forgot Password?</string>
+    <string name="next">Next</string>
+
+    <string name="already_account">Already have an account? </string>
+    <string name="dont_have_account">Don\'t have account ? </string>
+    <string name="login">Log In</string>
+    <string name="company_url">Company URL</string>
+    <string name="enter_your_company_url">Enter your URL</string>
+
+    <string name="old_pwd">Old Password</string>
+    <string name="newpwd">New Password</string>
+    <string name="confirm_pwd">Confirm Password</string>
+    <string name="continue_">Continue</string>
+    <string name="change_pwd">Change Password</string>
+    <string name="forgot_pwd_">Forgot Password</string>
+    <string name="enter_phone_number">Enter Phone Number</string>
+    <string name="phone_number">Phone number</string>
+    <string name="send_otp">SEND OTP</string>
+    <string name="set_pwd">Set New Password</string>
+    <string name="enter_otp">Enter OTP</string>
+    <string name="otp">OTP</string>
+    <string name="reset_pwd">Reset Password</string>
+    <string name="otp_string">OTP is send to your phone. Check and enter below.</string>
+    <string name="resend">Resend</string>
+    <string name="verify">Verify</string>
+    <string name="individual_as">As an Individual</string>
+    <string name="company_as">As a Company</string>
+    <string name="type">Type</string>
+    <string name="user">User</string>
+    <string name="users">Users</string>
+    <string name="join_date">Join date</string>
+    <string name="country">Country</string>
+    <string name="account_setting">Account Setting</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="log_out">Logout</string>
+
+    <string name="prefered_lang">Preferred Language</string>
+    <string name="dasahboard">Dashboard</string>
+    <string name="my_profile">My Profile</string>
+    <string name="change_pwd_">Change Password</string>
+    <string name="whishlist_">Wishlist</string>
+    <string name="my_whish_list">My Wishlist</string>
+    <string name="notification">Notifications</string>
+    <string name="about_us">About Us</string>
+    <string name="search_result">Search Result</string>
+
+    <string name="about">About</string>
+    <string name="faq">FAQs</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="terms_n_condition">Terms and Conditions</string>
+    <string name="account_profile">Account Profile</string>
+    <string name="progress">Progress</string>
+    <string name="end_date">End Date</string>
+    <string name="start">Start</string>
+    <string name="section">Section</string>
+    <string name="lession">Lession</string>
+    <string name="update">Update</string>
+    <string name="answer">Answer</string>
+    <string name="ans">Ans:</string>
+    <string name="true_">True</string>
+    <string name="false_">False</string>
+    <string name="congratulation">Congratulations</string>
+    <string name="score">Score</string>
+    <string name="download_certificate">Download Certificate</string>
+    <string name="better_luck_next_time">Better luck next</string>
+    <string name="you_have_passed">You have passed this test and completed this course. You can download your certificate of completion below.</string>
+    <string name="hard_luck">Hard Luck. You have falled the test this time. You must retry the test and score </string>
+    <string name="to_complete_course">to complete this course.</string>
+    <string name="review_your_ans">Review your Answers</string>
+    <string name="correct">Correct</string>
+    <string name="wrong">Wrong</string>
+    <string name="pls_wait">Please wait</string>
+    <string name="report">Report</string>
+    <string name="toast_pwd_match">Password should contains special
+        character,upper case and lowercase character and should be minimum 6 character</string>
+
+    <string name="no_record">No record found</string>
+    <string name="toast_name">Please enter name</string>
+    <string name="toast_full_name">Please enter full name</string>
+    <string name="toast_email">Please enter email</string>
+    <string name="toast_valid_email">Please enter valid email.</string>
+    <string name="toast_phone">Please enter phone</string>
+    <string name="toast_phone_length">Phone number should be 10 digits.</string>
+    <string name="toast_password">Please enter password</string>
+    <string name="no_login">You haven\'t login, Please login first.</string>
+    <string name="choose_lang">Choose Language</string>
+    <string name="english">English</string>
+    <string name="arabic">Arabic</string>
+    <string name="toast_otp">Please enter OTP.</string>
+    <string name="toast_old_pwd">Please enter old password.</string>
+    <string name="toast_new_pwd">Please enter new password.</string>
+    <string name="toast_confirm_pwd">Please enter confirm password.</string>
+    <string name="toast_pwd_retype_pwd_same">Password and retype passsword should be same</string>
+    <string name="text_unable_to_select_image">Unable to select image</string>
+    <string name="toast_login_first">Please login first to add course in whishlist.</string>
+
+    <string name="promo_code">Promo Code</string>
+    <string name="apply">Apply</string>
+
+    <string name="login_alert">Login Alert</string>
+    <string name="please_login">Please Login</string>
+    <string name="ok">OK</string>
+    <string name="thank_you">Thank You</string>
+    <string name="back_to_my_course">Back To My Courses</string>
+
+    <string name="toast_course_alry_whishlist">Course already enrolled so you can not add it to your wishlist</string>
+
+    <string name="previous">Previous</string>
+    <string name="congrat_success">Congratulations ! You have successfully completed the</string>
+
+    <string name="reset_course">Reset Course to start</string>
+    <string name="plz_fill_ans">Please fill the answer</string>
+    <string name="no_download">No certificate download for this course</string>
+    <string name="reset_course_no_start">Course not started</string>
+
+    <string name="toast_company_url">Please enter company URL</string>
+    <string name="company_name">Company Name</string>
+    <string name="toast_comapany_name">Please enter company name</string>
+    <string name="toast_comapany_url">Please enter comapny URL</string>
+    <string name="inquire_now">Inquire Now</string>
+    <string name="items">Items</string>
+   <string name="assign_course">Assign Course</string>
+    <string name="total_users">Total Users</string>
+    <string name="assigend">Assigned</string>
+    <string name="remaining">Remaining</string>
+</resources>

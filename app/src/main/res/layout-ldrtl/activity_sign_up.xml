@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:font="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/splash"
+    android:orientation="vertical"
+    android:id="@+id/llMain"
+    android:layoutDirection="locale"
+    android:textDirection="locale"
+    tools:context=".SignUpActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_20sdp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imgBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layoutDirection="locale"
+            android:src="@drawable/ic_back"
+            android:textDirection="locale" />
+
+        <ImageView
+            android:id="@+id/tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:layoutDirection="locale"
+            android:src="@mipmap/ic_launcher"
+            android:textColor="@color/colorPrimary"
+            android:textDirection="locale"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:background="@drawable/round_square_two_corner"
+        android:gravity="end"
+        android:orientation="vertical"
+        android:padding="@dimen/_10sdp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:gravity="center_horizontal"
+            android:text="@string/sign_up"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_19ssp"
+            android:textStyle="bold" />
+
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:drawableEnd="@mipmap/name"
+            android:drawablePadding="@dimen/_7sdp"
+            android:hint="@string/full_name"
+            android:inputType="text"
+            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz "
+            android:gravity="start"
+            android:textAlignment="viewStart"
+            android:layoutDirection="locale"
+            android:singleLine="true"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textDirection="locale"
+            android:textSize="@dimen/_13ssp" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:drawableEnd="@mipmap/email"
+            android:drawablePadding="@dimen/_7sdp"
+            android:hint="@string/email"
+            android:gravity="start"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:inputType="text"
+            android:layoutDirection="locale"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textDirection="locale"
+            android:textSize="@dimen/_13ssp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+        <com.hbb20.CountryCodePicker
+            android:id="@+id/ccp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:ccp_arrowColor="@color/white"
+            app:ccp_contentColor="@color/white"
+            app:ccp_flagBorderColor="@color/white"
+            android:textDirection="locale"
+            android:layout_marginTop="@dimen/_6sdp"
+            android:layout_gravity="center_vertical"
+            app:ccp_showFullName="false"
+            app:ccp_showNameCode="false"
+            app:ccp_showPhoneCode="true"
+            app:ccpDialog_textColor="@color/black"
+            app:ccpDialog_backgroundColor="@color/white"
+            app:ccp_autoDetectCountry="true"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/white"
+                    />
+            </LinearLayout>
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etPhone"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:drawableEnd="@mipmap/phone"
+            android:drawablePadding="@dimen/_7sdp"
+            android:hint="@string/phone_number"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:inputType="phone"
+            android:gravity="start"
+            android:textAlignment="viewStart"
+            android:layoutDirection="locale"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textDirection="locale"
+            android:textSize="@dimen/_13ssp" /></LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etCompanyName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:backgroundTint="@color/white"
+            android:drawableEnd="@mipmap/phone"
+            android:drawablePadding="@dimen/_7sdp"
+            android:hint="@string/company_name"
+            android:inputType="text"
+            android:layoutDirection="locale"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textDirection="locale"
+            android:textSize="@dimen/_13ssp" />
+
+        <EditText
+            android:id="@+id/etURL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:backgroundTint="@color/white"
+            android:drawableEnd="@mipmap/company_url"
+            android:drawablePadding="@dimen/_7sdp"
+            android:hint="@string/company_url"
+            android:inputType="text"
+            android:layoutDirection="locale"
+            android:maxLength="12"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textDirection="locale"
+            android:textSize="@dimen/_13ssp" />
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:backgroundTint="@color/white"
+            android:drawableEnd="@mipmap/password"
+            android:drawablePadding="@dimen/_7sdp"
+            android:hint="@string/password"
+            android:textAlignment="viewStart"
+            android:inputType="textPassword"
+            android:layoutDirection="locale"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textDirection="locale"
+            android:textSize="@dimen/_13ssp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textDirection="locale"
+            android:layoutDirection="locale"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:visibility="gone"
+            >
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textDirection="locale"
+                android:text="@string/user"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_13ssp"
+                android:layout_gravity="center_vertical"
+                />
+
+            <RadioGroup
+                android:id="@+id/radioGoup"
+                android:textDirection="locale"
+                android:orientation="horizontal"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <RadioButton
+                    android:id="@+id/radioButtonIndividual"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/colorPrimary"
+                    android:textSize="@dimen/_11ssp"
+                    android:text="@string/individual_as"
+                    android:textColor="@color/white" />
+                <RadioButton
+                    android:id="@+id/radioButtonCompany"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/colorPrimary"
+                    android:textSize="@dimen/_11ssp"
+                    android:text="@string/company_as"
+                    android:textColor="@color/white" />
+            </RadioGroup>
+
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/btnSignUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/_11sdp"
+            android:background="@drawable/button"
+            android:gravity="center"
+            android:paddingStart="@dimen/_35sdp"
+            android:paddingEnd="@dimen/_35sdp"
+            android:text="@string/sign_up"
+            android:paddingTop="@dimen/_8sdp"
+            android:paddingBottom="@dimen/_8sdp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_13sdp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            >
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:text="@string/already_account"
+                android:gravity="center"
+                android:textDirection="locale"
+
+                />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/login"
+                android:textDirection="locale"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginStart="@dimen/_2ssp"
+                android:layout_marginEnd="@dimen/_2ssp"
+                />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</LinearLayout>

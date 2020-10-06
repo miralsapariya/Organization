@@ -1,0 +1,173 @@
+<resources>
+    <string name="app_name">ULowgic</string>
+
+    <string name="home">الصفحة الرئيسية</string>
+    <string name="category">الفئة</string>
+    <string name="my_courses">دوراتي</string>
+    <string name="cart">عربة التسوق</string>
+    <string name="account">الحساب</string>
+    <string name="jon_now">نضم الان</string>
+
+    <string name="view_all">مشاهدة الكل</string>
+    <string name="top_category">أعلى الفئات</string>
+
+    <string name="search_by_cat">البحث بالفئة</string>
+    <string name="trending_course">الدورات التدريبية الشائعة</string>
+    <string name="action_settings">الإعدادات</string>
+    <string name="popular_instructor">المدربين المشهورين</string>
+
+    <string name="total_courses">مجموع الدورات</string>
+    <string name="subscribers">v</string>
+
+    <string name="description">وصف</string>
+    <string name="view_more">عرض المزيد</string>
+    <string name="popular_instuctor">المدربين المشهورين</string>
+    <string name="courses">الدورات</string>
+    <string name="course">الدورات</string>
+    <string name="instructor_profile">الملف الشخصي للمدرب</string>
+    <string name="show_more">أظهر المزيد</string>
+    <string name="course_includes">تشمل الدورة</string>
+    <string name="buy_now">اشتري الآن</string>
+    <string name="enroll_now">تسجيل الآن</string>
+    <string name="add_to_cart">أضف إلى السلة</string>
+    <string name="whishlist">قائمة الرغبات</string>
+    <string name="my_whish_list">قائمة الرغبات</string>
+    <string name="curriculum">منهاج دراسي</string>
+    <string name="preview">معاينة</string>
+    <string name="course_detail">تفاصيل الدورة</string>
+    <string name="more_section">قسم المزيد</string>
+    <string name="create_by">م اعداده بواسطة</string>
+    <string name="students">الطلاب</string>
+    <string name="view_profile">عرض الصفحة الشخصية</string>
+    <string name="logo">شعار</string>
+    <string name="sign_up">سجل</string>
+    <string name="sign_in">تسجيل الدخول</string>
+    <string name="full_name">الاسم الكامل</string>
+    <string name="email">البريد الإلكتروني</string>
+    <string name="password">كلمه السر</string>
+    <string name="new_pwd">كلمة سر جديدة</string>
+
+    <string name="forgot_pwd">هل نسيت كلمة المرور؟</string>
+    <string name="next">التالى</string>
+
+    <string name="already_account">هل لديك حساب </string>
+    <string name="dont_have_account">ليس لديك حساب؟</string>
+    <string name="login">تسجيل الدخول</string>
+    <string name="company_url">عنوان URL للشركة</string>
+    <string name="enter_your_company_url">
+أدخل عنوان URL الخا</string>
+
+    <string name="old_pwd">كلمة المرور القديمة</string>
+    <string name="newpwd">كلمة سر جديدة</string>
+    <string name="confirm_pwd">تأكيد كلمة المرور</string>
+    <string name="continue_">استمر</string>
+    <string name="change_pwd">غير كلمة السر</string>
+    <string name="forgot_pwd_">هل نسيت كلمة المرور</string>
+    <string name="enter_phone_number">أدخل رقم الهاتف</string>
+    <string name="phone_number">رقم الهاتف</string>
+    <string name="send_otp">إرسال OTP</string>
+    <string name="set_pwd">تعيين كلمة مرور جديدة</string>
+    <string name="enter_otp">أدخل OTP</string>
+    <string name="otp">OTP</string>
+    <string name="reset_pwd">إعادة تعيين كلمة المرور</string>
+    <string name="otp_string">يتم إرسال OTP إلى هاتفك. تحقق وأدخل أدناه.</string>
+    <string name="resend">إعادة إرسال</string>
+    <string name="verify">تحقق</string>
+    <string name="individual_as">ك فرد</string>
+    <string name="company_as">كشركة</string>
+    <string name="type">نوع</string>
+    <string name="user">المستعمل</string>
+    <string name="users">المستعمل</string>
+    <string name="join_date">تاريخ الانضمام</string>
+    <string name="country">بلد</string>
+    <string name="account_setting">إعدادات الحساب</string>
+    <string name="sign_out">خروج</string>
+    <string name="log_out">تسجيل خروج</string>
+
+
+    <string name="prefered_lang">اللغة المفضلة</string>
+    <string name="dasahboard">لوحة القيادة</string>
+    <string name="my_profile">ملفي</string>
+    <string name="change_pwd_">غير كلمة السر</string>
+    <string name="whishlist_">قائمة الرغبات</string>
+    <string name="notification">إشعارات</string>
+    <string name="about_us">معلومات عنا</string>
+    <string name="search_result">نتيجة البحث</string>
+    <string name="promo_code">رمز ترويجي</string>
+    <string name="apply">تطبيق</string>
+    <string name="about">حول</string>
+    <string name="faq">أسئلة وأجوبة</string>
+    <string name="privacy_policy">سياسة خاصة</string>
+    <string name="terms_n_condition">الأحكام والشروط</string>
+    <string name="account_profile">تعريف حساب</string>
+    <string name="progress">التقدم</string>
+    <string name="end_date">تاريخ الانتهاء</string>
+    <string name="start">بداية</string>
+    <string name="section">الجزء</string>
+    <string name="lession">إجازة</string>
+    <string name="update">تحديث</string>
+    <string name="answer">إجابة</string>
+    <string name="ans">إجابة:</string>
+    <string name="true_">صحيح</string>
+    <string name="false_">خاطئة</string>
+    <string name="congratulation"></string>
+    <string name="score">أحرز هدفا</string>
+    <string name="download_certificate">تحميل الشهادة</string>
+    <string name="better_luck_next_time"></string>
+    <string name="you_have_passed">لقد نجحت في هذا الاختبار وأكملت هذه الدورة. يمكنك تنزيل شهادة الإنجاز الخاصة بك أدناه.</string>
+    <string name="hard_luck">حظ سيئ. لقد خضعت للاختبار هذه المرة. يجب عليك إعادة الاختبار والنتيجة</string>
+    <string name="to_complete_course">.لإكمال هذه الدورة</string>
+    <string name="review_your_ans">راجع إجاباتك</string>
+    <string name="correct">صيح</string>
+    <string name="wrong">خطأ</string>
+    <string name="pls_wait">ارجوك انتظر</string>
+    <string name="report">نقل</string>
+    <string name="toast_pwd_match">يجب أن تحتوي كلمة المرور الخاصة
+        أحرف وكبيرة وصغيرة ويجب ألا تقل عن 6 أحرف</string>
+
+    <string name="no_record">لا يوجد سجلات</string>
+    <string name="toast_name">الرجاء إدخال الاسم</string>
+    <string name="toast_full_name">الرجاء إدخال الاسم الكامل</string>
+    <string name="toast_email">الرجاء إدخال البريد الإلكتروني</string>
+    <string name="toast_valid_email">الرجاء إدخال بريد إلكتروني صحيح.</string>
+    <string name="toast_phone">الرجاء إدخال الهاتف</string>
+    <string name="toast_phone_length">يجب أن يتكون رقم الهاتف من 10 أرقام.</string>
+    <string name="toast_password">الرجاء إدخال كلمة المرور</string>
+    <string name="no_login">لم تقم بتسجيل الدخول ، الرجاء تسجيل الدخول أولا.</string>
+    <string name="choose_lang">اختر اللغة</string>
+    <string name="english">الإنجليزية</string>
+    <string name="arabic">عربى</string>
+    <string name="toast_otp">الرجاء إدخال OTP.</string>
+    <string name="toast_old_pwd">الرجاء إدخال كلمة المرور القديمة.</string>
+    <string name="toast_new_pwd">الرجاء إدخال كلمة المرور الجديدة.</string>
+    <string name="toast_confirm_pwd">الرجاء إدخال تأكيد كلمة المرور.</string>
+    <string name="toast_pwd_retype_pwd_same">يجب أن تكون كلمة المرور وإعادة كتابة كلمة المرور متطابقة</string>
+    <string name="text_unable_to_select_image">تعذر تحديد الصورة</string>
+    <string name="toast_login_first">الرجاء تسجيل الدخول أولا لإضافة دورة في قائمة الأمنيات.</string>
+
+    <string name="login_alert">تنبيه تسجيل الدخول</string>
+    <string name="please_login">الرجاء تسجيل الدخول</string>
+
+    <string name="ok">حسنا</string>
+    <string name="thank_you">شكرا</string>
+
+    <string name="back_to_my_course">العودة إلى دوراتي</string>
+    <string name="previous">السابق</string>
+    <string name="congrat_success">تهانينا ! لقد أكملت بنجاح</string>
+    <string name="toast_course_alry_whishlist">تم تسجيل الدورة بالفعل حتى لا تقوم بإضافتها إلى قائمة الرغبات الخاصة بك</string>
+    <string name="reset_course">إعادة تعيين الدورة للبدء</string>
+    <string name="plz_fill_ans">من فضلك املأ الجواب</string>
+    <string name="no_download">لا يوجد تنزيل شهادة لهذه الدورة</string>
+    <string name="reset_course_no_start">الدورة لم تبدأ</string>
+    <string name="toast_company_url">الرجاء إدخال عنوان URL للشركة</string>
+    <string name="company_name">اسم الشركة</string>
+    <string name="toast_comapany_name">الرجاء إدخال اسم الشركة</string>
+    <string name="toast_comapany_url">الرجاء إدخال عنوان URL للشراكة</string>
+    <string name="inquire_now">مطلوب الان</string>
+    <string name="items">العناصر</string>
+    <string name="assign_course">تعيين بالطبع</string>
+
+    <string name="total_users">إجمالي المستخدمين</string>
+    <string name="assigend">تعيين</string>
+    <string name="remaining">المتبقي</string>
+</resources>

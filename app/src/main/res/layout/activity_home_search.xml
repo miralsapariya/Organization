@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/llMain"
+    tools:context=".HomeSearchActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            app:contentInsetStart="0dp"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" >
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:gravity="center_vertical"
+
+               android:layout_height="wrap_content">
+
+               <ImageView
+                   android:id="@+id/imgBack"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:src="@drawable/ic_back"
+                   android:layout_gravity="center_vertical"
+                   android:paddingStart="@dimen/_5sdp"
+                   android:paddingEnd="@dimen/_5sdp"
+                   />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etSearch"
+                android:paddingStart="@dimen/_5sdp"
+                android:paddingEnd="@dimen/_5sdp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:singleLine="true"
+                android:layoutDirection="locale"
+                android:textDirection="locale"
+                android:inputType="text"
+                android:gravity="start"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/_7sdp"
+                android:background="@null"
+                android:imeOptions="actionDone"
+                android:drawableStart="@drawable/ic_search"
+                android:drawableEnd="@drawable/ic_close"
+                /></LinearLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <include layout="@layout/content_home_search" />
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

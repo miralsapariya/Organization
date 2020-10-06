@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:textDirection="locale"
+    android:layoutDirection="locale"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:textDirection="locale"
+        android:layoutDirection="locale"
+        android:layout_height="wrap_content">
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvViewAll"
+            android:layout_width="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="@string/view_all"
+
+            android:textSize="@dimen/_15ssp"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvNameCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="It and Software"
+            android:textDirection="locale"
+            android:layoutDirection="locale"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:textSize="@dimen/_15ssp"
+            />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_gravity="end"
+        android:gravity="end"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+    <com.github.tommykw.tagview.TagView
+        android:id="@+id/tagCategory"
+        android:layout_marginTop="@dimen/_5ssp"
+        android:layout_marginBottom="@dimen/_5ssp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:stroke_width="1dp"
+        android:layout_alignParentEnd="true"
+        android:gravity="end"
+        android:layout_gravity="end"
+        android:textDirection="locale"
+        android:layoutDirection="locale"
+        app:stroke_color="@color/border_color"
+        app:background_color="@color/border_color"
+        app:left_drawable_padding="4dp"
+        app:sort_type="none"
+        app:horizontal_spacing="4dp"
+        app:vertical_spacing="@dimen/spacing_small"
+        app:text_font_size="6sp"
+        app:corner_radius="2dp"
+        app:text_color="#000000" /></LinearLayout>
+
+</LinearLayout>

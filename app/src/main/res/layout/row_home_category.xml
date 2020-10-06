@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:layout_margin="@dimen/_4sdp"
+    android:id="@+id/llMAin"
+    android:layoutDirection="locale"
+    android:textDirection="locale"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+<LinearLayout
+    android:layout_width="160dp"
+    android:orientation="vertical"
+    android:background="@drawable/round_rect"
+    android:padding="@dimen/_10ssp"
+    android:layoutDirection="locale"
+    android:textDirection="locale"
+    android:layout_height="wrap_content">
+
+
+
+
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:src="@mipmap/placeholder"
+        />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_11ssp"
+        android:singleLine="true"
+        android:textColor="@color/black"
+        />
+
+    <TextView
+        android:id="@+id/tvNoOfCourses"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_9ssp"
+        android:textColor="@color/font1"
+        />
+
+
+</LinearLayout>
+</LinearLayout>
