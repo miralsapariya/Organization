@@ -15,7 +15,7 @@ public class AppConstant {
     public static final String PRIVACY_POLICY="http://1.22.161.26:9875/online_education_system/public/privacy_policy";
     public static final String TERMS_CONDITION="http://1.22.161.26:9875/online_education_system/public/terms_of_use";
 
-    public static String SUB_FOLDER = "OnlineEducationSystem";
+    public static String SUB_FOLDER = "OnlineEduSystemOrg";
     public static User registerData=new User();
     //Permission Constant
     public static final int CAMERA = 1;
@@ -25,6 +25,9 @@ public class AppConstant {
 
     public static String USER_TYPE_ADMIN="1";
     public static String USER_TYPE_USER="2";
+
+    public static String ASSIGN_COURSES="";
+    public static String ASSIGN_COURSES_Id="";
 
     //
     //QUESTION_TYPE

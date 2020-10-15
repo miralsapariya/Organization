@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:layout_marginTop="@dimen/_7sdp"
+    android:layoutDirection="locale"
+    android:textDirection="locale"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RadioGroup
+        android:id="@+id/radioOption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:textDirection="locale"
+        android:orientation="horizontal"
+        android:layoutDirection="locale"
+
+        android:textSize="@dimen/_12ssp"
+        >
+        <RadioButton
+            android:id="@+id/rbTrue"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:text="true"
+            android:textSize="@dimen/_9sdp"
+            android:buttonTint="@color/colorPrimary"
+            android:layout_height="wrap_content"/>
+        <RadioButton
+            android:id="@+id/rbFalse"
+            android:text="false"
+            android:textSize="@dimen/_9sdp"
+            android:buttonTint="@color/colorPrimary"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RadioGroup>
+    <TextView
+        android:id="@+id/tvSatement"
+        android:layout_gravity="center_vertical"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:paddingStart="@dimen/_4sdp"
+        android:paddingEnd="@dimen/_4sdp"
+        android:textColor="@color/black"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

@@ -46,7 +46,18 @@
                     android:paddingStart="@dimen/_4sdp"
                     android:paddingRight="@dimen/_4sdp"
 
-                    /></LinearLayout>
+                    />
+                <ImageView
+                    android:id="@+id/imgAddUser"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_add_user"
+                    android:paddingStart="@dimen/_4sdp"
+                    android:paddingRight="@dimen/_4sdp"
+
+                    />
+            </LinearLayout>
         </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>

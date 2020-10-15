@@ -3,6 +3,7 @@ package com.onlineeducationsystemorganization;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -13,9 +14,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.onlineeducationsystemorganization.fragment.AccountFragment;
 import com.onlineeducationsystemorganization.fragment.CartFragment;
 import com.onlineeducationsystemorganization.fragment.CoursesFragment;
 import com.onlineeducationsystemorganization.fragment.HomeFragment;
+import com.onlineeducationsystemorganization.fragment.UsersFragment;
 import com.onlineeducationsystemorganization.util.AppConstant;
 import com.onlineeducationsystemorganization.util.AppSharedPreference;
 
@@ -27,6 +30,7 @@ public class MainActivity extends BaseActivity {
     private TextView toolbar_title;
     private ImageView imgSearch;
     private Configuration config;
+    public ImageView imgAddUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,14 +93,22 @@ public class MainActivity extends BaseActivity {
     private void initBottomNavigationBar() {
         nav_view = findViewById(R.id.nav_view);
         imgSearch = findViewById(R.id.imgSearch);
+        imgAddUser =findViewById(R.id.imgAddUser);
+
         imgSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Fragment f= getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+                Log.d("fffffffffffffff ", f.toString());
 
-                Intent intent = new Intent(MainActivity.this, HomeSearchActivity.class);
-                ;
-                startActivity(intent);
-
+                if(f instanceof HomeFragment) {
+                    Intent intent = new Intent(MainActivity.this, HomeSearchActivity.class);
+                    startActivity(intent);
+                }else
+                {
+                    Intent intent = new Intent(MainActivity.this, SearchCourseActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 
@@ -106,11 +118,13 @@ public class MainActivity extends BaseActivity {
                 switch (item.getItemId()) {
                     case R.id.page_1:
                         imgSearch.setVisibility(View.VISIBLE);
+                        imgAddUser.setVisibility(View.GONE);
                         toolbar_title.setText(getString(R.string.home));
                         loadFragment(new HomeFragment());
                         break;
                     case R.id.page_2:
                         imgSearch.setVisibility(View.GONE);
+                        imgAddUser.setVisibility(View.GONE);
                         toolbar_title.setText(getString(R.string.cart));
                         loadFragment(new CartFragment());
 
@@ -118,19 +132,23 @@ public class MainActivity extends BaseActivity {
                     case R.id.page_3:
 
                         imgSearch.setVisibility(View.VISIBLE);
+                        imgAddUser.setVisibility(View.GONE);
                         toolbar_title.setText(getString(R.string.courses));
                         loadFragment(new CoursesFragment());
 
                         break;
                     case R.id.page_4:
                         imgSearch.setVisibility(View.GONE);
+                        imgAddUser.setVisibility(View.VISIBLE);
                         toolbar_title.setText(getString(R.string.users));
+                        loadFragment(new UsersFragment());
 
                         break;
                     case R.id.page_5:
                         imgSearch.setVisibility(View.GONE);
+                        imgAddUser.setVisibility(View.GONE);
                         toolbar_title.setText(getString(R.string.account));
-
+                        loadFragment(new AccountFragment());
                         break;
 
                 }

@@ -28,7 +28,6 @@
         app:civ_shadow_color="#00000000"
         app:civ_shadow_radius="4dp" />
 
-
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/etName"
         android:layout_width="match_parent"
@@ -45,6 +44,24 @@
         android:drawablePadding="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_15sdp"
         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+        android:textCursorDrawable="@drawable/custom_cursor"
+        />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etCompanyName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/company_name"
+        android:drawableStart="@mipmap/company"
+        app:backgroundTint="@color/black"
+        android:inputType="text"
+        android:singleLine="true"
+        android:textAlignment="viewStart"
+        android:gravity="start"
+        android:layoutDirection="locale"
+        android:textDirection="locale"
+        android:drawablePadding="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_15sdp"
         android:textCursorDrawable="@drawable/custom_cursor"
         />
 

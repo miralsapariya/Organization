@@ -75,11 +75,11 @@ public class EditUserProfileActivity extends BaseActivity implements NetworkList
     File myFile;
     private Uri mCurrentPhotoPathUri;
     private LinearLayout llMain;
-    private EditText etName,etEmail,etPhone;
+    private EditText etName,etEmail,etPhone,etCompanyName;
     private Button btnUpdate;
     private ImageView imgBack;
     private CountryCodePicker ccp;
-    private String selectedCountryCode="";
+    private String selectedCountryCode="",selectedCountry="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -107,6 +107,7 @@ public class EditUserProfileActivity extends BaseActivity implements NetworkList
         });
         etName =findViewById(R.id.etName);
         etEmail =findViewById(R.id.etEmail);
+        etCompanyName =findViewById(R.id.etCompanyName);
         etPhone =findViewById(R.id.etPhone);
         llMain =findViewById(R.id.llMain);
         imgUser =findViewById(R.id.imgUser);
@@ -139,12 +140,13 @@ public class EditUserProfileActivity extends BaseActivity implements NetworkList
 
         ccp=findViewById(R.id.ccp);
         selectedCountryCode =ccp.getSelectedCountryCodeWithPlus();
-
+        selectedCountry =ccp.getSelectedCountryName();
 
         ccp.setOnCountryChangeListener(new CountryCodePicker.OnCountryChangeListener() {
             @Override
             public void onCountrySelected() {
                 selectedCountryCode =ccp.getSelectedCountryCodeWithPlus();
+                selectedCountry =ccp.getSelectedCountryName();
             }
         });
     }
@@ -168,6 +170,9 @@ public class EditUserProfileActivity extends BaseActivity implements NetworkList
                 RequestBody.create(
                         MultipartBody.FORM, etName.getText().toString());
 
+        RequestBody comapanyName =
+                RequestBody.create(
+                        MultipartBody.FORM, etCompanyName.getText().toString());
         RequestBody email =
                 RequestBody.create(
                         MultipartBody.FORM, etEmail.getText().toString());
@@ -175,7 +180,8 @@ public class EditUserProfileActivity extends BaseActivity implements NetworkList
         RequestBody phone =
                 RequestBody.create(
                         MultipartBody.FORM, selectedCountryCode+"-"+etPhone.getText().toString());
-
+        RequestBody countryNAme = RequestBody.create(
+                okhttp3.MultipartBody.FORM,selectedCountry);
         if (AppSharedPreference.getInstance().getString(EditUserProfileActivity.this, AppSharedPreference.LANGUAGE_SELECTED) == null ||
                 AppSharedPreference.getInstance().getString(EditUserProfileActivity.this, AppSharedPreference.LANGUAGE_SELECTED).equalsIgnoreCase(AppConstant.ENG_LANG)) {
             lang = AppConstant.ENG_LANG;
@@ -195,7 +201,7 @@ public class EditUserProfileActivity extends BaseActivity implements NetworkList
             Call<GetProfile> call = apiInterface.editProfile(lang,
                     AppSharedPreference.getInstance().getString(EditUserProfileActivity.this, AppSharedPreference.ACCESS_TOKEN),
                     userId,
-                    name,email,phone,
+                    name,comapanyName,email,phone,countryNAme,
                     body
                     );
 
@@ -206,7 +212,7 @@ public class EditUserProfileActivity extends BaseActivity implements NetworkList
             Call<GetProfile> call = apiInterface.editProfile(lang,
                     AppSharedPreference.getInstance().getString(EditUserProfileActivity.this, AppSharedPreference.ACCESS_TOKEN),
                     userId,
-                    name,email,phone
+                    name,comapanyName,email,phone,countryNAme
             );
 
             ApiCall.getInstance().hitService(EditUserProfileActivity.this, call, this, ServerConstents.EDIT_PROFILE);
@@ -232,8 +238,7 @@ public class EditUserProfileActivity extends BaseActivity implements NetworkList
 
         Call<GetProfile> call = apiInterface.getProfile(lang,
                 AppSharedPreference.getInstance().
-                        getString(EditUserProfileActivity.this, AppSharedPreference.ACCESS_TOKEN),
-                params);
+                        getString(EditUserProfileActivity.this, AppSharedPreference.ACCESS_TOKEN));
 
         ApiCall.getInstance().hitService(EditUserProfileActivity.this, call, this, ServerConstents.GET_PROFILE);
 
@@ -254,6 +259,13 @@ public class EditUserProfileActivity extends BaseActivity implements NetworkList
             bool=false;
             hideKeyboard();
             Toast.makeText(EditUserProfileActivity.this, getString(R.string.toast_full_name), Toast.LENGTH_SHORT).show();
+
+        }else if(AppUtils.countWordsUsingSplit(etCompanyName.getText().toString()) <= 1)
+        {
+
+            bool=false;
+            hideKeyboard();
+            Toast.makeText(EditUserProfileActivity.this, getString(R.string.toast_comapany_name), Toast.LENGTH_SHORT).show();
 
         }else if (TextUtils.isEmpty(etEmail.getText().toString())) {
             bool = false;
@@ -282,21 +294,22 @@ public class EditUserProfileActivity extends BaseActivity implements NetworkList
         if(requestCode == ServerConstents.GET_PROFILE) {
             GetProfile data = (GetProfile) response;
 
-            String s=data.getData().get(0).getCountry_code().replaceAll("\\+", "");
+            String s=data.getData().get(0).getCountryCode().replaceAll("\\+", "");
             Log.d("______________ ", s);
 
             ccp.setCountryForPhoneCode(Integer.parseInt(s));
 
-
-            Picasso.with(this).load(data.getData().get(0).
+           Picasso.with(this).load(data.getData().get(0).
                     getProfilePicture()).into(imgUser);
             etName.setText(data.getData().get(0).getName());
             etEmail.setText(data.getData().get(0).getEmail());
             etPhone.setText(data.getData().get(0).getPhoneNo());
+            etCompanyName.setText(data.getData().get(0).getOrganizationName());
         }else
         {
             GetProfile data = (GetProfile) response;
             Toast.makeText(EditUserProfileActivity.this, data.getMessage(), Toast.LENGTH_SHORT).show();
+            finish();
         }
 
     }

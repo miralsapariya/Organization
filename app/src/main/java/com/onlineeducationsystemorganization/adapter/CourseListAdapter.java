@@ -76,7 +76,6 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.Vi
         private LinearLayout llMain;
         private ImageView img;
 
-
         public ViewHolder(View itemView) {
             super(itemView);
 

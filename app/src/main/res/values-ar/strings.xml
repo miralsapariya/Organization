@@ -18,7 +18,7 @@
 
     <string name="total_courses">مجموع الدورات</string>
     <string name="subscribers">v</string>
-
+    <string name="subscriptions">الاشتراكات</string>
     <string name="description">وصف</string>
     <string name="view_more">عرض المزيد</string>
     <string name="popular_instuctor">المدربين المشهورين</string>
@@ -43,6 +43,8 @@
     <string name="sign_up">سجل</string>
     <string name="sign_in">تسجيل الدخول</string>
     <string name="full_name">الاسم الكامل</string>
+    <string name="first_name">الاسم الاول</string>
+    <string name="last_name">الكنية</string>
     <string name="email">البريد الإلكتروني</string>
     <string name="password">كلمه السر</string>
     <string name="new_pwd">كلمة سر جديدة</string>
@@ -60,6 +62,10 @@
     <string name="old_pwd">كلمة المرور القديمة</string>
     <string name="newpwd">كلمة سر جديدة</string>
     <string name="confirm_pwd">تأكيد كلمة المرور</string>
+    <string name="inquires">استفسارات</string>
+    <string name="inquires_history">تاريخ الاستفسار</string>
+    <string name="subscription_history">سجل الاشتراك</string>
+    <string name="subscription_date">Subscription Date</string>
     <string name="continue_">استمر</string>
     <string name="change_pwd">غير كلمة السر</string>
     <string name="forgot_pwd_">هل نسيت كلمة المرور</string>
@@ -83,7 +89,7 @@
     <string name="account_setting">إعدادات الحساب</string>
     <string name="sign_out">خروج</string>
     <string name="log_out">تسجيل خروج</string>
-
+    <string name="inquire_history">تحرير تفاصيل الاستعلام</string>
 
     <string name="prefered_lang">اللغة المفضلة</string>
     <string name="dasahboard">لوحة القيادة</string>
@@ -93,12 +99,14 @@
     <string name="notification">إشعارات</string>
     <string name="about_us">معلومات عنا</string>
     <string name="search_result">نتيجة البحث</string>
+    <string name="search">بحث</string>
     <string name="promo_code">رمز ترويجي</string>
     <string name="apply">تطبيق</string>
     <string name="about">حول</string>
     <string name="faq">أسئلة وأجوبة</string>
     <string name="privacy_policy">سياسة خاصة</string>
     <string name="terms_n_condition">الأحكام والشروط</string>
+    <string name="bologs">المدونات</string>
     <string name="account_profile">تعريف حساب</string>
     <string name="progress">التقدم</string>
     <string name="end_date">تاريخ الانتهاء</string>
@@ -127,6 +135,9 @@
 
     <string name="no_record">لا يوجد سجلات</string>
     <string name="toast_name">الرجاء إدخال الاسم</string>
+    <string name="toast_lname">الرجاء إدخال الاسم الأخير</string>
+    <string name="toast_role">الرجاء تحديد الدور</string>
+    <string name="toast_slect_course">الرجاء تحديد الدورة</string>
     <string name="toast_full_name">الرجاء إدخال الاسم الكامل</string>
     <string name="toast_email">الرجاء إدخال البريد الإلكتروني</string>
     <string name="toast_valid_email">الرجاء إدخال بريد إلكتروني صحيح.</string>
@@ -166,8 +177,36 @@
     <string name="inquire_now">مطلوب الان</string>
     <string name="items">العناصر</string>
     <string name="assign_course">تعيين بالطبع</string>
-
+    <string name="unassigned">غير معين</string>
     <string name="total_users">إجمالي المستخدمين</string>
     <string name="assigend">تعيين</string>
     <string name="remaining">المتبقي</string>
+    <string name="reset">إعادة تعيين</string>
+    <string name="assign_courses">تعيين الدورات</string>
+    <string name="role">وظيفة</string>
+    <string name="submit">إرسال</string>
+    <string name="add_user">إضافة مستخدم</string>
+    <string name="edit_user">تحرير العضو</string>
+    <string name="admin">مشرف</string>
+    <string name="select_courses">دورا </string>
+    <string name="done">منجز</string>
+    <string name="toast_remaing">يمكنك المتبقي من عدد المستخدمي.</string>
+    <string name="toast_assined_user">يمكنك إلغاء تعيين المستخدم فقط</string>
+    <string name="toast_unassing_user">يمكنك تعيين مستخدم غير معين فقط</string>
+    <string name="toast_started_course">لا يمكنك تعيين مستخدم بعد بدء الدورة</string>
+    <string name="toast_delete_user">لا يمكن تعيين المستخدم المحذوف أو إلغاء التخصيص</string>
+    <string name="date">تاريخ</string>
+    <string name="date_">تاريخ</string>
+    <string name="category_">الفئة</string>
+    <string name="subcategory">تصنيف فرعي</string>
+    <string name="subcategory_">تصنيف فرعي</string>
+    <string name="course_">دورة</string>
+    <string name="users_">المستخدمون</string>
+    <string name="price_">السعر</string>
+    <string name="price">السعر</string>
+    <string name="add_more_users">أضف المزيد من المستخدمين</string>
+    <string name="view_history">عرض السجل</string>
+    <string name="no_of_users">عدد المستخدمين</string>
+    <string name="save">حفظ</string>
+    <string name="toast_no_of_user">الرجاء إدخال رقم المستخدم</string>
 </resources>

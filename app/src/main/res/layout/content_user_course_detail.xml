@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:textDirection="locale"
+    android:layoutDirection="locale"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".UserCourseDetailActivity"
+    android:background="@color/bg"
+    tools:showIn="@layout/activity_user_course_detail">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_10sdp"
+        android:textDirection="locale"
+        android:layoutDirection="locale"
+        android:background="@color/white"
+        >
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvCourseTitle"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_13ssp"
+            android:gravity="start"
+            android:textDirection="locale"
+            android:layoutDirection="locale"
+            android:textColor="@color/black"
+            />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvNoOfSection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textDirection="locale"
+            android:layoutDirection="locale"
+            android:textSize="@dimen/_10ssp"
+            android:gravity="end"
+            android:textColor="@color/colorPrimary"
+            />
+
+
+    </LinearLayout>
+
+
+
+    <ExpandableListView
+        android:id="@+id/expandableView"
+        android:layout_width="match_parent"
+        android:padding="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:divider="@null"
+        android:groupIndicator="@null"
+        android:listSelector="@android:color/transparent"
+        android:background="@color/white"
+        android:scrollbars="none"
+        android:layout_height="wrap_content"/>
+
+
+</LinearLayout>

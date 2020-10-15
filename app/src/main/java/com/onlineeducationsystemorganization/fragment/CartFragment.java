@@ -126,6 +126,9 @@ public class CartFragment extends BaseFragment implements NetworkListener
         {
             BaseBean data = (BaseBean) response;
             Toast.makeText(activity, data.getMessage(),Toast.LENGTH_SHORT).show();
+            if (data.getStatus() == ServerConstents.CODE_SUCCESS) {
+                getCartList();
+            }
         }else if(requestCode == ServerConstents.INQUIRY)
         {
             BaseBean data = (BaseBean) response;

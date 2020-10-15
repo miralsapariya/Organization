@@ -43,6 +43,11 @@ public class ServerConstents {
     public static int RESULT=22;
     public static int RESTART=23;
     public static int INQUIRY=24;
+    public static int USER_LIST=25;
+    public static int GET_USER=26;
+    public static int EDIT_USER=27;
+    public static int ASSIGN=28;
+    public static int UNASSIGN=29;
     //home screen type
     public static String HOME_TYPE_COURSE="1";
     public static String HOME_TYPE_CATEGORY="2";

@@ -1,5 +1,6 @@
 package com.onlineeducationsystemorganization.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.onlineeducationsystemorganization.AssignActivity;
 import com.onlineeducationsystemorganization.R;
 import com.onlineeducationsystemorganization.adapter.CourseListAdapter;
 import com.onlineeducationsystemorganization.interfaces.NetworkListener;
@@ -56,8 +58,7 @@ public class CoursesFragment extends BaseFragment implements OnItemClick, Networ
             AppUtils.showDialog(activity, getString(R.string.pls_wait));
             ApiInterface apiInterface = RestApi.getConnection(ApiInterface.class, ServerConstents.API_URL);
             final HashMap params = new HashMap<>();
-            params.put("user_id", AppSharedPreference.getInstance().
-                    getString(activity, AppSharedPreference.USERID));
+            params.put("user_id", AppSharedPreference.getInstance().getString(activity, AppSharedPreference.USERID));
             if (AppSharedPreference.getInstance().getString(activity, AppSharedPreference.LANGUAGE_SELECTED) == null ||
                     AppSharedPreference.getInstance().getString(activity, AppSharedPreference.LANGUAGE_SELECTED).equalsIgnoreCase(AppConstant.ENG_LANG)) {
                 lang = AppConstant.ENG_LANG;
@@ -68,7 +69,6 @@ public class CoursesFragment extends BaseFragment implements OnItemClick, Networ
             Call<Courses> call = apiInterface.courseList(lang,AppSharedPreference.getInstance().
                     getString(activity, AppSharedPreference.ACCESS_TOKEN),params);
             ApiCall.getInstance().hitService(activity, call, this, ServerConstents.COURSE_LIST);
-
     }
 
     @Override
@@ -76,13 +76,7 @@ public class CoursesFragment extends BaseFragment implements OnItemClick, Networ
         if(requestCode == ServerConstents.COURSE_LIST) {
             data = (Courses) response;
             if (data.getStatus() == ServerConstents.CODE_SUCCESS) {
-               /* Courses.Courseslist c= new Courses.Courseslist();
-                c.setCourseName("PHP");
 
-                Courses.Courseslist c1= new Courses.Courseslist();
-                c1.setCourseName("PHP");
-                data.getData().set(0).getCourseslist().add(c);
-                data.getData().get(0).getCourseslist().add(c1);*/
                 if(data.getData().size() ==0)
                 {
                     tvNoRecord.setVisibility(View.VISIBLE);
@@ -116,6 +110,11 @@ public class CoursesFragment extends BaseFragment implements OnItemClick, Networ
 
     @Override
     public void onGridClick(int pos) {
+
+        Intent intent =new Intent(activity, AssignActivity.class);
+        intent.putExtra("course_id", data.getData().get(0).getCourseslist().get(pos).getId()+"");
+        intent.putExtra("remainig_user", data.getData().get(0).getCourseslist().get(pos).getRemainingUser());
+        startActivity(intent);
 
     }
 }

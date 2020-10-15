@@ -18,6 +18,7 @@
 
     <string name="total_courses">Total Courses</string>
     <string name="subscribers">Subscribers</string>
+    <string name="subscriptions">Subscriptions</string>
 
     <string name="description">Description</string>
     <string name="view_more">View More</string>
@@ -42,6 +43,8 @@
     <string name="sign_up">Sign Up</string>
     <string name="sign_in">Sign In</string>
     <string name="full_name">Full Name</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="new_pwd">New Password</string>
@@ -87,15 +90,21 @@
     <string name="my_profile">My Profile</string>
     <string name="change_pwd_">Change Password</string>
     <string name="whishlist_">Wishlist</string>
+    <string name="inquires">Inquiries</string>
+    <string name="inquire_history">Edit Inquiry Detail</string>
+    <string name="inquires_history">Inquiry History</string>
+    <string name="subscription_history">Subscription History</string>
+    <string name="subscription_date">Subscription Date</string>
     <string name="my_whish_list">My Wishlist</string>
     <string name="notification">Notifications</string>
     <string name="about_us">About Us</string>
     <string name="search_result">Search Result</string>
-
+    <string name="search">Search</string>
     <string name="about">About</string>
     <string name="faq">FAQs</string>
     <string name="privacy_policy">Privacy Policy</string>
     <string name="terms_n_condition">Terms and Conditions</string>
+    <string name="bologs">Blogs</string>
     <string name="account_profile">Account Profile</string>
     <string name="progress">Progress</string>
     <string name="end_date">End Date</string>
@@ -124,6 +133,9 @@
 
     <string name="no_record">No record found</string>
     <string name="toast_name">Please enter name</string>
+    <string name="toast_lname">Please enter Last name</string>
+    <string name="toast_role">Please select role</string>
+    <string name="toast_slect_course">Please select course</string>
     <string name="toast_full_name">Please enter full name</string>
     <string name="toast_email">Please enter email</string>
     <string name="toast_valid_email">Please enter valid email.</string>
@@ -167,8 +179,39 @@
     <string name="toast_comapany_url">Please enter comapny URL</string>
     <string name="inquire_now">Inquire Now</string>
     <string name="items">Items</string>
-   <string name="assign_course">Assign Course</string>
+    <string name="assign_course">Assign Course</string>
     <string name="total_users">Total Users</string>
     <string name="assigend">Assigned</string>
+    <string name="unassigned">Unassigned</string>
     <string name="remaining">Remaining</string>
+    <string name="reset">Reset</string>
+    <string name="assign_courses">Assign courses</string>
+    <string name="role">Role</string>
+    <string name="submit">Submit</string>
+    <string name="add_user">Add User</string>
+    <string name="edit_user">Edit User</string>
+    <string name="admin">Admin</string>
+    <string name="select_courses">Selelct Courses</string>
+    <string name="done">Done</string>
+    <string name="toast_started_course">You can not assigned user after course started</string>
+    <string name="toast_assined_user">You can unassign only assign user.</string>
+    <string name="toast_remaing">You can remaining number of user.</string>
+    <string name="toast_unassing_user">You can assign only unassigned user.</string>
+    <string name="toast_delete_user">Deleted User can not be assign or unassign</string>
+    <string name="date">Date</string>
+    <string name="date_">Date :</string>
+    <string name="category_">Category :</string>
+    <string name="subcategory">Subcategory</string>
+    <string name="subcategory_">Subcategory :</string>
+    <string name="course_">Course :</string>
+    <string name="users_">Users :</string>
+    <string name="price">Price </string>
+    <string name="price_">Price :</string>
+    <string name="add_more_users">Add More Users</string>
+    <string name="view_history">View History</string>
+    <string name="no_of_users">No. of Users</string>
+    <string name="save">Save</string>
+    <string name="toast_no_of_user">Please enter number of user</string>
+
+
 </resources>

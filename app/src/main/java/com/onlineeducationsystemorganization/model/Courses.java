@@ -66,6 +66,27 @@ public static class Courseslist {
     @Expose
     private Integer remainingUser;
 
+    public Integer getIs_assigned() {
+        return is_assigned;
+    }
+
+    public void setIs_assigned(Integer is_assigned) {
+        this.is_assigned = is_assigned;
+    }
+
+    @SerializedName("is_assigned")
+    @Expose
+    private Integer is_assigned;
+
+    private boolean isSelected;
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
+    }
+
     public Integer getId() {
         return id;
     }

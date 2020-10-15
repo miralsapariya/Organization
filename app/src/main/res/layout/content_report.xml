@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".ReportActivity"
+    tools:showIn="@layout/activity_report">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_margin="@dimen/_20sdp"
+        android:src="@mipmap/win" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvCongrat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textColor="@color/colorPrimary"
+        android:textDirection="locale"
+        android:textSize="@dimen/_10ssp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/score"
+        android:textStyle="bold"
+        android:visibility="gone"
+        android:textColor="@color/colorPrimary"
+        android:textDirection="locale"
+        android:textSize="@dimen/_12ssp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textDirection="locale"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_9ssp"
+        android:layout_marginTop="@dimen/_10sdp"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvDownload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_gravity="center_horizontal"
+        android:textDirection="locale"
+        android:background="@drawable/button"
+        android:padding="@dimen/_7sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:drawableStart="@mipmap/download"
+        android:drawablePadding="@dimen/_10sdp"
+        android:textSize="@dimen/_11ssp"
+        android:textColor="@color/white"
+        android:text="@string/download_certificate"
+        />
+
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tryAgain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_gravity="center_horizontal"
+        android:textDirection="locale"
+        android:background="@drawable/button"
+        android:paddingTop="@dimen/_7sdp"
+        android:paddingBottom="@dimen/_7sdp"
+        android:paddingLeft="@dimen/_15sdp"
+        android:paddingRight="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:drawablePadding="@dimen/_10sdp"
+        android:textSize="@dimen/_11ssp"
+        android:textColor="@color/white"
+        android:visibility="gone"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_gravity="center_horizontal"
+        android:textDirection="locale"
+        android:background="@drawable/button"
+        android:paddingTop="@dimen/_7sdp"
+        android:paddingBottom="@dimen/_7sdp"
+        android:paddingLeft="@dimen/_15sdp"
+        android:paddingRight="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:drawablePadding="@dimen/_10sdp"
+        android:textSize="@dimen/_11ssp"
+        android:textColor="@color/white"
+        android:text="@string/back_to_my_course"
+        />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:textSize="@dimen/_11ssp"
+        android:textColor="@color/black"
+        android:text="@string/review_your_ans"
+        android:visibility="gone"
+        android:gravity="start"
+        android:textDirection="locale"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textDirection="locale"
+        android:layoutDirection="locale"
+        android:visibility="gone"
+        android:layout_margin="@dimen/_10sdp"
+        >
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/correct"
+            android:textSize="@dimen/_11ssp"
+            android:gravity="center_horizontal"
+            android:textColor="@color/green"
+            android:padding="@dimen/_5sdp"
+            android:textDirection="locale"
+            android:background="@drawable/grey_round_rect"
+            android:layout_gravity="center_horizontal"
+            />
+
+        <View
+            android:layout_width="@dimen/_15sdp"
+            android:layout_height="match_parent"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/wrong"
+            android:padding="@dimen/_5sdp"
+            android:gravity="center_horizontal"
+            android:textSize="@dimen/_11ssp"
+            android:textColor="@color/black"
+            android:textDirection="locale"
+            android:background="@drawable/grey_round_rect"
+            android:layout_gravity="center_horizontal"
+            />
+
+    </LinearLayout>
+    <com.onlineeducationsystemorganization.widget.NonScrollExpandableListView
+        android:id="@+id/expandableView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
+        android:background="@color/bg"
+        android:divider="@null"
+        android:visibility="gone"
+        android:listSelector="@android:color/transparent"
+        android:padding="@dimen/_10sdp" />
+
+
+</LinearLayout>

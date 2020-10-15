@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/llMain"
+    android:layoutDirection="locale"
+    android:textDirection="locale"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:padding="@dimen/_10sdp"
+        android:orientation="horizontal"
+        android:layoutDirection="locale"
+        android:textDirection="locale"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/img"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:src="@mipmap/ic_cart"
+            android:textDirection="locale"
+            android:layoutDirection="locale"
+            android:layout_alignParentStart="true"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvCatName"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/home"
+            android:textSize="@dimen/_12ssp"
+            android:textDirection="locale"
+            android:layoutDirection="locale"
+            android:textColor="@color/black"
+            android:gravity="start"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/_10sdp"
+            />
+
+        <ImageView
+            android:id="@+id/imgNext"
+            android:layout_width="@dimen/_14sdp"
+            android:layout_height="@dimen/_14sdp"
+            android:src="@drawable/ic_next"
+
+            android:textDirection="locale"
+            android:layoutDirection="locale"
+            android:layout_gravity="end|center_vertical"
+
+            />
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/border_color"
+        />
+</LinearLayout>

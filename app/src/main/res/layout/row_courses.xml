@@ -3,8 +3,6 @@
     android:id="@+id/llMain"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:textDirection="locale"
-    android:layoutDirection="locale"
     android:layout_marginTop="@dimen/_2sdp"
     android:layout_marginBottom="@dimen/_2sdp"
     android:background="@color/white">
@@ -18,7 +16,7 @@
         <ImageView
             android:id="@+id/img"
             android:layout_width="@dimen/_80sdp"
-            android:layout_height="@dimen/_80sdp"
+            android:layout_height="@dimen/_70sdp"
             android:layout_gravity="center"
             android:scaleType="fitXY"
             android:src="@mipmap/placeholder"
@@ -28,114 +26,113 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:textDirection="locale"
         android:layoutDirection="locale"
         android:orientation="vertical"
         android:padding="@dimen/_7sdp">
 
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textDirection="locale"
+            android:layoutDirection="locale"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvCourseName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                />
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textDirection="locale"
-                android:layoutDirection="locale"
-                android:orientation="vertical">
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvCourseName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:singleLine="true"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/total_users"
                     android:textColor="@color/black"
-                    />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_marginTop="@dimen/_4sdp"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:text="@string/total_users"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_9sdp"
-                        android:layout_height="wrap_content"/>
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:text="@string/assigend"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_9sdp"
-                        android:layout_height="wrap_content"/>
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:text="@string/remaining"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_9sdp"
-                        android:layout_height="wrap_content"/>
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_marginBottom="@dimen/_3sdp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:id="@+id/tvTotalUser"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:text="0"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_9sdp"
-                        android:layout_height="wrap_content"/>
-
-                    <TextView
-                        android:id="@+id/tvAssigned"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:text="0"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_9sdp"
-                        android:layout_height="wrap_content"/>
-                    <TextView
-                        android:id="@+id/tvRemainig"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:text="0"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_9sdp"
-                        android:layout_height="wrap_content"/>
-
-                </LinearLayout>
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                >
+                    android:textSize="@dimen/_9sdp"
+                    android:layout_height="wrap_content"/>
 
                 <TextView
-                    android:id="@+id/tvAssign"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_gravity="center"
-                    android:background="@drawable/button"
-                    android:gravity="center"
-                    android:paddingStart="@dimen/_30sdp"
-                    android:paddingTop="@dimen/_8sdp"
-                    android:paddingEnd="@dimen/_30sdp"
-                    android:paddingBottom="@dimen/_8sdp"
-                    android:text="@string/assign_course"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_11sdp" />
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/assigend"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_9sdp"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/remaining"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_9sdp"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginBottom="@dimen/_3sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/tvTotalUser"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="0"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_9sdp"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/tvAssigned"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="0"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_9sdp"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/tvRemainig"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="0"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_9sdp"
+                    android:layout_height="wrap_content"/>
+
             </LinearLayout>
 
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <TextView
+                android:id="@+id/tvAssign"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:layout_gravity="center"
+                android:background="@drawable/button"
+                android:gravity="center"
+                android:paddingStart="@dimen/_9sdp"
+                android:paddingEnd="@dimen/_9sdp"
+                android:text="@string/assign_course"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_11sdp" />
+        </LinearLayout>
+
+
 
     </LinearLayout>
-    </LinearLayout>
+</LinearLayout>
