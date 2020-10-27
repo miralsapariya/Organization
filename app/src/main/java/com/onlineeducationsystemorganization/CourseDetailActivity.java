@@ -80,6 +80,7 @@ public class CourseDetailActivity extends BaseActivity implements NetworkListene
     private void initToolbar() {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        tvViewProfile =findViewById(R.id.tvViewProfile);
         imgShare = findViewById(R.id.imgShare);
         imgShare.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -406,6 +407,15 @@ public class CourseDetailActivity extends BaseActivity implements NetworkListene
                     tvStudent.setText(data.getData().get(0).getInstructorDetails().getTotalStudents() + "");
 
                     tvCreateBy.setText(data.getData().get(0).getInstructorDetails().getInstructorName());
+                    tvViewProfile.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent =new Intent(CourseDetailActivity.this, InstructorProfileActivity.class);
+                            intent.putExtra("instructor_id", data.getData().get(0).getInstructorDetails().getInstructor_id()+"");
+                            startActivity(intent);
+                        }
+                    });
+
                 } else {
                     llCreatedByInstructor.setVisibility(View.GONE);
 

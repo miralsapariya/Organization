@@ -84,16 +84,11 @@ public class EditUserProfileActivity extends BaseActivity implements NetworkList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_user_profile);
-
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
         StrictMode.setVmPolicy(builder.build());
-
-
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         initUI();
-
     }
 
     private void initUI()
@@ -115,7 +110,6 @@ public class EditUserProfileActivity extends BaseActivity implements NetworkList
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 if (AppUtils.isInternetAvailable(EditUserProfileActivity.this)) {
                    if(isValid())
                     editProfile();
@@ -260,7 +254,7 @@ public class EditUserProfileActivity extends BaseActivity implements NetworkList
             hideKeyboard();
             Toast.makeText(EditUserProfileActivity.this, getString(R.string.toast_full_name), Toast.LENGTH_SHORT).show();
 
-        }else if(AppUtils.countWordsUsingSplit(etCompanyName.getText().toString()) <= 1)
+        }else if(TextUtils.isEmpty(etCompanyName.getText().toString()))
         {
 
             bool=false;

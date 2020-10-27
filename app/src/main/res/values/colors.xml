@@ -19,4 +19,9 @@
     <color name="blue">#107084</color>
     <color name="shadow_color">#C0C0BE</color>
     <color name="green">#a4c639</color>
+    <color name="purple">#c4a2fc</color>
+    <color name="cyan">#25ae88</color>
+    <color name="light_blue">#ace9f6</color>
+    <color name="pink">#fdafde</color>
+
 </resources>

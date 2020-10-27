@@ -47,4 +47,8 @@
         <item name="android:topBright">@color/transperent</item>
         <item name="android:topDark">@color/transperent</item>
     </style>
+
+    <style name="DialogTheme1" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/colorPrimary</item>
+    </style>
 </resources>

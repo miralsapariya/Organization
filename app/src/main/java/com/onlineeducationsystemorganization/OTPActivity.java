@@ -76,7 +76,7 @@ public class OTPActivity extends BaseActivity implements NetworkListener {
         }
         tvResend =findViewById(R.id.tvResend);
         tvResend.setEnabled(false);
-        tvResend.setVisibility(View.GONE);
+      //  tvResend.setVisibility(View.GONE);
         tvResend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

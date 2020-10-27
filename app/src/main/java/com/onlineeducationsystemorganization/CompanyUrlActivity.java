@@ -32,7 +32,7 @@ public class CompanyUrlActivity extends AppCompatActivity implements NetworkList
     private EditText etURL;
     private LinearLayout llMain;
     private TextView btnNext,tvSignUP;
-
+    private AppSharedPreference preference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +41,8 @@ public class CompanyUrlActivity extends AppCompatActivity implements NetworkList
     }
 
     private void initUI() {
+        preference = AppSharedPreference.getInstance();
+
         etURL = findViewById(R.id.etURL);
         llMain = findViewById(R.id.llMain);
         btnNext =findViewById(R.id.btnNext);
@@ -93,9 +95,11 @@ public class CompanyUrlActivity extends AppCompatActivity implements NetworkList
         CompanyUrl data=(CompanyUrl) response;
         if(data.getStatus()==ServerConstents.CODE_SUCCESS)
         {
+            preference.putString(CompanyUrlActivity.this, AppSharedPreference.COMAPANY_USER_ID, data.getData().get(0).getUserId()+"");
 
             Intent i = new Intent(CompanyUrlActivity.this,
                     LoginActivity.class);
+            i.putExtra("company_user_id", data.getData().get(0).getUserId()+"");
             startActivity(i);
             //finish();
         }

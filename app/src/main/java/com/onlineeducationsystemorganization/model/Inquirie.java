@@ -71,7 +71,7 @@ public class Inquirylist implements Serializable {
     private Integer price;
     @SerializedName("single_price")
     @Expose
-    private Integer singlePrice;
+    private Double singlePrice;
 
     public Integer getInquiryId() {
         return inquiryId;
@@ -137,11 +137,11 @@ public class Inquirylist implements Serializable {
         this.price = price;
     }
 
-    public Integer getSinglePrice() {
+    public Double getSinglePrice() {
         return singlePrice;
     }
 
-    public void setSinglePrice(Integer singlePrice) {
+    public void setSinglePrice(Double singlePrice) {
         this.singlePrice = singlePrice;
     }
 

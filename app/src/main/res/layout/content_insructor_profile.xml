@@ -10,211 +10,211 @@
     android:layout_height="match_parent">
 
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/bg"
-    android:orientation="vertical"
-   >
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:orientation="vertical">
-
-        <com.mikhaellopez.circularimageview.CircularImageView
-            android:id="@+id/imgUser"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:src="@drawable/learn"
-            android:layout_marginTop="@dimen/_10sdp"
-            app:civ_border_color="@color/colorPrimary"
-            app:civ_border_width="2dp"
-            app:civ_shadow="true"
-            app:civ_shadow_color="#00000000"
-            app:civ_shadow_radius="4dp" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/_2sdp"
-            android:gravity="center"
-            android:text="John Lee"
-            android:textDirection="locale"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_15ssp" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:textDirection="locale"
-            android:text="AWS certified"
-            android:textColor="@color/font1"
-            android:textSize="@dimen/_10ssp" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:background="@color/bg"
-            />
+        android:layout_height="match_parent"
+        android:background="@color/bg"
+        android:orientation="vertical"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:paddingTop="@dimen/_10sdp"
-            android:paddingBottom="@dimen/_10sdp"
-            android:textDirection="locale"
-            android:layoutDirection="locale"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:layoutDirection="locale"
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/imgUser"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:src="@mipmap/placeholder"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:civ_border_color="@color/colorPrimary"
+                app:civ_border_width="2dp"
+                app:civ_shadow="true"
+                app:civ_shadow_color="#00000000"
+                app:civ_shadow_radius="4dp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:gravity="center"
                 android:textDirection="locale"
-                android:layout_height="wrap_content">
+                android:textColor="@color/black"
+                android:textSize="@dimen/_15ssp" />
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="match_parent"
-                    android:gravity="center"
-                    android:textSize="@dimen/_9ssp"
-                    android:text="400"
-                    android:textDirection="locale"
-                    android:textColor="@color/black"
-                    android:layout_height="wrap_content" />
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="match_parent"
-                    android:gravity="center"
-                    android:textDirection="locale"
-                    android:textSize="@dimen/_9ssp"
-                    android:textColor="@color/font1"
-                    android:text="@string/total_courses"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvCatgory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textDirection="locale"
+                android:textColor="@color/font1"
+                android:textSize="@dimen/_10ssp" />
 
             <View
-                android:layout_width="1dp"
-                android:background="@color/colorPrimary"
-                android:layout_height="match_parent"/>
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@color/bg"
+                />
 
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:paddingTop="@dimen/_10sdp"
+                android:paddingBottom="@dimen/_10sdp"
                 android:textDirection="locale"
                 android:layoutDirection="locale"
-                android:orientation="vertical"
                 android:layout_height="wrap_content">
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="match_parent"
-                    android:gravity="center"
-                    android:textSize="@dimen/_9ssp"
-                    android:text="100"
-                    android:textDirection="locale"
-                    android:textColor="@color/black"
-                    android:layout_height="wrap_content" />
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="match_parent"
-                    android:gravity="center"
-                    android:textSize="@dimen/_9ssp"
-                    android:textDirection="locale"
-                    android:textColor="@color/font1"
-                    android:text="@string/subscribers"
-                    android:layout_height="wrap_content" />
 
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layoutDirection="locale"
+                    android:textDirection="locale"
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvCourses"
+                        android:layout_width="match_parent"
+                        android:gravity="center"
+                        android:textSize="@dimen/_9ssp"
+                        android:textDirection="locale"
+                        android:textColor="@color/black"
+                        android:layout_height="wrap_content" />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:gravity="center"
+                        android:textDirection="locale"
+                        android:textSize="@dimen/_9ssp"
+                        android:textColor="@color/font1"
+                        android:text="@string/total_courses"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="1dp"
+                    android:background="@color/colorPrimary"
+                    android:layout_height="match_parent"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:textDirection="locale"
+                    android:layoutDirection="locale"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvSubscriber"
+                        android:layout_width="match_parent"
+                        android:gravity="center"
+                        android:textSize="@dimen/_9ssp"
+                        android:textDirection="locale"
+                        android:textColor="@color/black"
+                        android:layout_height="wrap_content" />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:gravity="center"
+                        android:textSize="@dimen/_9ssp"
+                        android:textDirection="locale"
+                        android:textColor="@color/font1"
+                        android:text="@string/subscribers"
+                        android:layout_height="wrap_content" />
+
+
+                </LinearLayout>
 
             </LinearLayout>
 
         </LinearLayout>
 
-    </LinearLayout>
 
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_margin="@dimen/_10sdp"
-        android:layout_height="wrap_content">
-
-
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:text="@string/description"
-        android:textSize="@dimen/_13ssp"
-        android:textDirection="locale"
-        android:textColor="@color/black"
-        />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/_10ssp"
-        android:textDirection="locale"
-        android:textColor="@color/font1"
-        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation"
-        />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="end"
-        android:text="@string/view_more"
-        android:textDirection="locale"
-        android:textSize="@dimen/_10ssp"
-        android:visibility="gone"
-        android:textColor="@color/colorPrimary"
-        />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_15sdp"
-        android:text="@string/courses"
-        android:textColor="@color/black"
-        android:textDirection="locale"
-        android:textSize="@dimen/_13ssp"
-        />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvCourses"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_5sdp"
+            android:orientation="vertical"
+            android:layout_margin="@dimen/_10sdp"
+            android:layout_height="wrap_content">
+
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="@string/description"
+                android:textSize="@dimen/_13ssp"
+                android:textDirection="locale"
+                android:textColor="@color/black"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_10ssp"
+                android:textDirection="locale"
+                android:textColor="@color/font1"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="@string/view_more"
+                android:textDirection="locale"
+                android:textSize="@dimen/_10ssp"
+                android:visibility="gone"
+                android:textColor="@color/colorPrimary"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:text="@string/courses"
+                android:textColor="@color/black"
+                android:textDirection="locale"
+                android:textSize="@dimen/_13ssp"
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCourses"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
 
                 >
 
-        </androidx.recyclerview.widget.RecyclerView>
+            </androidx.recyclerview.widget.RecyclerView>
 
-      <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_15sdp"
-          android:textDirection="locale"
-            android:text="@string/popular_instuctor"
-          android:textColor="@color/black"
-            android:textSize="@dimen/_13ssp"
-            />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:textDirection="locale"
+                android:text="@string/popular_instuctor"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13ssp"
+                />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvPopularInsructor"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_5sdp"
-            >
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvPopularInsructor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                >
 
-        </androidx.recyclerview.widget.RecyclerView>
+            </androidx.recyclerview.widget.RecyclerView>
 
 
-    </LinearLayout>
+        </LinearLayout>
 
-</LinearLayout></androidx.core.widget.NestedScrollView>
+    </LinearLayout></androidx.core.widget.NestedScrollView>

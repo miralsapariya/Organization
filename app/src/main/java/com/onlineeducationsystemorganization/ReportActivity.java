@@ -59,7 +59,7 @@ public class ReportActivity extends BaseActivity implements NetworkListener {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent =new Intent(ReportActivity.this,MainActivity.class);
+        Intent intent =new Intent(ReportActivity.this,MyCoursesActivity.class);
 
         intent.putExtra("from", "thankyou");
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -80,7 +80,7 @@ public class ReportActivity extends BaseActivity implements NetworkListener {
             @Override
             public void onClick(View view) {
 
-                Intent intent =new Intent(ReportActivity.this,MainActivity.class);
+                Intent intent =new Intent(ReportActivity.this,MyCoursesActivity.class);
 
                 intent.putExtra("from", "thankyou");
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -93,7 +93,7 @@ public class ReportActivity extends BaseActivity implements NetworkListener {
         tvBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =new Intent(ReportActivity.this,MainActivity.class);
+                Intent intent =new Intent(ReportActivity.this,MyCoursesActivity.class);
 
                 intent.putExtra("from", "thankyou");
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

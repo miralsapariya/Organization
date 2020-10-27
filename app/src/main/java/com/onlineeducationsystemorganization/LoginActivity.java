@@ -36,6 +36,7 @@ public class LoginActivity extends BaseActivity implements NetworkListener {
     private LinearLayout llMain;
     private AppSharedPreference preference;
     private ImageView imgBack;
+    private String company_user_id="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +46,8 @@ public class LoginActivity extends BaseActivity implements NetworkListener {
 
     private void initUI()
     {
+        company_user_id=getIntent().getExtras().getString("company_user_id");
+
         preference = AppSharedPreference.getInstance();
         etEmail =findViewById(R.id.etEmail);
         etPassword =findViewById(R.id.etPassword);
@@ -99,6 +102,7 @@ public class LoginActivity extends BaseActivity implements NetworkListener {
         params.put("password", etPassword.getText().toString());
         params.put("device_token", "1234");
         params.put("device_type", ServerConstents.DEVICE_TYPE);
+        params.put("company_user_id", company_user_id+"");
 
         if (AppSharedPreference.getInstance().getString(LoginActivity.this, AppSharedPreference.LANGUAGE_SELECTED) == null ||
                 AppSharedPreference.getInstance().getString(LoginActivity.this, AppSharedPreference.LANGUAGE_SELECTED).equalsIgnoreCase(AppConstant.ENG_LANG)) {
@@ -135,6 +139,8 @@ public class LoginActivity extends BaseActivity implements NetworkListener {
 
             Intent i = new Intent(LoginActivity.this,
                     MainActivity.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(i);
             finish();
         }
@@ -158,7 +164,7 @@ public class LoginActivity extends BaseActivity implements NetworkListener {
         //(?=.*\d)
         // final String PASSWORD_PATTERN = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{6,}$";
         //final String PASSWORD_PATTERN = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z#@$!%*?&]{6,}$";
-        final String PASSWORD_PATTERN = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z#@$!%*?&0-9]{6,}$";
+        final String PASSWORD_PATTERN = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$!%*?&])[A-Za-z#@$!%*?&0-9]{6,}$";
 
         pattern = Pattern.compile(PASSWORD_PATTERN);
         matcher = pattern.matcher(password);

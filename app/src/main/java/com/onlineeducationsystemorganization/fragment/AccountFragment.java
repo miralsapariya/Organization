@@ -22,12 +22,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mikhaellopez.circularimageview.CircularImageView;
+import com.onlineeducationsystemorganization.ChangePwdActivity;
 import com.onlineeducationsystemorganization.CompanyUrlActivity;
+import com.onlineeducationsystemorganization.DashboardActivity;
 import com.onlineeducationsystemorganization.EditUserProfileActivity;
 import com.onlineeducationsystemorganization.InquiriesActivity;
 import com.onlineeducationsystemorganization.MyCoursesActivity;
 import com.onlineeducationsystemorganization.R;
 import com.onlineeducationsystemorganization.SubscriptionActivity;
+import com.onlineeducationsystemorganization.WhishListActivity;
 import com.onlineeducationsystemorganization.adapter.UserProfileAboutUsAdapter;
 import com.onlineeducationsystemorganization.adapter.UserProfileAdapter;
 import com.onlineeducationsystemorganization.interfaces.NetworkListener;
@@ -210,6 +213,8 @@ public class AccountFragment extends BaseFragment implements NetworkListener
         if (pos == 0) {
             showBottomSheet();
         } else if (pos == 1) {
+            Intent intent =new Intent(activity, DashboardActivity.class);
+            startActivity(intent);
         } else if (pos == 2) {
             Intent intent =new Intent(activity, MyCoursesActivity.class);
             startActivity(intent);
@@ -223,6 +228,14 @@ public class AccountFragment extends BaseFragment implements NetworkListener
         }else if(pos ==5)
         {
             Intent intent =new Intent(activity, EditUserProfileActivity.class);
+            startActivity(intent);
+        }else  if(pos == 6)
+        {
+            Intent intent =new Intent(activity, ChangePwdActivity.class);
+            startActivity(intent);
+        }else if(pos == 7)
+        {
+            Intent intent =new Intent(activity, WhishListActivity.class);
             startActivity(intent);
         }
     }

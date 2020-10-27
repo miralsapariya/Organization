@@ -3,6 +3,7 @@
     android:layout_height="wrap_content"
     android:layout_width="wrap_content"
     android:layout_margin="@dimen/_4sdp"
+    android:id="@+id/llMain"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -18,11 +19,11 @@
             app:cardCornerRadius="1dp"
             android:layout_height="130dp">
             <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img"
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
-                android:src="@drawable/learn"
+                android:src="@mipmap/placeholder"
                 android:scaleType="fitXY"
-
                 /></androidx.cardview.widget.CardView>
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -32,7 +33,7 @@
             android:layout_marginStart="@dimen/_5sdp"
             android:layout_marginTop="@dimen/_5sdp"
             android:layout_marginEnd="@dimen/_5sdp"
-            android:text="Graphic design"
+            android:singleLine="true"
             android:textColor="@color/black"
             android:textDirection="locale"
             android:textSize="@dimen/_11ssp" />
@@ -41,11 +42,11 @@
             android:id="@+id/tvSubName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Masterclass"
             android:layout_marginEnd="@dimen/_5sdp"
             android:layout_marginStart="@dimen/_5sdp"
             android:textColor="@color/black"
             android:textSize="@dimen/_11ssp"
+            android:visibility="gone"
             android:textDirection="locale"
             />
 
@@ -53,7 +54,6 @@
             android:id="@+id/tvInstructorname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hardy Pal"
             android:textDirection="locale"
             android:layout_marginEnd="@dimen/_5sdp"
             android:layout_marginStart="@dimen/_5sdp"
@@ -62,21 +62,44 @@
             />
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvPublistOn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Published on"
             android:textDirection="locale"
             android:layout_marginEnd="@dimen/_5sdp"
             android:layout_marginStart="@dimen/_5sdp"
             android:textColor="@color/font1"
             android:textSize="@dimen/_9ssp"
             />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/_5sdp"
+            >
+            <TextView
+                android:id="@+id/tvData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_rect_orange"
+                android:textDirection="locale"
+                android:textSize="@dimen/_9ssp"
+                android:textColor="@color/colorPrimary"
+                android:text="Data Science"
+                android:gravity="start"
+                android:layout_marginEnd="@dimen/_4sdp"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:padding="@dimen/_4sdp"
+                />
 
+        </LinearLayout>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvHorizonatal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_5sdp"
+            android:visibility="gone"
+
             >
 
 
@@ -95,8 +118,6 @@
                 android:id="@+id/tvOldPrice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="500"
-
                 android:layout_marginEnd="@dimen/_5sdp"
                 android:layout_marginStart="@dimen/_5sdp"
                 android:textSize="@dimen/_9ssp"
@@ -105,7 +126,6 @@
                 android:id="@+id/tvNewPrice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="500"
                 android:textStyle="bold"
                 android:textColor="@color/colorPrimary"
                 android:layout_marginEnd="@dimen/_5sdp"

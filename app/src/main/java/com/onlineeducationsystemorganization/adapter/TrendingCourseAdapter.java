@@ -71,7 +71,7 @@ public class TrendingCourseAdapter extends RecyclerView.Adapter<TrendingCourseAd
             }
         });
 
-        if(data.getIs_added() ==1) {
+        if(data.getIs_added() ==1|| data.getIs_purchased() == 1) {
             holder.imgCart.setVisibility(View.GONE);
         }else {
             holder.imgCart.setVisibility(View.VISIBLE);

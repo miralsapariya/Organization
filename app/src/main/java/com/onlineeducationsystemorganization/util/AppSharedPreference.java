@@ -23,6 +23,7 @@ public class AppSharedPreference {
     public static final String PWD = "pwd";
     public static final String COMPANY_NAME="company_name";
     public static final String COMPANY_URL="company_url";
+    public static final String COMAPANY_USER_ID="comapny_user_id";
 
     public static AppSharedPreference getInstance() {
         if (appSharedPreference == null) {

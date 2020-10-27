@@ -114,6 +114,7 @@
             android:background="@color/white"
             android:layoutDirection="locale"
             android:textDirection="locale"
+
             android:padding="@dimen/_10sdp">
 
             <LinearLayout
@@ -122,12 +123,14 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:visibility="gone"
                 android:orientation="vertical"
                 android:layoutDirection="locale"
                 android:textDirection="locale"
                 >
 
                 <ImageView
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_clock" />
@@ -144,6 +147,7 @@
             </LinearLayout>
 
             <View
+                android:visibility="gone"
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
                 android:background="@color/border_color" />

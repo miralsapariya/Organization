@@ -139,7 +139,7 @@
     <string name="toast_full_name">Please enter full name</string>
     <string name="toast_email">Please enter email</string>
     <string name="toast_valid_email">Please enter valid email.</string>
-    <string name="toast_phone">Please enter phone</string>
+    <string name="toast_phone">Please enter phone number</string>
     <string name="toast_phone_length">Phone number should be 10 digits.</string>
     <string name="toast_password">Please enter password</string>
     <string name="no_login">You haven\'t login, Please login first.</string>
@@ -195,7 +195,7 @@
     <string name="done">Done</string>
     <string name="toast_started_course">You can not assigned user after course started</string>
     <string name="toast_assined_user">You can unassign only assign user.</string>
-    <string name="toast_remaing">You can remaining number of user.</string>
+    <string name="toast_remaing">You can assign only remaining number of user.</string>
     <string name="toast_unassing_user">You can assign only unassigned user.</string>
     <string name="toast_delete_user">Deleted User can not be assign or unassign</string>
     <string name="date">Date</string>
@@ -212,6 +212,20 @@
     <string name="no_of_users">No. of Users</string>
     <string name="save">Save</string>
     <string name="toast_no_of_user">Please enter number of user</string>
-
+    <string name="complete_course">Completed course</string>
+    <string name="active_courses">Active Courses</string>
+    <string name="completed">Completed</string>
+    <string name="in_progress">In Progress</string>
+    <string name="daily">Daily</string>
+    <string name="weelky">Weekly</string>
+    <string name="monthly">Monthly</string>
+    <string name="yearly">Yearly</string>
+    <string name="custom">Custom</string>
+    <string name="cancel">Cancel</string>
+    <string name="most_completed_course">Most Completed Courses</string>
+    <string name="from_date">From Date</string>
+    <string name="to_date">To Date</string>
+    <string name="date_toast">End date must be greater than start date</string>
+    <string name="date_toast1">Start date must be smaller than end date</string>
 
 </resources>

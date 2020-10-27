@@ -20,6 +20,8 @@ import com.onlineeducationsystemorganization.model.GlobalSearch;
 import com.onlineeducationsystemorganization.model.Home;
 import com.onlineeducationsystemorganization.model.Inquirie;
 import com.onlineeducationsystemorganization.model.InquiryHistory;
+import com.onlineeducationsystemorganization.model.InstructorProfile;
+import com.onlineeducationsystemorganization.model.MyWhishList;
 import com.onlineeducationsystemorganization.model.Restart;
 import com.onlineeducationsystemorganization.model.Result;
 import com.onlineeducationsystemorganization.model.SectionCourse;
@@ -325,5 +327,16 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("quiz/restart")
     Call<Restart> restart(@Header("language") String lang, @Header("Authorization")String auth, @FieldMap HashMap<String, String> map);
+
+    @POST("mywishlist")
+    Call<MyWhishList> getWhishList(@Header("language") String lang, @Header("Authorization")String auth);
+
+    @FormUrlEncoded
+    @POST("change_password")
+    Call<BaseBean> changePwd(@Header("language") String lang,@Header("Authorization")String auth,@FieldMap HashMap<String, String> map);
+
+    @FormUrlEncoded
+    @POST("popular_instructorlist")
+    Call<InstructorProfile> getInstructorProfile(@Header("language") String lang, @Header("Authorization")String auth, @FieldMap HashMap<String, String> map);
 
 }

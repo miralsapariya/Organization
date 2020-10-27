@@ -209,13 +209,13 @@ public class SignUpActivity extends BaseActivity implements NetworkListener
             hideKeyboard();
             Toast.makeText(SignUpActivity.this, getString(R.string.toast_phone), Toast.LENGTH_SHORT).show();
 
-        }else if(etPhone.getText().toString().length() < 10)
+        }/*else if(etPhone.getText().toString().length() < 10)
         {
             bool=false;
             hideKeyboard();
             Toast.makeText(SignUpActivity.this, getString(R.string.toast_phone_length), Toast.LENGTH_SHORT).show();
 
-        }else if(TextUtils.isEmpty(etCompanyName.getText().toString()))
+        }*/else if(TextUtils.isEmpty(etCompanyName.getText().toString()))
         {
             bool=false;
             hideKeyboard();
@@ -254,7 +254,7 @@ public class SignUpActivity extends BaseActivity implements NetworkListener
         //(?=.*\d)
         // final String PASSWORD_PATTERN = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{6,}$";
         //final String PASSWORD_PATTERN = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z#@$!%*?&]{6,}$";
-        final String PASSWORD_PATTERN = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z#@$!%*?&0-9]{6,}$";
+        final String PASSWORD_PATTERN = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$!%*?&])[A-Za-z#@$!%*?&0-9]{6,}$";
 
         pattern = Pattern.compile(PASSWORD_PATTERN);
         matcher = pattern.matcher(password);

@@ -126,8 +126,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder>
             });
 
         }else {
-            HomeAdapterInstructor homeAdapter =
-                    new HomeAdapterInstructor(context, data.getList(), new OnInstructorsClick() {
+            HomeAdapterInstructor1 homeAdapter =
+                    new HomeAdapterInstructor1(context, data.getList(), new OnInstructorsClick() {
                         @Override
                         public void onInstructorClick(int pos) {
 

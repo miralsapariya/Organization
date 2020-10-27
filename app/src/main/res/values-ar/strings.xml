@@ -11,13 +11,18 @@
     <string name="view_all">مشاهدة الكل</string>
     <string name="top_category">أعلى الفئات</string>
 
+    <string name="not_started">لم يبدأ</string>
+    <string name="completed">منجز</string>
+    <string name="in_progress">في تقدم</string>
+
+
     <string name="search_by_cat">البحث بالفئة</string>
     <string name="trending_course">الدورات التدريبية الشائعة</string>
     <string name="action_settings">الإعدادات</string>
     <string name="popular_instructor">المدربين المشهورين</string>
 
     <string name="total_courses">مجموع الدورات</string>
-    <string name="subscribers">v</string>
+    <string name="subscribers">مشتركين</string>
     <string name="subscriptions">الاشتراكات</string>
     <string name="description">وصف</string>
     <string name="view_more">عرض المزيد</string>
@@ -209,4 +214,17 @@
     <string name="no_of_users">عدد المستخدمين</string>
     <string name="save">حفظ</string>
     <string name="toast_no_of_user">الرجاء إدخال رقم المستخدم</string>
+    <string name="daily">اليومي</string>
+    <string name="weelky">أسبوعي</string>
+    <string name="monthly">شهريا</string>
+    <string name="yearly">سنوي</string>
+    <string name="custom">مخصص</string>
+    <string name="complete_course">دورة كاملة</string>
+    <string name="active_courses">الدورات النشطة</string>
+    <string name="most_completed_course">معظم الدورات المكتملة</string>
+    <string name="cancel">إلغاء</string>
+    <string name="from_date">من التاريخ</string>
+    <string name="to_date">حتى تاريخه</string>
+    <string name="date_toast">يجب أن يكون تاريخ الانتهاء أكبر من تاريخ البدء</string>
+    <string name="date_toast1">يجب أن يكون تاريخ البدء أصغر من تاريخ الانتهاء</string>
 </resources>

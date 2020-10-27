@@ -104,8 +104,7 @@ public class MainActivity extends BaseActivity {
                 if(f instanceof HomeFragment) {
                     Intent intent = new Intent(MainActivity.this, HomeSearchActivity.class);
                     startActivity(intent);
-                }else
-                {
+                }else {
                     Intent intent = new Intent(MainActivity.this, SearchCourseActivity.class);
                     startActivity(intent);
                 }
@@ -159,10 +158,10 @@ public class MainActivity extends BaseActivity {
 
     public void gotoCategory() {
 
-        nav_view.getMenu().findItem(R.id.page_2).setChecked(true);
+       // nav_view.getMenu().findItem(R.id.page_2).setChecked(true);
 
         imgSearch.setVisibility(View.GONE);
-        toolbar_title.setText(getString(R.string.category));
+        //toolbar_title.setText(getString(R.string.category));
        // loadFragment(new CategoryFragment());
     }
 

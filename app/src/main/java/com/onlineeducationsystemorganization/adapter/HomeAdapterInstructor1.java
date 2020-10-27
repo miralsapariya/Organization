@@ -12,21 +12,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.onlineeducationsystemorganization.R;
 import com.onlineeducationsystemorganization.interfaces.OnInstructorsClick;
-import com.onlineeducationsystemorganization.model.InstructorProfile;
+import com.onlineeducationsystemorganization.model.Home;
 import com.onlineeducationsystemorganization.util.AppUtils;
 
 import java.util.ArrayList;
 
-public class HomeAdapterInstructor extends RecyclerView.Adapter<HomeAdapterInstructor.ViewHolder>
-       {
+public class HomeAdapterInstructor1 extends RecyclerView.Adapter<HomeAdapterInstructor1.ViewHolder>
+{
 
-    private ArrayList<InstructorProfile.List> listProduct;
+    private ArrayList<Home.List1> listProduct;
     private LayoutInflater mInflater;
     private OnInstructorsClick onItemClick;
     private Context context;
 
-    public HomeAdapterInstructor(Context context,
-                                 ArrayList<InstructorProfile.List> listProduct, OnInstructorsClick onItemClick) {
+    public HomeAdapterInstructor1(Context context,
+                                  ArrayList<Home.List1> listProduct, OnInstructorsClick onItemClick) {
         this.mInflater = LayoutInflater.from(context);
         this.context =context;
         this.listProduct = listProduct;
@@ -34,15 +34,15 @@ public class HomeAdapterInstructor extends RecyclerView.Adapter<HomeAdapterInstr
     }
 
     @Override
-    public HomeAdapterInstructor.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public HomeAdapterInstructor1.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = mInflater.inflate(R.layout.row_home_insructor, parent, false);
-        HomeAdapterInstructor.ViewHolder viewHolder = new HomeAdapterInstructor.ViewHolder(view);
+        HomeAdapterInstructor1.ViewHolder viewHolder = new HomeAdapterInstructor1.ViewHolder(view);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(final HomeAdapterInstructor.ViewHolder holder, final int position) {
-        final  InstructorProfile.List data = listProduct.get(position);
+    public void onBindViewHolder(final HomeAdapterInstructor1.ViewHolder holder, final int position) {
+        final  Home.List1 data = listProduct.get(position);
 
         holder.llInstructor.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,8 +50,8 @@ public class HomeAdapterInstructor extends RecyclerView.Adapter<HomeAdapterInstr
                 onItemClick.onInstructorClick(position);
             }
         });
-    holder.tvInstructorname.setText(data.getName());
-    holder.tvNoOfCourses.setText(data.getTotalCourse()+" "+context.getString(R.string.courses));
+        holder.tvInstructorname.setText(data.getName());
+        holder.tvNoOfCourses.setText(data.getTotalCourse()+" "+context.getString(R.string.courses));
 
         AppUtils.loadImageWithPicasso(data.getProfilePicture() , holder.img, context, 0, 0);
 
@@ -65,7 +65,7 @@ public class HomeAdapterInstructor extends RecyclerView.Adapter<HomeAdapterInstr
         return listProduct.size();
     }
 
-    public  InstructorProfile.List getItem(int id) {
+    public  Home.List1 getItem(int id) {
         return listProduct.get(id);
     }
 

@@ -5,20 +5,21 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
-public class CourseList implements Serializable
+public class MyWhishList implements Serializable
 {
 
 @SerializedName("status")
 @Expose
 private Integer status;
-@SerializedName("meesage")
+@SerializedName("message")
 @Expose
-private String meesage;
+private String message;
 @SerializedName("data")
 @Expose
-private ArrayList<Datum> data = null;
-private final static long serialVersionUID = 6183338737740435557L;
+private List<Datum> data = null;
+private final static long serialVersionUID = 2047721966939813286L;
 
 public Integer getStatus() {
 return status;
@@ -28,22 +29,21 @@ public void setStatus(Integer status) {
 this.status = status;
 }
 
-public String getMeesage() {
-return meesage;
+public String getMessage() {
+return message;
 }
 
-public void setMeesage(String meesage) {
-this.meesage = meesage;
+public void setMessage(String message) {
+this.message = message;
 }
 
-public ArrayList<Datum> getData() {
+public List<Datum> getData() {
 return data;
 }
 
-public void setData(ArrayList<Datum> data) {
+public void setData(List<Datum> data) {
 this.data = data;
 }
-
 
 //
 
@@ -64,18 +64,13 @@ this.data = data;
         }
 
     }
-//
-
+    //
     public class Courseslist implements Serializable
     {
 
         @SerializedName("id")
         @Expose
         private Integer id;
-        @SerializedName("is_added")
-        @Expose
-        private Integer is_added;
-
         @SerializedName("course_name")
         @Expose
         private String courseName;
@@ -85,6 +80,9 @@ this.data = data;
         @SerializedName("course_old_price")
         @Expose
         private String courseOldPrice;
+        @SerializedName("is_wishlist")
+        @Expose
+        private Integer isWishlist;
         @SerializedName("image")
         @Expose
         private String image;
@@ -97,28 +95,7 @@ this.data = data;
         @SerializedName("publish_on")
         @Expose
         private String publishOn;
-        private final static long serialVersionUID = -5592562109560271613L;
-
-        @SerializedName("is_purchased")
-        @Expose
-        private Integer is_purchased;
-
-        public Integer getIs_purchased() {
-            return is_purchased;
-        }
-
-        public void setIs_purchased(Integer is_purchased) {
-            this.is_purchased = is_purchased;
-        }
-
-
-        public Integer getIs_added() {
-            return is_added;
-        }
-
-        public void setIs_added(Integer is_added) {
-            this.is_added = is_added;
-        }
+        private final static long serialVersionUID = -8650659950956267781L;
 
         public Integer getId() {
             return id;
@@ -150,6 +127,14 @@ this.data = data;
 
         public void setCourseOldPrice(String courseOldPrice) {
             this.courseOldPrice = courseOldPrice;
+        }
+
+        public Integer getIsWishlist() {
+            return isWishlist;
+        }
+
+        public void setIsWishlist(Integer isWishlist) {
+            this.isWishlist = isWishlist;
         }
 
         public String getImage() {

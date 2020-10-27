@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
@@ -32,7 +31,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
     private DeleteItemInCart deleteItemInCart;
     private UpdateItemInCart updateItemInCart;
     int amount=0;
-
+    int check = 0;
 
     public CartListAdapter(Context context,
                            ArrayList<CartList.List> listProduct,
@@ -59,7 +58,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
     @Override
     public void onBindViewHolder(final CartListAdapter.ViewHolder holder, final int position) {
         final CartList.List data = listProduct.get(position);
-
+        int check = 0;
         AppUtils.loadImageWithPicasso(data.getImage(), holder.img, context, 0, 0);
 
         holder.tvCourseName.setText(data.getCourseName());
@@ -86,7 +85,9 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
                 android.R.layout.simple_spinner_item,list);
 
         holder.spinnerUser.setAdapter(adapter);
-        holder.spinnerUser.setSelection(Adapter.NO_SELECTION, true);
+        //https://stackoverflow.com/questions/13397933/android-spinner-avoid-onitemselected-calls-during-initialization/25070707
+      //  holder.spinnerUser.setSelection(Adapter.NO_SELECTION, true);
+        holder.spinnerUser.setSelection(0, false);
         if(data.getNoOfUser() ==1){
 
         }else
@@ -97,7 +98,9 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-                updateItemInCart.updateCart(position,list.get(i).toString());
+               // Log.d("set selection :: ", i+"");
+                     updateItemInCart.updateCart(position,list.get(i).toString());
+
             }
 
             @Override
@@ -105,6 +108,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
 
             }
         });
+
     }
 
 
