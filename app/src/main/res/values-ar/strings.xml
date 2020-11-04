@@ -70,7 +70,7 @@
     <string name="inquires">استفسارات</string>
     <string name="inquires_history">تاريخ الاستفسار</string>
     <string name="subscription_history">سجل الاشتراك</string>
-    <string name="subscription_date">Subscription Date</string>
+    <string name="subscription_date">تاريخ الاشتراك</string>
     <string name="continue_">استمر</string>
     <string name="change_pwd">غير كلمة السر</string>
     <string name="forgot_pwd_">هل نسيت كلمة المرور</string>
@@ -227,4 +227,11 @@
     <string name="to_date">حتى تاريخه</string>
     <string name="date_toast">يجب أن يكون تاريخ الانتهاء أكبر من تاريخ البدء</string>
     <string name="date_toast1">يجب أن يكون تاريخ البدء أصغر من تاريخ الانتهاء</string>
+    <string name="document">وثيقة</string>
+    <string name="doc_downlad">تم تنزيل المستند بنجاح</string>
+    <string name="open_report">افتح التقرير</string>
+    <string name="downloding">جارى التحميل</string>
+    <string name="take_photo">تصوير</string>
+    <string name="choose_photo">اختر صورة</string>
+    <string name="add_photo">إضافة صورة</string>
 </resources>

@@ -37,6 +37,11 @@ public class AppConstant {
     public static int STATEMENT=4;
     public static int FILL_IN_THE_BLANK=5;
     public static int MATRIX=6;
-
+    // dashboard mode
+    public static  String DAILY="daily";
+    public static String WEEKLY="weekly";
+    public static String MONTHLY="monthly";
+    public static String YEARLY="yearly";
+    public static String CUSTOM="custom";
 
 }

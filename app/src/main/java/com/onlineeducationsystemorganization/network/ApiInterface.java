@@ -8,9 +8,11 @@ import com.onlineeducationsystemorganization.model.BaseBean;
 import com.onlineeducationsystemorganization.model.CartList;
 import com.onlineeducationsystemorganization.model.CheckCourse;
 import com.onlineeducationsystemorganization.model.CompanyUrl;
+import com.onlineeducationsystemorganization.model.CompletedCourses;
 import com.onlineeducationsystemorganization.model.CourseDetail;
 import com.onlineeducationsystemorganization.model.CourseList;
 import com.onlineeducationsystemorganization.model.Courses;
+import com.onlineeducationsystemorganization.model.Dashboard;
 import com.onlineeducationsystemorganization.model.DefaultCategory;
 import com.onlineeducationsystemorganization.model.Exam;
 import com.onlineeducationsystemorganization.model.ForgotPwd;
@@ -20,6 +22,7 @@ import com.onlineeducationsystemorganization.model.GlobalSearch;
 import com.onlineeducationsystemorganization.model.Home;
 import com.onlineeducationsystemorganization.model.Inquirie;
 import com.onlineeducationsystemorganization.model.InquiryHistory;
+import com.onlineeducationsystemorganization.model.InstructorList;
 import com.onlineeducationsystemorganization.model.InstructorProfile;
 import com.onlineeducationsystemorganization.model.MyWhishList;
 import com.onlineeducationsystemorganization.model.Restart;
@@ -335,8 +338,20 @@ public interface ApiInterface {
     @POST("change_password")
     Call<BaseBean> changePwd(@Header("language") String lang,@Header("Authorization")String auth,@FieldMap HashMap<String, String> map);
 
+
+
+    @POST("popular_instructorlist")
+    Call<InstructorList> getInstructorList(@Header("language") String lang, @Header("Authorization")String auth);
+
     @FormUrlEncoded
     @POST("popular_instructorlist")
     Call<InstructorProfile> getInstructorProfile(@Header("language") String lang, @Header("Authorization")String auth, @FieldMap HashMap<String, String> map);
+
+    @POST("dashboard")
+    Call<CompletedCourses> getCompleteCourses(@Header("language") String lang, @Header("Authorization")String auth);
+
+    @FormUrlEncoded
+    @POST("dashboard")
+    Call<Dashboard> getDashBoard(@Header("language") String lang, @Header("Authorization")String auth, @FieldMap HashMap<String, String> map);
 
 }

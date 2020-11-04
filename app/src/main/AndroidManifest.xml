@@ -13,9 +13,11 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".DashboardActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".WhishListActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MyCoursesActivity"
@@ -59,10 +61,21 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".WebPDFActivity"
+            android:configChanges="locale"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".CompanyUrlActivity"
             android:configChanges="locale"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".PopularInstructorActivity"
+            android:configChanges="locale"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+
         <activity
             android:name=".MainActivity"
             android:configChanges="locale"
@@ -120,11 +133,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
-        <activity
-            android:name=".PopularInstructorActivity"
-            android:configChanges="locale"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".TrendingCourseActivity"
             android:configChanges="locale"

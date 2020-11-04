@@ -58,6 +58,7 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.Vi
         });
         holder.tvTotalUser.setText(data.getTotalUser()+"");
         holder.tvAssigned.setText(data.getTotalAssignedUser()+"");
+        holder.tvRemainig.setText(data.getRemainingUser()+"");
 
     }
 

@@ -27,16 +27,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layoutDirection="locale"
+            android:textDirection="locale"
             android:paddingTop="@dimen/_5sdp"
             android:paddingBottom="@dimen/_5sdp">
-
-            <ImageView
-                android:id="@+id/imgSetting"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:paddingEnd="@dimen/_10sdp"
-                android:src="@drawable/ic_menu" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvName"
@@ -47,6 +41,15 @@
                 android:paddingEnd="@dimen/_10sdp"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_13ssp" />
+            <ImageView
+                android:id="@+id/imgSetting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingEnd="@dimen/_10sdp"
+                android:src="@drawable/ic_menu" />
+
+
 
 
         </LinearLayout>

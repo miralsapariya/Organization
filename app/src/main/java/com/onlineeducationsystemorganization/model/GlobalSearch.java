@@ -101,6 +101,18 @@ public class GlobalSearch implements Serializable
         private Integer is_added;
 
         private final static long serialVersionUID = -5592562109560271613L;
+        @SerializedName("is_purchased")
+        @Expose
+        private Integer is_purchased;
+
+        public Integer getIs_purchased() {
+            return is_purchased;
+        }
+
+        public void setIs_purchased(Integer is_purchased) {
+            this.is_purchased = is_purchased;
+        }
+
 
 
         public Integer getIs_added() {

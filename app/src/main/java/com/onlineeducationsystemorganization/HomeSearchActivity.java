@@ -72,9 +72,7 @@ public class HomeSearchActivity extends BaseActivity implements OnItemClick, Net
     @Override
     public void onSuccess(int responseCode, Object response, int requestCode) {
         if(requestCode == ServerConstents.DEFUALT_CAT) {
-
             data= (DefaultCategory) response;
-
             homeSearchAdapter =
                     new HomeSearchAdapter(HomeSearchActivity.this, data.getData().get(0).getCategories(), this);
             recyclerView.setItemAnimator(new DefaultItemAnimator());

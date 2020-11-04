@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:textDirection="locale"
+    android:layoutDirection="locale"
+    android:padding="@dimen/_9sdp"
+    android:orientation="vertical"
+    android:background="@drawable/round_rect"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/llDownload"
+        android:layout_width="match_parent"
+        android:textDirection="locale"
+        android:layoutDirection="locale"
+        android:paddingTop="@dimen/_6sdp"
+        android:paddingBottom="@dimen/_6sdp"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/menu_download"
+            />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_9sdp"
+                android:text="@string/download_certificate"
+                ></TextView>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/border_color"
+        />
+    <LinearLayout
+        android:id="@+id/llReset"
+        android:layout_width="match_parent"
+        android:textDirection="locale"
+        android:layoutDirection="locale"
+        android:paddingTop="@dimen/_6sdp"
+        android:paddingBottom="@dimen/_6sdp"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/menu_reset"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_9sdp"
+            android:text="@string/reset_course"
+            ></TextView>
+
+
+    </LinearLayout>
+</LinearLayout>

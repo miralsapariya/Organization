@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.onlineeducationsystemorganization.CourseDetailActivity;
+import com.onlineeducationsystemorganization.InstructorProfileActivity;
 import com.onlineeducationsystemorganization.PopularInstructorActivity;
 import com.onlineeducationsystemorganization.R;
 import com.onlineeducationsystemorganization.SubCategoryActivity;
@@ -130,7 +131,9 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder>
                     new HomeAdapterInstructor1(context, data.getList(), new OnInstructorsClick() {
                         @Override
                         public void onInstructorClick(int pos) {
-
+                            Intent intent=new Intent(context, InstructorProfileActivity.class);
+                            intent.putExtra("instructor_id", data.getList().get(pos).getId()+"");
+                            context.startActivity(intent);
                         }
                     });
 

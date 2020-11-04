@@ -2,7 +2,6 @@ package com.onlineeducationsystemorganization;
 
 import android.Manifest;
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -28,11 +27,11 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.hbb20.CountryCodePicker;
 import com.mikhaellopez.circularimageview.CircularImageView;
 import com.onlineeducationsystemorganization.interfaces.NetworkListener;
@@ -80,6 +79,7 @@ public class EditUserProfileActivity extends BaseActivity implements NetworkList
     private ImageView imgBack;
     private CountryCodePicker ccp;
     private String selectedCountryCode="",selectedCountry="";
+    private BottomSheetDialog mBottomSheetDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -320,8 +320,29 @@ public class EditUserProfileActivity extends BaseActivity implements NetworkList
     }
 
     private void chosePicture() {
-        final CharSequence[] items = {"Take Photo", "Choose Photo"};
-        AlertDialog.Builder builder = new AlertDialog.Builder(EditUserProfileActivity.this);
+        mBottomSheetDialog = new BottomSheetDialog(EditUserProfileActivity.this);
+        View sheetView = getLayoutInflater().inflate(R.layout.dialog_picture, null);
+        mBottomSheetDialog.setContentView(sheetView);
+        LinearLayout llTakePic = sheetView.findViewById(R.id.llTakePic);
+        llTakePic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                takePhotoFromCamera();
+                mBottomSheetDialog.dismiss();
+            }
+        });
+        LinearLayout llChoosePic = sheetView.findViewById(R.id.llChoosePic);
+        llChoosePic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                chooseImageFromGallery();
+                mBottomSheetDialog.dismiss();
+            }
+        });
+        mBottomSheetDialog.show();
+       /* final CharSequence[] items = {"Take Photo", "Choose Photo"};
+        AlertDialog.Builder builder = new AlertDialog.Builder
+                (EditUserProfileActivity.this);
         builder.setTitle("Add Photo");
         builder.setItems(items, new DialogInterface.OnClickListener() {
             @Override
@@ -337,7 +358,32 @@ public class EditUserProfileActivity extends BaseActivity implements NetworkList
                 }
             }
         });
-        builder.show();
+        final AlertDialog alertDialog = builder.create();
+        alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dlg) {
+                try {
+                    Log.d("============ ", "RTLLLLLLLL");
+                  *//*  TextView messageText = alertDialog.findViewById(android.R.id.text1);
+                    messageText.setGravity(Gravity.END);
+                    TextView messageText1 = alertDialog.findViewById(android.R.id.text2);
+                    messageText1.setGravity(Gravity.END);*//*
+                   // if (SharedPreferencesUtils.getInstance(LoginActivity.this).getValue(Constants.KEY_LANGUAGE, "").equalsIgnoreCase(Constants.ARABIC)) {
+                        alertDialog.getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL); // set title and message direction to RTL
+
+                    *//*} else {
+                        alertDialog.getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR); // set title and message direction to LTR
+                    }*//*
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+        });
+
+
+
+        alertDialog.show();*/
     }
     public void takePhotoFromCamera() {
         if (ContextCompat.checkSelfPermission(EditUserProfileActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED

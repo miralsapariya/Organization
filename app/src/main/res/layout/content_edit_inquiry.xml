@@ -103,6 +103,12 @@
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:textSize="@dimen/_11sdp"
+            android:singleLine="true"
+            android:inputType="number"
+            android:digits="0123456789"
+            android:maxLength="3"
+            android:textCursorDrawable="@drawable/custom_cursor"
+            android:backgroundTint="@color/black"
             />
     </LinearLayout>
     <LinearLayout
@@ -124,6 +130,10 @@
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:textSize="@dimen/_11sdp"
+            android:singleLine="true"
+            android:inputType="number"
+            android:textCursorDrawable="@drawable/custom_cursor"
+            android:backgroundTint="@color/black"
             />
     </LinearLayout>
     <LinearLayout

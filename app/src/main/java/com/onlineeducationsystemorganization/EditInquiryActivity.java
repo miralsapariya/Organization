@@ -1,7 +1,10 @@
 package com.onlineeducationsystemorganization;
 
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -65,7 +68,7 @@ public class EditInquiryActivity extends BaseActivity implements NetworkListener
             @Override
             public void onClick(View view) {
                 if (AppUtils.isInternetAvailable(EditInquiryActivity.this)) {
-                    if(!TextUtils.isEmpty(etNoOfUser.getText().toString()))
+                    if(!TextUtils.isEmpty(etNoOfUser.getText().toString()) && Integer.parseInt(etNoOfUser.getText().toString()) != 0)
                     editUser();
                     else
                         Toast.makeText(EditInquiryActivity.this, getString(R.string.toast_no_of_user), Toast.LENGTH_SHORT).show();
@@ -77,6 +80,30 @@ public class EditInquiryActivity extends BaseActivity implements NetworkListener
             @Override
             public void onClick(View view) {
                 setData();
+            }
+        });
+
+        etNoOfUser.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
+
+                if(etNoOfUser.getText().toString().length() >0) {
+                    int u = Integer.parseInt(etNoOfUser.getText().toString()) * data.getPrice();
+                    Log.d("==== ", Integer.parseInt(etNoOfUser.getText().toString()) + " " + data.getPrice());
+                    Log.d("------------", u + "");
+                    etPrice.setText(u + "");
+                }else{
+                    etPrice.setText("");
+                }
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable arg0) {
             }
         });
 
@@ -129,7 +156,7 @@ public class EditInquiryActivity extends BaseActivity implements NetworkListener
         tvCategory.setText(data.getCategory());
         tvSubCategory.setText(data.getSubCategory());
         tvCourses.setText(data.getCourseName());
-        etNoOfUser.setText(data.getNoOfUser() +""  );
-        etPrice.setText(data.getPrice()+"");
+       // etNoOfUser.setText(data.getNoOfUser() +"");
+       // etPrice.setText(data.getPrice()+"");
     }
 }

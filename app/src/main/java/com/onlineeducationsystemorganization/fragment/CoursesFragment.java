@@ -47,6 +47,12 @@ public class CoursesFragment extends BaseFragment implements OnItemClick, Networ
     {
         tvNoRecord =view.findViewById(R.id.tvNoRecord);
         recyclerView=view.findViewById(R.id.recyclerView);
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
         if (AppUtils.isInternetAvailable(activity)) {
             getCourses();
         }

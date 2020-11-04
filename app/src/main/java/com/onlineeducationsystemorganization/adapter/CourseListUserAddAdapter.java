@@ -41,8 +41,6 @@ public class CourseListUserAddAdapter extends RecyclerView.Adapter<CourseListUse
     public void onBindViewHolder(final CourseListUserAddAdapter.ViewHolder holder, final int position) {
         final Courses.Courseslist data = listProduct.get(position);
         holder.checkboxCourseList.setText(data.getCourseName());
-
-
         holder.checkboxCourseList.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {

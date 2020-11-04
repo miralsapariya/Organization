@@ -69,7 +69,7 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
                 addItemInCart.addToCart(position);
             }
         });
-        if(data.getIs_added()==1)
+        if(data.getIs_added()==1|| data.getIs_purchased() == 1)
         {
             holder.imgCart.setVisibility(View.GONE);
         }else

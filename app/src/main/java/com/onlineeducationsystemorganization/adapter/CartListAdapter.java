@@ -1,14 +1,15 @@
 package com.onlineeducationsystemorganization.adapter;
 
 import android.content.Context;
+import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -30,8 +31,6 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
     private OnItemClick onItemClick;
     private DeleteItemInCart deleteItemInCart;
     private UpdateItemInCart updateItemInCart;
-    int amount=0;
-    int check = 0;
 
     public CartListAdapter(Context context,
                            ArrayList<CartList.List> listProduct,
@@ -58,7 +57,6 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
     @Override
     public void onBindViewHolder(final CartListAdapter.ViewHolder holder, final int position) {
         final CartList.List data = listProduct.get(position);
-        int check = 0;
         AppUtils.loadImageWithPicasso(data.getImage(), holder.img, context, 0, 0);
 
         holder.tvCourseName.setText(data.getCourseName());
@@ -70,7 +68,21 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
                 deleteItemInCart.deleteCart(position);
             }
         });
-        final ArrayList<String> list=new ArrayList<>();
+
+        holder.etUser.setText(data.getNoOfUser()+"");
+        holder.etUser.setOnEditorActionListener(new EditText.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    if(!TextUtils.isEmpty(holder.etUser.getText().toString()))
+                    updateItemInCart.updateCart(position,holder.etUser.getText().toString());
+
+                    return true;
+                }
+                return false;
+            }
+        });
+       /* final ArrayList<String> list=new ArrayList<>();
         list.add("1");list.add("2");
         list.add("3");list.add("4");
         list.add("5");list.add("6");
@@ -82,23 +94,21 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
         list.add("17");list.add("18");
         list.add("19");list.add("20");
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(context,
-                android.R.layout.simple_spinner_item,list);
+                android.R.layout.simple_spinner_item,list);*/
 
-        holder.spinnerUser.setAdapter(adapter);
-        //https://stackoverflow.com/questions/13397933/android-spinner-avoid-onitemselected-calls-during-initialization/25070707
+      //  holder.spinnerUser.setAdapter(adapter);
       //  holder.spinnerUser.setSelection(Adapter.NO_SELECTION, true);
-        holder.spinnerUser.setSelection(0, false);
-        if(data.getNoOfUser() ==1){
+     //   holder.spinnerUser.setSelection(0, false);
+       /* if(data.getNoOfUser() ==1){
 
         }else
         {
             holder.spinnerUser.setSelection(data.getNoOfUser()-1,false);
-        }
-        holder.spinnerUser.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        }*/
+       /* holder.spinnerUser.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-               // Log.d("set selection :: ", i+"");
                      updateItemInCart.updateCart(position,list.get(i).toString());
 
             }
@@ -107,7 +117,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
-        });
+        });*/
 
     }
 
@@ -125,7 +135,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
         public TextView tvCourseName,  tvPrice, tvOldPrice;
         private LinearLayout llMain;
         private ImageView img, imgDelete;
-        private Spinner spinnerUser;
+        private EditText etUser;
 
 
         public ViewHolder(View itemView) {
@@ -137,7 +147,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
             tvOldPrice = itemView.findViewById(R.id.tvOldPrice);
             img = itemView.findViewById(R.id.img);
             imgDelete = itemView.findViewById(R.id.imgDelete);
-            spinnerUser=itemView.findViewById(R.id.spinnerUser);
+            etUser=itemView.findViewById(R.id.etUser);
        }
     }
 }

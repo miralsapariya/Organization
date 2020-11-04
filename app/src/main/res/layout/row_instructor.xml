@@ -18,7 +18,7 @@
             android:id="@+id/imgUser"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/learn"
+            android:src="@mipmap/placeholder"
             app:civ_border_color="#00000000"
             app:civ_border_width="1dp"
             app:civ_shadow="true"
@@ -38,7 +38,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/tvCourse"
+                android:id="@+id/tvNAme"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_2sdp"
@@ -58,13 +58,13 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/tvCatName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_2sdp"
                 android:layout_marginEnd="@dimen/_2sdp"
                 android:layout_weight="1"
                 android:singleLine="true"
-                android:text="Finance"
                 android:textColor="@color/font1"
                 android:textDirection="locale"
                 android:textSize="@dimen/_9ssp" />
@@ -77,13 +77,13 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/tvNoOfStudent"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_2sdp"
                 android:layout_marginEnd="@dimen/_2sdp"
                 android:layout_weight="1"
                 android:singleLine="true"
-                android:text="2250 students"
                 android:textColor="@color/font1"
                 android:textDirection="locale"
                 android:textSize="@dimen/_9ssp" />
@@ -96,13 +96,13 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/tvNoOfCourses"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_2sdp"
                 android:layout_marginEnd="@dimen/_2sdp"
                 android:layout_weight="1"
                 android:singleLine="true"
-                android:text="20 courses"
                 android:textColor="@color/font1"
                 android:textDirection="locale"
                 android:textSize="@dimen/_9ssp" />
