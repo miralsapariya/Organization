@@ -21,6 +21,7 @@ public class AppSharedPreference {
     public static final String PHONE = "phone";
     public static final String PROFILE_PIC = "profile_name";
     public static final String PWD = "pwd";
+    public static final String USER_TYPE="user_type";
     public static final String COMPANY_NAME="company_name";
     public static final String COMPANY_URL="company_url";
     public static final String COMAPANY_USER_ID="comapny_user_id";

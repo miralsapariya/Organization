@@ -49,6 +49,7 @@ public class ServerConstents {
     public static int ASSIGN=28;
     public static int UNASSIGN=29;
     public static int DASHBOARD=30;
+    public static int SUGGESTION=31;
     //home screen type
     public static String HOME_TYPE_COURSE="1";
     public static String HOME_TYPE_CATEGORY="2";

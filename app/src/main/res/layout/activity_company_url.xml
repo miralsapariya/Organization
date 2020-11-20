@@ -84,8 +84,6 @@
                 android:gravity="center"
                 android:text="@string/dont_have_account"
                 android:textColor="@color/white"
-                android:textDirection="locale"
-
                 />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -96,7 +94,7 @@
                 android:layout_marginEnd="@dimen/_2ssp"
                 android:text="@string/sign_up"
                 android:textColor="@color/colorPrimary"
-                android:textDirection="locale" />
+               />
 
 
         </LinearLayout>

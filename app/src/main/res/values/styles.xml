@@ -51,14 +51,17 @@
     <style name="DialogTheme1" parent="Theme.AppCompat.Light.Dialog">
         <item name="colorAccent">@color/colorPrimary</item>
     </style>
+
     <style name="PopupMenuOverlapAnchor" parent="@style/Theme.AppCompat.Light">
         <item name="android:overlapAnchor">true</item>
         <item name="android:dropDownVerticalOffset">0dp</item>
         <item name="android:dropDownHorizontalOffset">0dp</item>
     </style>
+
     <style name="AlertDialogCustom" parent="ThemeOverlay.AppCompat.Dialog.Alert">
         <item name="android:layoutDirection">rtl</item>
     </style>
+
     <style name="DialogTheme" parent="Animation.AppCompat.Dialog">
         <item name="android:itemTextAppearance">@style/DialogTextAppear</item>
 

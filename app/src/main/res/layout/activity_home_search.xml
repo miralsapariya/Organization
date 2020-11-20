@@ -23,7 +23,6 @@
            <LinearLayout
                android:layout_width="match_parent"
                android:gravity="center_vertical"
-
                android:layout_height="wrap_content">
 
                <ImageView
@@ -36,7 +35,7 @@
                    android:paddingEnd="@dimen/_5sdp"
                    />
 
-            <androidx.appcompat.widget.AppCompatEditText
+            <androidx.appcompat.widget.AppCompatAutoCompleteTextView
                 android:id="@+id/etSearch"
                 android:paddingStart="@dimen/_5sdp"
                 android:paddingEnd="@dimen/_5sdp"
@@ -46,7 +45,10 @@
                 android:layoutDirection="locale"
                 android:textDirection="locale"
                 android:inputType="text"
+                android:clickable="true"
+
                 android:gravity="start"
+                android:completionThreshold="1"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_height="wrap_content"

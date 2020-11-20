@@ -58,7 +58,7 @@ public class Datum {
     private Integer totalActiveCourse;
     @SerializedName("mycourselist")
     @Expose
-    private List<Mycourselist> mycourselist = null;
+    private ArrayList<Mycourselist> mycourselist = null;
     @SerializedName("most_completed_courses")
     @Expose
     private ArrayList<MostCompletedCourse> mostCompletedCourses = null;
@@ -101,11 +101,11 @@ public class Datum {
         this.totalActiveCourse = totalActiveCourse;
     }
 
-    public List<Mycourselist> getMycourselist() {
+    public ArrayList<Mycourselist> getMycourselist() {
         return mycourselist;
     }
 
-    public void setMycourselist(List<Mycourselist> mycourselist) {
+    public void setMycourselist(ArrayList<Mycourselist> mycourselist) {
         this.mycourselist = mycourselist;
     }
 

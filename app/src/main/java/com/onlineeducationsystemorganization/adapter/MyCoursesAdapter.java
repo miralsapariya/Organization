@@ -18,7 +18,6 @@ import android.widget.Toast;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.onlineeducationsystemorganization.MyCoursesActivity;
 import com.onlineeducationsystemorganization.R;
 import com.onlineeducationsystemorganization.interfaces.DownloadClick;
 import com.onlineeducationsystemorganization.interfaces.OnCardViewClick;
@@ -96,7 +95,7 @@ public class MyCoursesAdapter extends RecyclerView.Adapter<MyCoursesAdapter.View
                 Point  point = new Point();
                 point.x = location[0];
                 point.y = location[1];
-                showStatusPopup((MyCoursesActivity)context, point,data,position);
+                showStatusPopup((Activity)context, point,data,position);
 
                /* //https://medium.com/@skydoves/how-to-implement-modern-popup-in-android-3d51f4a40c56
                 PopupMenu popup = new PopupMenu(context, holder.imgSetting);

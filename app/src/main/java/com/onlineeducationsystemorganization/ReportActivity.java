@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -59,12 +60,21 @@ public class ReportActivity extends BaseActivity implements NetworkListener {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent =new Intent(ReportActivity.this,MyCoursesActivity.class);
+        if(AppSharedPreference.getInstance().getString(ReportActivity.this, AppSharedPreference.USER_TYPE).equalsIgnoreCase("1")) {
+            Intent intent = new Intent(ReportActivity.this, MyCoursesActivity.class);
 
-        intent.putExtra("from", "thankyou");
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-        finish();
+            intent.putExtra("from", "thankyou");
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
+        }else
+        {
+            Intent intent = new Intent(ReportActivity.this, MainUserActivity.class);
+            intent.putExtra("from", "thankyou");
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
+        }
     }
 
     private void initUI()
@@ -79,13 +89,20 @@ public class ReportActivity extends BaseActivity implements NetworkListener {
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Intent intent =new Intent(ReportActivity.this,MyCoursesActivity.class);
-
-                intent.putExtra("from", "thankyou");
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
-                finish();
+                if(AppSharedPreference.getInstance().getString(ReportActivity.this, AppSharedPreference.USER_TYPE).equalsIgnoreCase("1")) {
+                    Intent intent = new Intent(ReportActivity.this, MyCoursesActivity.class);
+                    intent.putExtra("from", "thankyou");
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                    finish();
+                }else
+                {
+                    Intent intent = new Intent(ReportActivity.this, MainUserActivity.class);
+                    intent.putExtra("from", "thankyou");
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                    finish();
+                }
             }
         });
 
@@ -93,12 +110,19 @@ public class ReportActivity extends BaseActivity implements NetworkListener {
         tvBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =new Intent(ReportActivity.this,MyCoursesActivity.class);
-
+                if(AppSharedPreference.getInstance().getString(ReportActivity.this, AppSharedPreference.USER_TYPE).equalsIgnoreCase("1")) {
+                    Intent intent =new Intent(ReportActivity.this,MyCoursesActivity.class);
                 intent.putExtra("from", "thankyou");
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
-                finish();
+                finish();}else
+                {
+                    Intent intent = new Intent(ReportActivity.this, MainUserActivity.class);
+                    intent.putExtra("from", "thankyou");
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                    finish();
+                }
             }
         });
 
@@ -180,10 +204,13 @@ public class ReportActivity extends BaseActivity implements NetworkListener {
                     @RequiresApi(api = Build.VERSION_CODES.M)
                     @Override
                     public void onClick(View view) {
+                        Log.d("=============== ", "===1111====");
                         if ( ContextCompat.checkSelfPermission(ReportActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ||
                                 ContextCompat.checkSelfPermission(ReportActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ) {
+                            Log.d("=============== ", "===2222====");
                             ActivityCompat.requestPermissions(ReportActivity.this,new String[]{ Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.READ_EXTERNAL_STORAGE}, PERMISSION_PHOTO);
                         } else {
+                            Log.d("=============== ", "===23232323====");
                             new DownloadTask(ReportActivity.this, data.getData().get(0).getCertificateLink());
                         }
                     }
@@ -240,11 +267,12 @@ public class ReportActivity extends BaseActivity implements NetworkListener {
 
                 if (grantResults.length > 0) {
                     if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                        Log.d("=============== ", "===333====");
                         new DownloadTask(ReportActivity.this, data.getData().get(0).getCertificateLink());
 
                     }else if(grantResults[0] == PackageManager.PERMISSION_DENIED)
                     {
-
+                        Log.d("=============== ", "===4444====");
                     }
                 }
                 break;

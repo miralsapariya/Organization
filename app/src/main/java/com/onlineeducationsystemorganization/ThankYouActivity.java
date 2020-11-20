@@ -9,6 +9,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.onlineeducationsystemorganization.util.AppSharedPreference;
+
 public class ThankYouActivity extends AppCompatActivity {
 
     private TextView tvBack;
@@ -33,20 +35,36 @@ public class ThankYouActivity extends AppCompatActivity {
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =new Intent(ThankYouActivity.this,MainActivity.class);
-                intent.putExtra("from", "thankyou");
-                startActivity(intent);
-                finish();
+                if(AppSharedPreference.getInstance().getString(ThankYouActivity.this, AppSharedPreference.USER_TYPE).equalsIgnoreCase("1")) {
+                    Intent intent = new Intent(ThankYouActivity.this, MainActivity.class);
+                    intent.putExtra("from", "thankyou");
+                    startActivity(intent);
+                    finish();
+                }else {
+                    Intent intent = new Intent(ThankYouActivity.this, MainUserActivity.class);
+                    intent.putExtra("from", "thankyou");
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                    finish();
+                }
             }
         });
         tvBack=findViewById(R.id.tvBack);
         tvBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =new Intent(ThankYouActivity.this,MainActivity.class);
-                intent.putExtra("from", "thankyou");
-                startActivity(intent);
-                finish();
+                if(AppSharedPreference.getInstance().getString(ThankYouActivity.this, AppSharedPreference.USER_TYPE).equalsIgnoreCase("1")) {
+                    Intent intent = new Intent(ThankYouActivity.this, MainActivity.class);
+                    intent.putExtra("from", "thankyou");
+                    startActivity(intent);
+                    finish();
+                }else {
+                    Intent intent = new Intent(ThankYouActivity.this, MainUserActivity.class);
+                    intent.putExtra("from", "thankyou");
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                    finish();
+                }
             }
         });
 

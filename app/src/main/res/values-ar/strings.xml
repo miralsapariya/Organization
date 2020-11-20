@@ -185,6 +185,7 @@
     <string name="unassigned">غير معين</string>
     <string name="total_users">إجمالي المستخدمين</string>
     <string name="assigend">تعيين</string>
+    <string name="assign">تعيين</string>
     <string name="remaining">المتبقي</string>
     <string name="reset">إعادة تعيين</string>
     <string name="assign_courses">تعيين الدورات</string>
@@ -234,4 +235,12 @@
     <string name="take_photo">تصوير</string>
     <string name="choose_photo">اختر صورة</string>
     <string name="add_photo">إضافة صورة</string>
+    <string name="slide">الانزلاق</string>
+    <string name="attempts">محاولات</string>
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+    <string name="no_of_courses">عدد الدورات</string>
+    <string name="user_activity">نشاط المستخدم</string>
+    <string name="back_to_home">العودة إلى الصفحة الرئيسية</string>
+    <string name="thank_inq">شكرا لك على الاستفسار. سيقوم أحد ممثلينا بالرد عليك قريبًا جدًا</string>
+    <string name="alert_unassign">هل أنت متأكد أنك تريد إلغاء تعيين المستخدم؟</string>
 </resources>

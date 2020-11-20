@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "618222239442",
+    "firebase_url": "https://ulowgic.firebaseio.com",
+    "project_id": "ulowgic",
+    "storage_bucket": "ulowgic.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:618222239442:android:c5e5f24b02345629d8770b",
+        "android_client_info": {
+          "package_name": "com.onlineeducationsystemorganization"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "618222239442-307ivktmtucbdtjf1pjl9jaq2ghnt3eq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6ZQfWrVOG0vAtsih5rg_w0VVI8rbP9hY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "618222239442-307ivktmtucbdtjf1pjl9jaq2ghnt3eq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "618222239442-5rs9sopj52s04jopp93p09hn53g4ieij.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.BSSPL.Orgonlineeducation"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

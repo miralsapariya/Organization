@@ -3,6 +3,7 @@ package com.onlineeducationsystemorganization;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -34,6 +35,7 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.onlineeducationsystemorganization.adapter.ComplitedCourseListAdapter;
+import com.onlineeducationsystemorganization.adapter.DashboardCoursesAdapter;
 import com.onlineeducationsystemorganization.adapter.DashboardMostComplitedCoursesAdapter;
 import com.onlineeducationsystemorganization.interfaces.NetworkListener;
 import com.onlineeducationsystemorganization.interfaces.OnItemClick;
@@ -53,6 +55,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Objects;
 
 import retrofit2.Call;
@@ -69,11 +72,11 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
     private LinearLayout llPopup;
     private String mode=AppConstant.MONTHLY ;
     View popupView;
-    RecyclerView rv,recyclerViewMostComaplete;
+    RecyclerView rv,recyclerViewMostComaplete,recyclerView;
     PopupWindow popupWindow;
     Dashboard data;
     CompletedCourses  data1;
-    private TextView tvTotCourse,tvActiveCourses,tvComplateCourse,tvNoOfUser;
+    private TextView tvTotCourse,tvActiveCourses,tvComplateCourse,tvNoOfUser,tvLblX,tvLblY;
     private TextView tvDaily,tvWeekly,tvMonthly,tvYearly;
 
     ComplitedCourseListAdapter complitedCourseListAdapter;
@@ -90,6 +93,8 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
     private void initUI()
     {
         lineChart= findViewById(R.id.chart);
+        tvLblX =findViewById(R.id.tvLblX);
+        tvLblY=findViewById(R.id.tvLblY);
         llPopup=findViewById(R.id.llPopup);
         LayoutInflater layoutInflater = (LayoutInflater) getBaseContext()
                 .getSystemService(LAYOUT_INFLATER_SERVICE);
@@ -100,7 +105,7 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
 
         rv=popupView.findViewById(R.id.rvCourses);
         recyclerViewMostComaplete =findViewById(R.id.recyclerViewMostComaplete);
-
+        recyclerView=findViewById(R.id.recyclerView);
 
         popupWindow.setBackgroundDrawable(getResources().getDrawable(
                 android.R.color.transparent));
@@ -108,7 +113,6 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
         llPopup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 popupWindow
                         .showAsDropDown(findViewById(R.id.llPopup));
             }
@@ -129,13 +133,13 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
         tvComplateCourse =findViewById(R.id.tvComplateCourse);
         tvNoOfUser =findViewById(R.id.tvNoOfUser);
         tvDaily=findViewById(R.id.tvDaily);
-
+        tvDaily.setOnClickListener(this);
         tvWeekly=findViewById(R.id.tvWeekly);
-
+        tvWeekly.setOnClickListener(this);
         tvMonthly=findViewById(R.id.tvMonthly);
-
+        tvMonthly.setOnClickListener(this);
         tvYearly=findViewById(R.id.tvYearly);
-
+        tvYearly.setOnClickListener(this);
 
         if (AppUtils.isInternetAvailable(
                 DashboardActivity.this)) {
@@ -158,7 +162,6 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
         Call<CompletedCourses> call = apiInterface.getCompleteCourses(lang,AppSharedPreference.getInstance().
                 getString(DashboardActivity.this, AppSharedPreference.ACCESS_TOKEN));
         ApiCall.getInstance().hitService(DashboardActivity.this, call, this, ServerConstents.COURSE_LIST);
-
     }
 
     private void CreateGraph() {
@@ -228,21 +231,71 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
         switch (view.getId())
         {
             case R.id.tvCustom :
+                tvDaily.setBackground(getResources().getDrawable(R.drawable.button_select));
+                tvDaily.setPadding(0, 20,0, 20);
+                tvCustom.setBackground(getResources().getDrawable(R.drawable.button));
+                tvCustom.setPadding(0, 20,0, 20);
+                tvWeekly.setBackground(getResources().getDrawable(R.drawable.button_select));
+                tvWeekly.setPadding(0, 20,0, 20);
+                tvMonthly.setBackground(getResources().getDrawable(R.drawable.button_select));
+                tvMonthly.setPadding(0, 20,0, 20);
+                tvYearly.setBackground(getResources().getDrawable(R.drawable.button_select));
+                tvYearly.setPadding(0, 20,0, 20);
                 showDateDialog();
                 break;
             case R.id.tvDaily:
-                    mode=AppConstant.DAILY;
+                tvDaily.setBackground(getResources().getDrawable(R.drawable.button));
+                tvDaily.setPadding(0, 20,0, 20);
+                tvCustom.setBackground(getResources().getDrawable(R.drawable.button_select));
+                tvCustom.setPadding(0, 20,0, 20);
+                tvWeekly.setBackground(getResources().getDrawable(R.drawable.button_select));
+                tvWeekly.setPadding(0, 20,0, 20);
+                tvMonthly.setBackground(getResources().getDrawable(R.drawable.button_select));
+                tvMonthly.setPadding(0, 20,0, 20);
+                tvYearly.setBackground(getResources().getDrawable(R.drawable.button_select));
+                tvYearly.setPadding(0, 20,0, 20);
+                mode=AppConstant.DAILY;
                     setChart(data1.getData().get(0).getCoursechartDropdownlist(),"","");
                 break;
             case R.id.tvWeekly:
-                    mode=AppConstant.WEEKLY;
+                tvDaily.setBackground(getResources().getDrawable(R.drawable.button_select));
+                tvDaily.setPadding(0, 20,0, 20);
+                tvCustom.setBackground(getResources().getDrawable(R.drawable.button_select));
+                tvCustom.setPadding(0, 20,0, 20);
+                tvWeekly.setBackground(getResources().getDrawable(R.drawable.button));
+                tvWeekly.setPadding(0, 20,0, 20);
+                tvMonthly.setBackground(getResources().getDrawable(R.drawable.button_select));
+                tvMonthly.setPadding(0, 20,0, 20);
+                tvYearly.setBackground(getResources().getDrawable(R.drawable.button_select));
+                tvYearly.setPadding(0, 20,0, 20);
+                mode=AppConstant.WEEKLY;
                     setChart(data1.getData().get(0).getCoursechartDropdownlist(),"","");
                 break;
             case R.id.tvMonthly:
+                tvDaily.setBackground(getResources().getDrawable(R.drawable.button_select));
+                tvDaily.setPadding(0, 20,0, 20);
+                tvCustom.setBackground(getResources().getDrawable(R.drawable.button_select));
+                tvCustom.setPadding(0, 20,0, 20);
+                tvWeekly.setBackground(getResources().getDrawable(R.drawable.button_select));
+                tvWeekly.setPadding(0, 20,0, 20);
+                tvMonthly.setBackground(getResources().getDrawable(R.drawable.button));
+                tvMonthly.setPadding(0, 20,0, 20);
+                tvYearly.setBackground(getResources().getDrawable(R.drawable.button_select));
+                tvYearly.setPadding(0, 20,0, 20);
                     mode=AppConstant.MONTHLY;
                     setChart(data1.getData().get(0).getCoursechartDropdownlist(),"","");
               break;
             case R.id.tvYearly:
+                tvDaily.setBackground(getResources().getDrawable(R.drawable.button_select));
+                tvDaily.setPadding(0, 20,0, 20);
+                tvCustom.setBackground(getResources().getDrawable(R.drawable.button_select));
+                tvCustom.setPadding(0, 20,0, 20);
+                tvWeekly.setBackground(getResources().getDrawable(R.drawable.button_select));
+                tvWeekly.setPadding(0, 20,0, 20);
+                tvMonthly.setBackground(getResources().getDrawable(R.drawable.button_select));
+                tvMonthly.setPadding(0, 20,0, 20);
+                tvYearly.setBackground(getResources().getDrawable(R.drawable.button));
+                tvYearly.setPadding(0, 20,0, 20);
                     mode=AppConstant.YEARLY;
                     setChart(data1.getData().get(0).getCoursechartDropdownlist(),"","");
                     break;
@@ -339,47 +392,68 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
 
             if (data.getStatus() == ServerConstents.CODE_SUCCESS) {
                 //
-
                 DashboardMostComplitedCoursesAdapter adapter=new DashboardMostComplitedCoursesAdapter(DashboardActivity.this, data.getData().get(0).getMostCompletedCourses());
                 recyclerViewMostComaplete.setItemAnimator(new DefaultItemAnimator());
                 recyclerViewMostComaplete.setLayoutManager(new LinearLayoutManager(DashboardActivity.this, LinearLayoutManager.HORIZONTAL, false));
-                recyclerViewMostComaplete.setHasFixedSize(true);
-                recyclerViewMostComaplete.setHasFixedSize(true);
                 recyclerViewMostComaplete.setAdapter(adapter);
                 recyclerViewMostComaplete.getAdapter().notifyDataSetChanged();
 
+                DashboardCoursesAdapter adapter1=new
+                        DashboardCoursesAdapter(DashboardActivity.this,
+                        data.getData().get(0).getMycourselist(),new OnItemClick() {
+                    @Override
+                    public void onGridClick(int pos) {
+                        Intent intent = new Intent(DashboardActivity.this, DashboardReportActivity.class);
+                        intent.putExtra("course_id", data.getData().get(0).getMycourselist().get(pos).getCourseId() + "");
+                        startActivity(intent);
+                    }
+                });
+                recyclerView.setItemAnimator(new DefaultItemAnimator());
+                recyclerView.setLayoutManager(new LinearLayoutManager(DashboardActivity.this, LinearLayoutManager.VERTICAL, false));
+                recyclerView.setHasFixedSize(true);
+                recyclerView.setAdapter(adapter1);
+                recyclerView.getAdapter().notifyDataSetChanged();
+
                 lineChart.clear();
+                tvLblY.setText(getString(R.string.no_of_courses));
+                tvLblX.setText(data.getData().get(0).getCoursechartData().get(0).getXChartLabel());
                 ArrayList<ILineDataSet> dataSets = new ArrayList<>();
                 for(int i=0;i<data.getData().get(0).getCoursechartData().size();i++)
                 {
                     ArrayList<Entry> yEntrys = new ArrayList<>();
                     for (int i1 = 0; i1 < data.getData().get(0).getCoursechartData().get(i).getCourseYaxisLabel().size(); i1++) {
-                            yEntrys.add(new Entry(i1, data.getData().get(0).getCoursechartData().get(i).getCourseXaxisDataval().get(i1).getXdata()));
+                         yEntrys.add(new Entry(i1, data.getData().get(0).getCoursechartData().get(i).getCourseXaxisDataval().get(i1).getXdata()));
                         //yEntrys.add(new Entry(i1,100));
                     }
 
                     LineDataSet dataSet = new LineDataSet(yEntrys, data.getData().get(0).getCoursechartData().get(i).getCourse_name());
-                    dataSet.setColor(Color.parseColor("#7500ca"));
-                    dataSet.setCircleColor(Color.parseColor("#7500ca"));
+                    dataSet.setColor(Color.parseColor("#e98074"));
+                    dataSet.setCircleColor(Color.parseColor("#e98074"));
                     dataSet.setLineWidth(1f);
                     dataSet.setCircleRadius(5f);
                     dataSet.setDrawCircleHole(false);
                     dataSet.setDrawValues(false);
+                    dataSet.setMode(LineDataSet.Mode.CUBIC_BEZIER);
                     dataSets.add(dataSet);
 
                     XAxis xAxis = lineChart.getXAxis();
                     xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+                    xAxis.setGranularityEnabled(true);
                     xAxis.setGranularity(1f);
                     xAxis.setYOffset(0f);
                     xAxis.setLabelRotationAngle(90);
-                   // xAxis.setGranularityEnabled(true);
+
                     //xAxis.setLabelCount(8,true); //4 is the number of values to be shown.
                     xAxis.setValueFormatter(new IndexAxisValueFormatter(getDate(data.getData().get(0).getCoursechartData().get(i).getCourseYaxisLabel())));
 
                     YAxis rightAxis = lineChart.getAxisRight();
                     rightAxis.setEnabled(false);
                 }
+
                 LineData pieData = new LineData(dataSets);
+                lineChart.getAxisLeft().setStartAtZero(true);
+                lineChart.getAxisLeft().setAxisMinValue(0);
+                lineChart.getXAxis().setYOffset(9);
                 lineChart.getXAxis().setDrawGridLines(false);
                 lineChart.getAxisLeft().setDrawGridLines(true);
                 lineChart.getAxisRight().setDrawGridLines(false);
@@ -389,6 +463,8 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
                 lineChart.getAxisRight().setDrawLabels(true);
                 lineChart.getLegend().setEnabled(true);
                 lineChart.setDescription(null);
+                lineChart.setPinchZoom(false);
+                lineChart.getLegend().setWordWrapEnabled(true);
                 lineChart.setData(pieData);
 
                 lineChart.invalidate();
@@ -398,7 +474,6 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
 
     private void setChart(ArrayList<CompletedCourses.CoursechartDropdownlist> list,String startDate,String endDate)
     {
-
         StringBuilder sb = new StringBuilder();
         for(int i=0;i<list.size();i++)
         { Log.d(";;;;;;;;;;;;;;;;;::: ", list.get(i).isSelected()+"");
@@ -415,8 +490,11 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
             if(startDate.length() >0 && endDate.length() >0) {
                 params.put("start_date", startDate);
                 params.put("end_date", endDate);
-            }else
-            {
+            }else if(startDate.length() >0 && endDate.length() ==0) {
+                params.put("start_date", startDate);
+                String date = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
+                params.put("end_date", date);
+            }else {
                 params.put("mode", mode);
             }
 
@@ -464,6 +542,7 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
                 String myFormat="dd/MM/yyyy";
                 startDate[0]=new SimpleDateFormat(myFormat).format(myCalendar.getTime());
                 tvFrom.setText(startDate[0]);
+                //tvTo.setText(startDate[0]);
                 if (!tvTo.getText().toString().equals(getString(R.string.to_date))) {
                     if (compareDate(startDate[0], tvTo.getText().toString(), "before")) {
                         //apiCallReport(startDate[0], etEndDate.getText().toString());

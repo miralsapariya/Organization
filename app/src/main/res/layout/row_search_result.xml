@@ -2,29 +2,35 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:id="@+id/llMain"
+    android:layoutDirection="locale"
+    android:textDirection="locale"
     android:background="@color/white"
     android:layout_marginTop="@dimen/_2sdp"
     android:layout_marginBottom="@dimen/_2sdp"
     android:layout_height="wrap_content">
 
-
     <LinearLayout
+        android:layoutDirection="locale"
+        android:textDirection="locale"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="@dimen/_7sdp">
 
         <ImageView
             android:id="@+id/img"
+            android:layoutDirection="locale"
+            android:textDirection="locale"
             android:layout_width="@dimen/_90sdp"
             android:layout_height="@dimen/_80sdp"
             android:layout_gravity="center"
             android:src="@mipmap/placeholder"
             android:scaleType="fitXY"
-
             />
     </LinearLayout>
 
     <LinearLayout
+        android:layoutDirection="locale"
+        android:textDirection="locale"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -33,11 +39,14 @@
         >
 
     <LinearLayout
+        android:layoutDirection="locale"
+        android:textDirection="locale"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
 
         <TextView
+            android:layoutDirection="locale"
             android:id="@+id/tvCourse"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -50,6 +59,7 @@
             android:textSize="@dimen/_12ssp" />
 
         <TextView
+            android:layoutDirection="locale"
             android:id="@+id/tvPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -60,11 +70,14 @@
     </LinearLayout>
 
         <LinearLayout
+            android:layoutDirection="locale"
+            android:textDirection="locale"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
           >
 
             <TextView
+                android:layoutDirection="locale"
                 android:id="@+id/tvDescription"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -78,6 +91,7 @@
 
             <TextView
                 android:id="@+id/tvPriceOld"
+                android:layoutDirection="locale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/font1"
@@ -86,12 +100,15 @@
 
         </LinearLayout>
         <LinearLayout
+            android:layoutDirection="locale"
+            android:textDirection="locale"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             >
 
             <TextView
                 android:id="@+id/tvDate"
+                android:layoutDirection="locale"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_2sdp"
@@ -107,10 +124,14 @@
         </LinearLayout>
 
         <LinearLayout
+            android:layoutDirection="locale"
+            android:textDirection="locale"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <LinearLayout
+                android:layoutDirection="locale"
+                android:textDirection="locale"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content">
@@ -119,9 +140,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/round_rect_orange"
-            android:textDirection="locale"
             android:textSize="@dimen/_9ssp"
             android:gravity="start"
+            android:layoutDirection="locale"
+            android:textDirection="locale"
             android:textColor="@color/colorPrimary"
             android:padding="@dimen/_4sdp"
             /></LinearLayout>
@@ -131,10 +153,9 @@
                 android:layout_height="24dp"
                 android:src="@mipmap/ic_cart"
                 android:layout_gravity="end"
+                android:layoutDirection="locale"
+                android:textDirection="locale"
                 />
-
-
-
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

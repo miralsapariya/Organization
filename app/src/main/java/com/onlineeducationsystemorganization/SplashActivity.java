@@ -30,18 +30,26 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
 
+
                 if (AppSharedPreference.getInstance().getString(SplashActivity.this, AppSharedPreference.USERID) == null) {
                     Intent i = new Intent(SplashActivity.this,
                             CompanyUrlActivity.class);
                     startActivity(i);
                     finish();
                 } else {
-                    Intent i = new Intent(SplashActivity.this,
-                            MainActivity.class);
-                    startActivity(i);
-                    finish();
+                    if(AppSharedPreference.getInstance().getString(SplashActivity.this, AppSharedPreference.USER_TYPE).equalsIgnoreCase("1")) {
+                        Intent i = new Intent(SplashActivity.this,
+                                MainActivity.class);
+                        startActivity(i);
+                        finish();
+                    }else
+                    {
+                        Intent i = new Intent(SplashActivity.this,
+                                MainUserActivity.class);
+                        startActivity(i);
+                        finish();
+                    }
                 }
-
 
 
             }

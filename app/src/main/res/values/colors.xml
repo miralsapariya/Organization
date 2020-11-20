@@ -23,5 +23,7 @@
     <color name="cyan">#25ae88</color>
     <color name="light_blue">#ace9f6</color>
     <color name="pink">#fdafde</color>
-
+    <color name="chart1">#1DAF8A</color>
+    <color name="chart2">#FFC227</color>
+    <color name="button_selctor">#86c8d9</color>
 </resources>

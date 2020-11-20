@@ -3,7 +3,9 @@ package com.onlineeducationsystemorganization;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -12,6 +14,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.onlineeducationsystemorganization.interfaces.NetworkListener;
 import com.onlineeducationsystemorganization.model.User;
 import com.onlineeducationsystemorganization.network.ApiCall;
@@ -37,6 +44,8 @@ public class LoginActivity extends BaseActivity implements NetworkListener {
     private AppSharedPreference preference;
     private ImageView imgBack;
     private String company_user_id="";
+    private String android_id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +55,8 @@ public class LoginActivity extends BaseActivity implements NetworkListener {
 
     private void initUI()
     {
+        android_id = Settings.Secure.getString(LoginActivity.this.getContentResolver(),
+                Settings.Secure.ANDROID_ID);
         company_user_id=getIntent().getExtras().getString("company_user_id");
 
         preference = AppSharedPreference.getInstance();
@@ -60,6 +71,22 @@ public class LoginActivity extends BaseActivity implements NetworkListener {
             }
         });
         btnLogin =findViewById(R.id.btnLogin);
+
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(new OnCompleteListener<String>() {
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+                        if (!task.isSuccessful()) {
+                            Log.w("FAILED ", "Fetching FCM registration token failed", task.getException());
+                            return;
+                        }
+                        // Get new FCM registration token
+                        String token = task.getResult();
+                        Log.d("TOKEN ::", token);
+                       // Toast.makeText(LoginActivity.this, token, Toast.LENGTH_SHORT).show();
+                        AppSharedPreference.getInstance().putString(LoginActivity.this, AppSharedPreference.DEVICE_TOKEN, token);
+                    }
+                });
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,13 +121,17 @@ public class LoginActivity extends BaseActivity implements NetworkListener {
 
     private void hintLogin()
     {
+        String t=AppSharedPreference.getInstance().getString(LoginActivity.this, AppSharedPreference.DEVICE_TOKEN);
+
+        Log.d("____________________ ", t);
         String lang="";
         AppUtils.showDialog(this, getString(R.string.pls_wait));
         ApiInterface apiInterface = RestApi.getConnection(ApiInterface.class, ServerConstents.API_URL);
         final HashMap params = new HashMap<>();
         params.put("email", etEmail.getText().toString());
         params.put("password", etPassword.getText().toString());
-        params.put("device_token", "1234");
+        params.put("device_token", AppSharedPreference.getInstance().getString(LoginActivity.this, AppSharedPreference.DEVICE_TOKEN));
+        params.put("device_id", android_id);
         params.put("device_type", ServerConstents.DEVICE_TYPE);
         params.put("company_user_id", company_user_id+"");
 
@@ -128,7 +159,7 @@ public class LoginActivity extends BaseActivity implements NetworkListener {
             preference.putString(LoginActivity.this, AppSharedPreference.USERID, res.get(0).getUserId()+"");
             preference.putString(LoginActivity.this, AppSharedPreference.NAME, res.get(0).getName()+"");
             preference.putString(LoginActivity.this, AppSharedPreference.EMAIL, res.get(0).getEmail());
-
+            preference.putString(LoginActivity.this, AppSharedPreference.USER_TYPE, res.get(0).getUser_type()+"");
             preference.putString(LoginActivity.this, AppSharedPreference.FIRST_NAME, res.get(0).getFirstName()+"");
             preference.putString(LoginActivity.this, AppSharedPreference.LAST_NAME, res.get(0).getLastName()+"");
             preference.putString(LoginActivity.this, AppSharedPreference.PROFILE_PIC, res.get(0).getProfilePicture());
@@ -137,12 +168,23 @@ public class LoginActivity extends BaseActivity implements NetworkListener {
             preference.putString(LoginActivity.this,AppSharedPreference.COMPANY_NAME,res.get(0).getOrganization_name());
             preference.putString(LoginActivity.this,AppSharedPreference.COMPANY_URL,res.get(0).getSubdomain());
 
-            Intent i = new Intent(LoginActivity.this,
-                    MainActivity.class);
-            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(i);
-            finish();
+            //org admin
+            if(res.get(0).getUser_type() ==AppConstant.USER_TYPE_ADMIN) {
+                Intent i = new Intent(LoginActivity.this,
+                        MainActivity.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(i);
+                finish();
+            }else
+            {
+                Intent i = new Intent(LoginActivity.this,
+                        MainUserActivity.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(i);
+                finish();
+            }
         }
     }
 

@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layoutDirection="locale"
     android:textDirection="locale"
-    android:layout_margin="@dimen/_5sdp"
+    android:id="@+id/llMain"
+    android:padding="@dimen/_5sdp"
     android:layout_height="wrap_content">
 
     <androidx.appcompat.widget.AppCompatCheckBox

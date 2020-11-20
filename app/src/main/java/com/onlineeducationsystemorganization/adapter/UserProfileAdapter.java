@@ -49,7 +49,6 @@ public class UserProfileAdapter extends RecyclerView.Adapter<UserProfileAdapter.
         {
             holder.img.setImageResource(R.mipmap.dashboard);
         }
-
         else if(position ==2)
         {
             holder.img.setImageResource(R.mipmap.my_courses);

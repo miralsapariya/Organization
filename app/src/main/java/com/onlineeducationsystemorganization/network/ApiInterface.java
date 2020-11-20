@@ -13,6 +13,7 @@ import com.onlineeducationsystemorganization.model.CourseDetail;
 import com.onlineeducationsystemorganization.model.CourseList;
 import com.onlineeducationsystemorganization.model.Courses;
 import com.onlineeducationsystemorganization.model.Dashboard;
+import com.onlineeducationsystemorganization.model.DashboardReport;
 import com.onlineeducationsystemorganization.model.DefaultCategory;
 import com.onlineeducationsystemorganization.model.Exam;
 import com.onlineeducationsystemorganization.model.ForgotPwd;
@@ -25,6 +26,7 @@ import com.onlineeducationsystemorganization.model.InquiryHistory;
 import com.onlineeducationsystemorganization.model.InstructorList;
 import com.onlineeducationsystemorganization.model.InstructorProfile;
 import com.onlineeducationsystemorganization.model.MyWhishList;
+import com.onlineeducationsystemorganization.model.NotificationList;
 import com.onlineeducationsystemorganization.model.Restart;
 import com.onlineeducationsystemorganization.model.Result;
 import com.onlineeducationsystemorganization.model.SectionCourse;
@@ -32,7 +34,9 @@ import com.onlineeducationsystemorganization.model.SectionSlideDetail;
 import com.onlineeducationsystemorganization.model.SubCategory;
 import com.onlineeducationsystemorganization.model.Subscription;
 import com.onlineeducationsystemorganization.model.SubscriptionHistory;
+import com.onlineeducationsystemorganization.model.Suggestion;
 import com.onlineeducationsystemorganization.model.User;
+import com.onlineeducationsystemorganization.model.UserDashBoard;
 import com.onlineeducationsystemorganization.model.UserList;
 
 import java.util.HashMap;
@@ -353,5 +357,19 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("dashboard")
     Call<Dashboard> getDashBoard(@Header("language") String lang, @Header("Authorization")String auth, @FieldMap HashMap<String, String> map);
+
+    @FormUrlEncoded
+    @POST("dashboardcoursereport")
+    Call<DashboardReport> getReportDashBoard(@Header("language") String lang, @Header("Authorization")String auth, @FieldMap HashMap<String, String> map);
+
+    @POST("dashboard")
+    Call<UserDashBoard> getUSerDashboard(@Header("language") String lang, @Header("Authorization")String auth);
+
+    @POST("notification")
+    Call<NotificationList> getNotification(@Header("language") String lang, @Header("Authorization")String auth);
+
+    @FormUrlEncoded
+    @POST("globalsearchsuggestion")
+    Call<Suggestion> getSuggestion(@Header("language") String lang, @Header("Authorization")String auth, @FieldMap HashMap<String, String> map);
 
 }

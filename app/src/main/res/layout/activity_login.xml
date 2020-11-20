@@ -8,8 +8,6 @@
     android:background="@mipmap/splash"
     android:orientation="vertical"
     android:id="@+id/llMain"
-    android:textDirection="locale"
-    android:layoutDirection="locale"
     >
 
     <LinearLayout
@@ -23,9 +21,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layoutDirection="locale"
             android:src="@drawable/ic_back"
-            android:textDirection="locale" />
+            />
 
         <ImageView
             android:id="@+id/tv"
@@ -33,10 +30,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:gravity="center_horizontal"
-            android:layoutDirection="locale"
             android:src="@mipmap/ic_launcher"
             android:textColor="@color/colorPrimary"
-            android:textDirection="locale"
             android:textStyle="bold" />
 
     </LinearLayout>
@@ -52,8 +47,6 @@
         android:layout_gravity="end"
         android:background="@drawable/round_square_two_corner"
         android:gravity="end"
-        android:textDirection="locale"
-        android:layoutDirection="locale"
         android:orientation="vertical"
         android:padding="@dimen/_10sdp">
 
@@ -80,11 +73,9 @@
             android:hint="@string/email"
             android:inputType="text"
             android:gravity="start"
-            android:layoutDirection="locale"
             android:singleLine="true"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
-            android:textDirection="locale"
             android:textSize="@dimen/_13ssp" />
 
         <androidx.appcompat.widget.AppCompatEditText
@@ -99,11 +90,9 @@
             android:gravity="start"
             android:textAlignment="viewStart"
             android:inputType="textPassword"
-            android:layoutDirection="locale"
             android:singleLine="true"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
-            android:textDirection="locale"
             android:textSize="@dimen/_13ssp" />
 
 
@@ -111,8 +100,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_10sdp"
-            android:layoutDirection="locale"
-            android:textDirection="locale"
             android:visibility="gone">
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -121,7 +108,6 @@
                 android:layout_gravity="center_vertical"
                 android:text="@string/user"
                 android:textColor="@color/white"
-                android:textDirection="locale"
                 android:textSize="@dimen/_13ssp" />
 
            <!-- <RadioGroup
@@ -163,7 +149,7 @@
             android:gravity="end"
             android:text="@string/forgot_pwd"
             android:textColor="@color/white"
-            android:textDirection="locale" />
+             />
 
 
         <TextView
@@ -196,8 +182,6 @@
                 android:gravity="center"
                 android:text="@string/dont_have_account"
                 android:textColor="@color/white"
-                android:textDirection="locale"
-
                 />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -208,7 +192,7 @@
                 android:layout_marginEnd="@dimen/_2ssp"
                 android:text="@string/sign_up"
                 android:textColor="@color/colorPrimary"
-                android:textDirection="locale" />
+                />
 
 
         </LinearLayout>

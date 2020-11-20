@@ -230,98 +230,122 @@
         android:background="@color/white"
         android:paddingTop="@dimen/_9sdp"
         android:orientation="vertical">
-        <Spinner
-            android:id="@+id/spinnerCourses"
+        <LinearLayout
+            android:id="@+id/llPopup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/Base.Widget.AppCompat.Spinner.Underlined"
             android:backgroundTint="@color/black"
-            />
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:padding="@dimen/_5sdp"
+                android:textColor="@color/black"
+                android:text="@string/courses"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_marginTop="@dimen/_5sdp"
+            android:textDirection="locale"
+            android:layoutDirection="locale"
             android:layout_height="wrap_content">
             <TextView
+                android:id="@+id/tvDaily"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:background="@drawable/button"
+                android:background="@drawable/button_select"
                 android:textColor="@color/white"
                 android:text="@string/daily"
+                android:textSize="@dimen/_9sdp"
                 android:gravity="center"
                 android:paddingTop="@dimen/_7sdp"
                 android:paddingBottom="@dimen/_5sdp"
                 />
             <TextView
+                android:id="@+id/tvWeekly"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:paddingTop="@dimen/_7sdp"
                 android:text="@string/weelky"
+                android:textSize="@dimen/_9sdp"
                 android:textColor="@color/white"
                 android:paddingBottom="@dimen/_5sdp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/button"
-                android:layout_marginStart="@dimen/_8sdp"
+                android:background="@drawable/button_select"
+                android:layout_marginStart="@dimen/_2sdp"
                 />
-
-        </LinearLayout>
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:layout_height="wrap_content">
             <TextView
+                android:id="@+id/tvMonthly"
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:textSize="@dimen/_9sdp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button"
                 android:textColor="@color/white"
                 android:text="@string/monthly"
                 android:gravity="center"
+                android:layout_marginStart="@dimen/_2sdp"
                 android:paddingTop="@dimen/_7sdp"
                 android:paddingBottom="@dimen/_5sdp"
                 />
             <TextView
+                android:id="@+id/tvYearly"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:textSize="@dimen/_9sdp"
                 android:paddingTop="@dimen/_7sdp"
                 android:text="@string/yearly"
                 android:textColor="@color/white"
                 android:paddingBottom="@dimen/_5sdp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/button"
-                android:layout_marginStart="@dimen/_8sdp"
+                android:background="@drawable/button_select"
+                android:layout_marginStart="@dimen/_2sdp"
                 />
-
-        </LinearLayout>
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:layout_height="wrap_content">
             <TextView
                 android:id="@+id/tvCustom"
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:textSize="@dimen/_9sdp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/button"
+                android:background="@drawable/button_select"
                 android:textColor="@color/white"
                 android:text="@string/custom"
                 android:gravity="center"
+                android:layout_marginStart="@dimen/_2sdp"
                 android:paddingTop="@dimen/_7sdp"
                 android:paddingBottom="@dimen/_5sdp"
-                /></LinearLayout>
+                />
+        </LinearLayout>
 
 
+        <TextView
+            android:id="@+id/tvLblY"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            />
         <com.github.mikephil.charting.charts.LineChart
             android:id="@+id/chart"
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:layout_marginTop="@dimen/_7sdp" />
+        <TextView
+            android:id="@+id/tvLblX"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            />
     </LinearLayout>
     <TextView
         android:layout_width="match_parent"
@@ -344,7 +368,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_8sdp"
         android:layout_marginBottom="@dimen/_3sdp"
-        android:text="@string/my_courses"
+        android:text="@string/courses"
         android:textColor="@color/black"
         android:textStyle="bold" />
 
@@ -352,5 +376,6 @@
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:layout_marginTop="@dimen/_5sdp" />
 </LinearLayout></androidx.core.widget.NestedScrollView>

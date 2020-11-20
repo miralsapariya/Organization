@@ -3,7 +3,9 @@ package com.onlineeducationsystemorganization;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -13,6 +15,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.hbb20.CountryCodePicker;
 import com.onlineeducationsystemorganization.interfaces.NetworkListener;
 import com.onlineeducationsystemorganization.model.User;
@@ -39,6 +46,7 @@ public class SignUpActivity extends BaseActivity implements NetworkListener
     private Spinner spinnerCountry;
     private CountryCodePicker ccp;
     private String selectedCountryCode="",selectedCountry="";
+    private String android_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +56,8 @@ public class SignUpActivity extends BaseActivity implements NetworkListener
     }
 
     private void initUI() {
+        android_id = Settings.Secure.getString(SignUpActivity.this.getContentResolver(),
+                Settings.Secure.ANDROID_ID);
         etName = findViewById(R.id.etName);
         etEmail = findViewById(R.id.etEmail);
         etPhone = findViewById(R.id.etPhone);
@@ -94,7 +104,21 @@ public class SignUpActivity extends BaseActivity implements NetworkListener
                 selectedCountry =ccp.getSelectedCountryName();
             }
         });
-
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(new OnCompleteListener<String>() {
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+                        if (!task.isSuccessful()) {
+                            Log.w("FAILED ", "Fetching FCM registration token failed", task.getException());
+                            return;
+                        }
+                        // Get new FCM registration token
+                        String token = task.getResult();
+                        Log.d("TOKEN ::", token);
+                        //Toast.makeText(SignUpActivity.this, token, Toast.LENGTH_SHORT).show();
+                        AppSharedPreference.getInstance().putString(SignUpActivity.this, AppSharedPreference.DEVICE_TOKEN, token);
+                    }
+                });
 
     }
     private void hintRegister()
@@ -105,9 +129,10 @@ public class SignUpActivity extends BaseActivity implements NetworkListener
         final HashMap params = new HashMap<>();
         params.put("name", etName.getText().toString());
         params.put("email", etEmail.getText().toString());
+        params.put("device_id", android_id);
         params.put("password", etPassword.getText().toString());
         params.put("phone_no", selectedCountryCode+"-"+etPhone.getText().toString());
-        params.put("device_token", "1234");
+        params.put("device_token", AppSharedPreference.getInstance().getString(SignUpActivity.this, AppSharedPreference.DEVICE_TOKEN));
         params.put("device_type", ServerConstents.DEVICE_TYPE);
         params.put("organization_name", etCompanyName.getText().toString());
         params.put("subdomain", etURL.getText().toString());

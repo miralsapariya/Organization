@@ -28,8 +28,10 @@ import com.onlineeducationsystemorganization.DashboardActivity;
 import com.onlineeducationsystemorganization.EditUserProfileActivity;
 import com.onlineeducationsystemorganization.InquiriesActivity;
 import com.onlineeducationsystemorganization.MyCoursesActivity;
+import com.onlineeducationsystemorganization.NotificationActivity;
 import com.onlineeducationsystemorganization.R;
 import com.onlineeducationsystemorganization.SubscriptionActivity;
+import com.onlineeducationsystemorganization.WebActivity;
 import com.onlineeducationsystemorganization.WhishListActivity;
 import com.onlineeducationsystemorganization.adapter.UserProfileAboutUsAdapter;
 import com.onlineeducationsystemorganization.adapter.UserProfileAdapter;
@@ -77,7 +79,6 @@ public class AccountFragment extends BaseFragment implements NetworkListener
         ArrayList<String> list = new ArrayList<>();
 
         list.add(getString(R.string.about));
-        list.add(getString(R.string.faq));
         list.add(getString(R.string.privacy_policy));
         list.add(getString(R.string.terms_n_condition));
         list.add(getString(R.string.bologs));
@@ -237,12 +238,45 @@ public class AccountFragment extends BaseFragment implements NetworkListener
         {
             Intent intent =new Intent(activity, WhishListActivity.class);
             startActivity(intent);
+        }else if(pos ==8)
+        {
+            Intent intent =new Intent(activity, NotificationActivity.class);
+            startActivity(intent);
         }
     }
 
     @Override
     public void onSubGridClick(int pos) {
+        String lang="";
+        if (AppSharedPreference.getInstance().getString(activity, AppSharedPreference.LANGUAGE_SELECTED) == null ||
+                AppSharedPreference.getInstance().getString(activity, AppSharedPreference.LANGUAGE_SELECTED).equalsIgnoreCase(AppConstant.ENG_LANG)) {
+            lang = AppConstant.ENG_LANG;
+        } else {
+            lang = AppConstant.ARABIC_LANG;
+        }
 
+        if(pos == 0)
+        {
+            Intent intent =new Intent(activity, WebActivity.class);
+            intent.putExtra("url", AppConstant.ABOUT_US+lang+"/mobile/aboutus");
+            startActivity(intent);
+        }else if(pos == 1)
+        {
+            Intent intent =new Intent(activity, WebActivity.class);
+            intent.putExtra("url", AppConstant.PRIVACY_POLICY+lang+"/mobile/privacy_policy");
+            startActivity(intent);
+        }else if(pos == 2)
+        {
+            Intent intent =new Intent(activity, WebActivity.class);
+            intent.putExtra("url", AppConstant.TERMS_CONDITION+lang+"/mobile/terms_of_use");
+            startActivity(intent);
+
+        }else if(pos ==3)
+        {
+            Intent intent =new Intent(activity, WebActivity.class);
+            intent.putExtra("url", AppConstant.BLOG+lang+"/mobile/blog");
+            startActivity(intent);
+        }
     }
 
     private void showBottomSheet() {

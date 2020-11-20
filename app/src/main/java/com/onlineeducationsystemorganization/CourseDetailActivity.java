@@ -331,7 +331,7 @@ public class CourseDetailActivity extends BaseActivity implements NetworkListene
                     buyNow.setText(getString(R.string.enroll_now));
                 }
 
-                if(data.getData().get(0).getIs_purchased() == 1)
+                if(data.getData().get(0).getIs_purchased() == 1 || !AppSharedPreference.getInstance().getString(CourseDetailActivity.this, AppSharedPreference.USER_TYPE).equalsIgnoreCase("1"))
                 {
                     buyNow.setVisibility(View.GONE);
                 }else

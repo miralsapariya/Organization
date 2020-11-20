@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/page_1"
+        android:enabled="true"
+        android:icon="@mipmap/dashboard"
+        android:title="@string/dasahboard"/>
+
+
+    <item
+        android:id="@+id/page_2"
+        android:enabled="true"
+        android:icon="@mipmap/ic_mycourses"
+        android:title="@string/my_courses"/>
+
+
+    <item
+        android:id="@+id/page_3"
+        android:enabled="true"
+        android:icon="@mipmap/ic_account"
+        android:title="@string/account"/>
+</menu>

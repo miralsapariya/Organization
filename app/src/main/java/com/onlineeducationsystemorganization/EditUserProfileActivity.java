@@ -143,6 +143,8 @@ public class EditUserProfileActivity extends BaseActivity implements NetworkList
                 selectedCountry =ccp.getSelectedCountryName();
             }
         });
+
+
     }
 
     private void editProfile()
@@ -299,6 +301,9 @@ public class EditUserProfileActivity extends BaseActivity implements NetworkList
             etEmail.setText(data.getData().get(0).getEmail());
             etPhone.setText(data.getData().get(0).getPhoneNo());
             etCompanyName.setText(data.getData().get(0).getOrganizationName());
+            if(AppSharedPreference.getInstance().getString(EditUserProfileActivity.this, AppSharedPreference.USER_TYPE).equalsIgnoreCase("2")) {
+                etCompanyName.setEnabled(false);
+            }
         }else
         {
             GetProfile data = (GetProfile) response;

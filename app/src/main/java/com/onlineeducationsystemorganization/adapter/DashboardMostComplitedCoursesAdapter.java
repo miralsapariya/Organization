@@ -26,7 +26,6 @@ public class DashboardMostComplitedCoursesAdapter extends RecyclerView.Adapter<D
         this.mInflater = LayoutInflater.from(context);
         this.context = context;
         this.listProduct = listProduct;
-
     }
 
     @Override
@@ -45,12 +44,14 @@ public class DashboardMostComplitedCoursesAdapter extends RecyclerView.Adapter<D
         holder.circularProgressbar.setProgress((int)f);
         holder.tvCourseName.setText(data.getCourseName());
         holder.tvComplite.setText(data.getCountOfCourse());
+        holder.tv.setText(data.getPercentOfCourse()+"%");
+
     }
 
 
     @Override
     public int getItemCount() {
-        return listProduct.size();
+        return 3;
     }
 
     public Dashboard.MostCompletedCourse getItem(int id) {
@@ -59,7 +60,7 @@ public class DashboardMostComplitedCoursesAdapter extends RecyclerView.Adapter<D
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public ProgressBar circularProgressbar;
-        TextView tvCourseName,tvComplite;
+        TextView tvCourseName,tvComplite,tv;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -67,6 +68,7 @@ public class DashboardMostComplitedCoursesAdapter extends RecyclerView.Adapter<D
             circularProgressbar = itemView.findViewById(R.id.circularProgressbar);
             tvCourseName = itemView.findViewById(R.id.tvCourseName);
             tvComplite =itemView.findViewById(R.id.tvComplite);
+            tv =itemView.findViewById(R.id.tv);
        }
     }
 }

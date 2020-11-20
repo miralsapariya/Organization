@@ -163,6 +163,7 @@ public class OTPActivity extends BaseActivity implements NetworkListener {
             if(data.getStatus()==ServerConstents.CODE_SUCCESS) {
                 ArrayList<User.Datum> res = data.getData();
 
+                preference.putString(OTPActivity.this, AppSharedPreference.USER_TYPE, res.get(0).getUser_type()+"");
                 preference.putString(OTPActivity.this, AppSharedPreference.USERID, res.get(0).getUserId() + "");
                 preference.putString(OTPActivity.this, AppSharedPreference.NAME, res.get(0).getName() + "");
                 preference.putString(OTPActivity.this, AppSharedPreference.EMAIL, res.get(0).getEmail());
@@ -174,10 +175,21 @@ public class OTPActivity extends BaseActivity implements NetworkListener {
                 preference.putString(OTPActivity.this,AppSharedPreference.COMPANY_NAME,res.get(0).getOrganization_name());
                 preference.putString(OTPActivity.this,AppSharedPreference.COMPANY_URL,res.get(0).getSubdomain());
 
-                Intent i = new Intent(OTPActivity.this,
-                        MainActivity.class);
-                startActivity(i);
-                finish();
+                if(res.get(0).getUser_type() ==AppConstant.USER_TYPE_ADMIN) {
+                    Intent i = new Intent(OTPActivity.this,
+                            MainActivity.class);
+                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(i);
+                    finish();
+                }else {
+                    Intent i = new Intent(OTPActivity.this,
+                            MainUserActivity.class);
+                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(i);
+                    finish();
+                }
             }
 
         }

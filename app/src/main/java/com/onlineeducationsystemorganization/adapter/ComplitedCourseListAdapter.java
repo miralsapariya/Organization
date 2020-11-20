@@ -1,6 +1,7 @@
 package com.onlineeducationsystemorganization.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,7 +48,7 @@ public class ComplitedCourseListAdapter extends RecyclerView.Adapter<ComplitedCo
     public void onBindViewHolder(final ComplitedCourseListAdapter.ViewHolder holder, final int position) {
         final CompletedCourses.CoursechartDropdownlist data = listProduct.get(position);
         holder.checkboxCourseList.setText(data.getCourseName());
-        Log.d("----------------------------", ""+holder.checkboxCourseList.isChecked());
+        Log.d("---------------", ""+holder.checkboxCourseList.isChecked());
 
         if(holder.checkboxCourseList.isChecked() ==true)
         {
@@ -70,6 +71,7 @@ public class ComplitedCourseListAdapter extends RecyclerView.Adapter<ComplitedCo
                 }
             }
         });
+        holder.llMain.setBackgroundColor(Color.parseColor((data.getCourseColorCode())));
 
     }
 

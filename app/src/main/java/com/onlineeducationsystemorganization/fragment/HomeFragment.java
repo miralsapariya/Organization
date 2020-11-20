@@ -56,14 +56,10 @@ public class HomeFragment extends BaseFragment  implements OnItemClick, OnViewAl
     private void iniUI()
     {
          viewPager = view.findViewById(R.id.view_pager);
-
-        if (AppUtils.isInternetAvailable(activity)) {
+         if (AppUtils.isInternetAvailable(activity)) {
                 hintHome();
-        }
-
-
+         }
         recyclerView =view.findViewById(R.id.recyclerView);
-
     }
 
     private void hintHome()
@@ -90,8 +86,6 @@ public class HomeFragment extends BaseFragment  implements OnItemClick, OnViewAl
 
     }
 
-
-
     @Override
     public void onSuccess(int responseCode, Object response, int requestCode) {
 
@@ -101,9 +95,7 @@ public class HomeFragment extends BaseFragment  implements OnItemClick, OnViewAl
             adapter = new ImageAdapter(activity,data.getData().get(0).getBannersList());
             viewPager.setAdapter(adapter);
             viewPager.setCurrentItem(0);
-
             //
-
             data.getData().remove(0);
             HomeAdapter homeAdapter =
                     new HomeAdapter(activity, data.getData(),this,this);

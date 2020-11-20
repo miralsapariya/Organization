@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:fillViewport="true"
+    android:paddingTop="?attr/actionBarSize"
+    android:layout_height="match_parent"
+    tools:context=".fragment.AccountFragment"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/llWithLogin"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:background="@color/bg"
+                android:paddingBottom="@dimen/_10sdp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                android:layout_height="wrap_content">
+
+
+
+                        <com.mikhaellopez.circularimageview.CircularImageView
+                            android:id="@+id/imgUser"
+                            android:layout_width="@dimen/_100sdp"
+                            android:layout_height="@dimen/_100sdp"
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_marginBottom="0dp"
+                            android:src="@mipmap/placeholder"
+                            app:civ_border_color="@color/colorPrimary"
+                            app:civ_border_width="2dp"
+                            app:civ_shadow="true"
+                            app:civ_shadow_color="#00000000"
+                            app:civ_shadow_radius="4dp" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_15ssp"
+                    android:textDirection="locale"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_horizontal"
+                    android:textDirection="locale"
+                    android:text="john@gmail.com"
+                    android:visibility="gone"
+                    android:textColor="@color/font1"
+                    />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_horizontal"
+                    android:textDirection="locale"
+                    android:text="+91 859632104"
+                    android:visibility="gone"
+                    android:textColor="@color/font1"
+                    />
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/shadow_color"
+
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:paddingTop="@dimen/_10sdp"
+                android:paddingBottom="@dimen/_10sdp"
+                android:textDirection="locale"
+                android:background="@color/white"
+                android:layoutDirection="locale"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layoutDirection="locale"
+                    android:textDirection="locale"
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvDate"
+                        android:layout_width="match_parent"
+                        android:gravity="center"
+                        android:textSize="@dimen/_10ssp"
+                        android:textDirection="locale"
+                        android:textColor="@color/black"
+                        android:layout_height="wrap_content" />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:gravity="center"
+                        android:textDirection="locale"
+                        android:textSize="@dimen/_9ssp"
+                        android:textColor="@color/font1"
+                        android:text="@string/join_date"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="1dp"
+                    android:background="@color/colorPrimary"
+                    android:layout_height="match_parent"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:textDirection="locale"
+                    android:layoutDirection="locale"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvCountry"
+                        android:layout_width="match_parent"
+                        android:gravity="center"
+                        android:textSize="@dimen/_10ssp"
+                        android:textDirection="locale"
+                        android:textColor="@color/black"
+                        android:layout_height="wrap_content" />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:gravity="center"
+                        android:textSize="@dimen/_9ssp"
+                        android:textDirection="locale"
+                        android:textColor="@color/font1"
+                        android:text="@string/country"
+                        android:layout_height="wrap_content" />
+
+
+                </LinearLayout>
+                <View
+                    android:layout_width="1dp"
+                    android:background="@color/colorPrimary"
+                    android:layout_height="match_parent"/>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:textDirection="locale"
+                    android:layoutDirection="locale"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvCourse"
+                        android:layout_width="match_parent"
+                        android:gravity="center"
+                        android:textSize="@dimen/_9ssp"
+                        android:textDirection="locale"
+                        android:textColor="@color/black"
+                        android:layout_height="wrap_content" />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:gravity="center"
+                        android:textSize="@dimen/_9ssp"
+                        android:textDirection="locale"
+                        android:textColor="@color/font1"
+                        android:text="@string/courses"
+                        android:layout_height="wrap_content" />
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/shadow_color"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:textDirection="locale"
+                android:gravity="start"
+                android:textSize="@dimen/_13ssp"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingEnd="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:paddingBottom="@dimen/_10sdp"
+                android:textColor="@color/font1"
+                android:text="@string/account_setting"
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvBasicSetting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/bg"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingEnd="@dimen/_10sdp"
+                >
+
+            </androidx.recyclerview.widget.RecyclerView>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSignOut"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/_10sdp"
+                android:paddingBottom="@dimen/_10sdp"
+                android:textSize="@dimen/_12ssp"
+                android:background="@color/bg"
+                android:textColor="@color/colorPrimary"
+                android:text="@string/log_out"
+                android:textDirection="locale"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center_horizontal"
+
+                />
+
+        </LinearLayout>
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:textDirection="locale"
+            android:gravity="start"
+            android:textSize="@dimen/_13ssp"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingEnd="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:paddingBottom="@dimen/_10sdp"
+            android:textColor="@color/font1"
+            android:text="@string/about_us"
+            android:visibility="invisible"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvSignIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/_10sdp"
+            android:paddingBottom="@dimen/_10sdp"
+            android:textSize="@dimen/_12ssp"
+            android:background="@color/bg"
+            android:textColor="@color/colorPrimary"
+            android:text="@string/login"
+            android:textDirection="locale"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
+
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:background="@color/white"
+            />
+
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

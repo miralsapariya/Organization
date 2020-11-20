@@ -203,6 +203,7 @@ public class CartFragment extends BaseFragment implements NetworkListener
         if(requestCode == ServerConstents.CART) {
             tvNoRecord.setVisibility(View.VISIBLE);
             recyclerView.setVisibility(View.GONE);
+            tvNoOfItem.setText("0 "+activity.getString(R.string.items));
         }else
         {
             Toast.makeText(activity, response, Toast.LENGTH_SHORT).show();
