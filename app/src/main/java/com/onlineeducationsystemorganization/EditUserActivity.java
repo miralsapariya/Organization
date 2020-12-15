@@ -104,9 +104,7 @@ public class EditUserActivity extends BaseActivity implements NetworkListener {
     }
 
     private void initUI() {
-
         user_id = getIntent().getExtras().getString("user_id");
-
         imgUser = findViewById(R.id.imgUser);
         imgUser.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -198,6 +196,11 @@ public class EditUserActivity extends BaseActivity implements NetworkListener {
             hintGetUser();
         }
     }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        AppConstant.ASSIGN_COURSES="";
+    }
 
     private void hintGetUser() {
         String lang = "";
@@ -222,6 +225,10 @@ public class EditUserActivity extends BaseActivity implements NetworkListener {
         super.onResume();
         if (AppConstant.ASSIGN_COURSES.length() > 0) {
             tvAssignCourse.setText(AppConstant.ASSIGN_COURSES);
+        }else
+        {
+            AppConstant.ASSIGN_COURSES="";
+            tvAssignCourse.setText(getString(R.string.assign_courses));
         }
     }
 
@@ -315,16 +322,18 @@ public class EditUserActivity extends BaseActivity implements NetworkListener {
 
                 etName.setText(data.getData().get(0).getFirstName());
                 etLName.setText(data.getData().get(0).getLastName());
-                String sPhone[] = data.getData().get(0).getPhoneNo().split("-");
-                selectedCountryCode=sPhone[0];
+                if(!TextUtils.isEmpty(data.getData().get(0).getCountry_code())) {
+                    String sPhone = data.getData().get(0).getCountry_code();
+                    selectedCountryCode = sPhone;
 
-                String s = sPhone[0].replaceAll("\\+", "");
-                Log.d("______________ ", s);
+                    String s = sPhone.replaceAll("\\+", "");
+                    Log.d("______________ ", s);
 
-                ccp.setCountryForPhoneCode(Integer.parseInt(s));
-                selectedCountry = ccp.getSelectedCountryName();
+                    ccp.setCountryForPhoneCode(Integer.parseInt(s));
+                    selectedCountry = ccp.getSelectedCountryName();
 
-                etPhone.setText(sPhone[1]);
+                    etPhone.setText(data.getData().get(0).getPhoneNo());
+                }
                 etEmail.setText(data.getData().get(0).getEmail());
                 if (data.getData().get(0).getRole() == 1) {
                     role=1+"";
@@ -333,8 +342,13 @@ public class EditUserActivity extends BaseActivity implements NetworkListener {
                     role=2+"";
                     tvRole.setText(getString(R.string.user));
                 }
-                Picasso.with(this).load(data.getData().get(0).
-                        getProfilePicture()).error(getResources().getDrawable(R.mipmap.placeholder)).into(imgUser);
+
+
+                if(data.getData().get(0).
+                        getProfilePicture().length()>0) {
+                    Picasso.with(this).load(data.getData().get(0).
+                            getProfilePicture()).error(getResources().getDrawable(R.mipmap.placeholder)).into(imgUser);
+                }
 
                 if (AppUtils.isInternetAvailable(EditUserActivity.this)) {
                     getCourses();
@@ -364,6 +378,9 @@ public class EditUserActivity extends BaseActivity implements NetworkListener {
 
                     tvAssignCourse.setText(AppConstant.ASSIGN_COURSES);
                     Log.d(";;;;;;;;;;;;;;;;;;;; ",  AppConstant.ASSIGN_COURSES);
+                }else
+                {
+                    tvAssignCourse.setText(getString(R.string.assign_courses));
                 }
             }
 
@@ -372,7 +389,7 @@ public class EditUserActivity extends BaseActivity implements NetworkListener {
             if(data.getStatus()==ServerConstents.CODE_SUCCESS)
             {
                 Toast.makeText(EditUserActivity.this, data.getMessage(), Toast.LENGTH_SHORT).show();
-
+                finish();
             }
         }
 
@@ -380,6 +397,7 @@ public class EditUserActivity extends BaseActivity implements NetworkListener {
 
     @Override
     public void onError (String response,int requestCode, int errorCode){
+        Toast.makeText(EditUserActivity.this, response, Toast.LENGTH_SHORT).show();
 
     }
 
@@ -399,7 +417,7 @@ public class EditUserActivity extends BaseActivity implements NetworkListener {
             } else {
                 lang = AppConstant.ARABIC_LANG;
             }
-            Call<Courses> call = apiInterface.courseList(lang, AppSharedPreference.getInstance().
+            Call<Courses> call = apiInterface.courseListUser(lang, AppSharedPreference.getInstance().
                     getString(EditUserActivity.this, AppSharedPreference.ACCESS_TOKEN), params);
             ApiCall.getInstance().hitService(EditUserActivity.this, call, this, ServerConstents.COURSE_LIST);
 
@@ -466,11 +484,11 @@ public class EditUserActivity extends BaseActivity implements NetworkListener {
                 bool = false;
                 hideKeyboard();
                 Toast.makeText(EditUserActivity.this, getString(R.string.toast_role), Toast.LENGTH_SHORT).show();
-            } else if (TextUtils.isEmpty(AppConstant.ASSIGN_COURSES_Id)) {
+            }/* else if (TextUtils.isEmpty(AppConstant.ASSIGN_COURSES_Id)) {
                 bool = false;
                 hideKeyboard();
                 Toast.makeText(EditUserActivity.this, getString(R.string.toast_slect_course), Toast.LENGTH_SHORT).show();
-            }
+            }*/
             return bool;
         }
 

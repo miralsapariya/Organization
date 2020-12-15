@@ -22,10 +22,10 @@
         android:id="@+id/tvNoRecord"
         android:layout_gravity="center"
         android:gravity="center"
-        android:textSize="@dimen/_13ssp"
         android:visibility="gone"
+        android:textSize="@dimen/_13ssp"
         />
-    <EditText
+    <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/etSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -33,12 +33,14 @@
         android:singleLine="true"
         android:imeOptions="actionDone"
         android:layoutDirection="locale"
+        android:textDirection="ltr"
+        android:gravity="end"
+        android:layout_gravity="end"
         android:drawablePadding="@dimen/_9sdp"
-        android:textDirection="locale"
         android:textCursorDrawable="@drawable/custom_cursor"
         android:backgroundTint="@color/black"
         android:drawableTint="@color/colorPrimary"
-        android:drawableEnd="@drawable/ic_search"
+        android:drawableStart="@drawable/ic_search"
         />
 
     <androidx.recyclerview.widget.RecyclerView

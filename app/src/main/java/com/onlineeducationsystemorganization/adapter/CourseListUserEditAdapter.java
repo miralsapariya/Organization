@@ -7,12 +7,9 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
-
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.onlineeducationsystemorganization.R;
 import com.onlineeducationsystemorganization.model.Courses;
-
 import java.util.ArrayList;
 
 public class CourseListUserEditAdapter extends RecyclerView.Adapter<CourseListUserEditAdapter.ViewHolder> {
@@ -49,6 +46,10 @@ public class CourseListUserEditAdapter extends RecyclerView.Adapter<CourseListUs
         {
             data.setSelected(false);
         }
+        if(data.getIs_started() == 1)
+        {
+            holder.checkboxCourseList.setEnabled(false);
+        }
 
         holder.checkboxCourseList.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -56,8 +57,7 @@ public class CourseListUserEditAdapter extends RecyclerView.Adapter<CourseListUs
                 if(b)
                 {
                     data.setSelected(true);
-                }else
-                {
+                }else {
                     data.setSelected(false);
                 }
             }

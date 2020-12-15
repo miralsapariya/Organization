@@ -109,7 +109,7 @@ public class SelectCoursesEditUserActivity extends BaseActivity
         {
             lang= AppConstant.ARABIC_LANG;
         }
-        Call<Courses> call = apiInterface.courseList(lang,AppSharedPreference.getInstance().
+        Call<Courses> call = apiInterface.courseListUser(lang,AppSharedPreference.getInstance().
                 getString(SelectCoursesEditUserActivity.this, AppSharedPreference.ACCESS_TOKEN),params);
         ApiCall.getInstance().hitService(SelectCoursesEditUserActivity.this, call, this, ServerConstents.COURSE_LIST);
 

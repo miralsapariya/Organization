@@ -52,6 +52,15 @@ public class TrendingCourseActivity extends BaseActivity implements OnItemClick,
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(AppConstant.fromCourseDetail)
+        {
+            finish();
+        }
+    }
+
     private void initToolBar()
     {
         Toolbar toolbar = findViewById(R.id.toolbar);

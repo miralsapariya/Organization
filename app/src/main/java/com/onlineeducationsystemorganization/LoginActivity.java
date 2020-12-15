@@ -87,6 +87,10 @@ public class LoginActivity extends BaseActivity implements NetworkListener {
                         AppSharedPreference.getInstance().putString(LoginActivity.this, AppSharedPreference.DEVICE_TOKEN, token);
                     }
                 });
+    /*    FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(instanceIdResult -> {
+            String token = instanceIdResult.getToken();
+            Log.d("fcmToken", "Fcm Device Token ::: " + token);
+        });*/
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -173,7 +177,9 @@ public class LoginActivity extends BaseActivity implements NetworkListener {
                 Intent i = new Intent(LoginActivity.this,
                         MainActivity.class);
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                i.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 startActivity(i);
                 finish();
             }else
@@ -181,7 +187,9 @@ public class LoginActivity extends BaseActivity implements NetworkListener {
                 Intent i = new Intent(LoginActivity.this,
                         MainUserActivity.class);
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                i.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 startActivity(i);
                 finish();
             }

@@ -129,11 +129,21 @@ public class CourseDetail implements Serializable
         @Expose
         private String share_url;
 
-
+        @SerializedName("course_duration")
+        @Expose
+        private String course_duration;
         @SerializedName("instructor_details")
         @Expose
         private InstructorDetails instructorDetails;
         private final static long serialVersionUID = 136119190814254459L;
+
+        public String getCourse_duration() {
+            return course_duration;
+        }
+
+        public void setCourse_duration(String course_duration) {
+            this.course_duration = course_duration;
+        }
 
         public Integer getId() {
             return id;

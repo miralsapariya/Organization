@@ -46,7 +46,7 @@ public class HomeSearchAdapter extends RecyclerView.Adapter<HomeSearchAdapter.Vi
 
         AppUtils.loadImageWithPicasso(data.getCategoryIcon() , holder.img, context, 0, 0);
 
-        holder.tvCatName.setText(data.getCategoryName());
+        holder.tvCatName.setText(data.getCategoryName()+" ("+data.getTotal_course()+" "+context.getString(R.string.courses)+")");
         holder.llMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,7 +55,6 @@ public class HomeSearchAdapter extends RecyclerView.Adapter<HomeSearchAdapter.Vi
         });
 
     }
-
 
     @Override
     public int getItemCount() {

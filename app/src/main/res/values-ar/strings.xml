@@ -140,7 +140,9 @@
 
     <string name="no_record">لا يوجد سجلات</string>
     <string name="toast_name">الرجاء إدخال الاسم</string>
+    <string name="toast_fname">الرجاء إدخال الاسم</string>
     <string name="toast_lname">الرجاء إدخال الاسم الأخير</string>
+    <string name="no_search">لم يتم العثور على نتيجة بحث</string>
     <string name="toast_role">الرجاء تحديد الدور</string>
     <string name="toast_slect_course">الرجاء تحديد الدورة</string>
     <string name="toast_full_name">الرجاء إدخال الاسم الكامل</string>
@@ -210,6 +212,7 @@
     <string name="users_">المستخدمون</string>
     <string name="price_">السعر</string>
     <string name="price">السعر</string>
+    <string name="price_usd">السعر (USD)</string>
     <string name="add_more_users">أضف المزيد من المستخدمين</string>
     <string name="view_history">عرض السجل</string>
     <string name="no_of_users">عدد المستخدمين</string>
@@ -243,4 +246,8 @@
     <string name="back_to_home">العودة إلى الصفحة الرئيسية</string>
     <string name="thank_inq">شكرا لك على الاستفسار. سيقوم أحد ممثلينا بالرد عليك قريبًا جدًا</string>
     <string name="alert_unassign">هل أنت متأكد أنك تريد إلغاء تعيين المستخدم؟</string>
+    <string name="logout_alert">هل ترغب بالخروج؟</string>
+    <string name="delete_alert">هل أنت متأكد أنك تريد حذف المستخدم؟</string>
+    <string name="delete">حذف</string>
+    <string name="status">الحالة</string>
 </resources>

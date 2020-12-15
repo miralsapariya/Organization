@@ -41,8 +41,8 @@ public class DashboardCoursesAdapter extends RecyclerView.Adapter<DashboardCours
     public void onBindViewHolder(final DashboardCoursesAdapter.ViewHolder holder, final int position) {
         final Dashboard.Mycourselist data = listProduct.get(position);
         holder.tvCourse.setText(data.getCourseName());
-        holder.tvDate.setText(data.getSubscriptionDate());
-        holder.tvStatus.setText(data.getStatus());
+        holder.tvDate.setText(context.getString(R.string.subscription_date)+": "+data.getSubscriptionDate());
+        holder.tvStatus.setText(context.getString(R.string.status)+": "+data.getStatus());
         holder.imgReport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

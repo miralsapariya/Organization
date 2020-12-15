@@ -30,6 +30,7 @@ import com.github.mikephil.charting.utils.ViewPortHandler;
 import com.onlineeducationsystemorganization.CourseDetailActivity;
 import com.onlineeducationsystemorganization.LessionSlideActivity;
 import com.onlineeducationsystemorganization.R;
+import com.onlineeducationsystemorganization.UserCourseDetailActivity;
 import com.onlineeducationsystemorganization.adapter.DashboardUserAdapter;
 import com.onlineeducationsystemorganization.interfaces.NetworkListener;
 import com.onlineeducationsystemorganization.interfaces.OnItemClick;
@@ -114,8 +115,11 @@ public class DashboardUserFragment extends BaseFragment implements NetworkListen
                 intent.putExtra("section_id", data.getData().get(0).getMycourselist().get(pos).getSectionId()+"");
                 intent.putExtra("slide_id", data.getData().get(0).getMycourselist().get(pos).getSlideId()+"");
                 startActivity(intent);
-            }else
-            {
+            }else if(data.getData().get(0).getMycourselist().get(pos).getCourseStatus().equals("1")){
+                Intent intent = new Intent(activity, UserCourseDetailActivity.class);
+                intent.putExtra("course_id", data.getData().get(0).getMycourselist().get(pos).getCourseId() + "");
+                startActivity(intent);
+            }else {
                 Intent intent = new Intent(activity, CourseDetailActivity.class);
                 intent.putExtra("course_id", data.getData().get(0).getMycourselist().get(pos).getCourseId() + "");
                 startActivity(intent);

@@ -111,7 +111,7 @@ public class HomeFragment extends BaseFragment  implements OnItemClick, OnViewAl
 
     @Override
     public void onViewAll() {
-        ((MainActivity)activity).gotoCategory();
+        ((MainActivity)activity).gotoMainCategory();
     }
 
     @Override

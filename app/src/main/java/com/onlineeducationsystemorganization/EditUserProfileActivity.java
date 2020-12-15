@@ -74,7 +74,7 @@ public class EditUserProfileActivity extends BaseActivity implements NetworkList
     File myFile;
     private Uri mCurrentPhotoPathUri;
     private LinearLayout llMain;
-    private EditText etName,etEmail,etPhone,etCompanyName;
+    private EditText etName,etLName,etEmail,etPhone,etCompanyName;
     private Button btnUpdate;
     private ImageView imgBack;
     private CountryCodePicker ccp;
@@ -101,6 +101,7 @@ public class EditUserProfileActivity extends BaseActivity implements NetworkList
             }
         });
         etName =findViewById(R.id.etName);
+        etLName=findViewById(R.id.etLName);
         etEmail =findViewById(R.id.etEmail);
         etCompanyName =findViewById(R.id.etCompanyName);
         etPhone =findViewById(R.id.etPhone);
@@ -165,7 +166,9 @@ public class EditUserProfileActivity extends BaseActivity implements NetworkList
         RequestBody name =
                 RequestBody.create(
                         MultipartBody.FORM, etName.getText().toString());
-
+        RequestBody lname =
+                RequestBody.create(
+                        okhttp3.MultipartBody.FORM, etLName.getText().toString());
         RequestBody comapanyName =
                 RequestBody.create(
                         MultipartBody.FORM, etCompanyName.getText().toString());
@@ -197,7 +200,7 @@ public class EditUserProfileActivity extends BaseActivity implements NetworkList
             Call<GetProfile> call = apiInterface.editProfile(lang,
                     AppSharedPreference.getInstance().getString(EditUserProfileActivity.this, AppSharedPreference.ACCESS_TOKEN),
                     userId,
-                    name,comapanyName,email,phone,countryNAme,
+                    name,lname,comapanyName,email,phone,countryNAme,
                     body
                     );
 
@@ -208,7 +211,7 @@ public class EditUserProfileActivity extends BaseActivity implements NetworkList
             Call<GetProfile> call = apiInterface.editProfile(lang,
                     AppSharedPreference.getInstance().getString(EditUserProfileActivity.this, AppSharedPreference.ACCESS_TOKEN),
                     userId,
-                    name,comapanyName,email,phone,countryNAme
+                    name,lname,comapanyName,email,phone,countryNAme
             );
 
             ApiCall.getInstance().hitService(EditUserProfileActivity.this, call, this, ServerConstents.EDIT_PROFILE);
@@ -249,14 +252,20 @@ public class EditUserProfileActivity extends BaseActivity implements NetworkList
             Toast.makeText(EditUserProfileActivity.this, getString(R.string.toast_name), Toast.LENGTH_SHORT).show();
             // L.showSnackbar(llLogin, getString(R.string.toast_Ic));
 
-        }else if(AppUtils.countWordsUsingSplit(etName.getText().toString()) <= 1)
+        }else  if (TextUtils.isEmpty(etLName.getText().toString())) {
+            bool = false;
+            hideKeyboard();
+            Toast.makeText(EditUserProfileActivity.this, getString(R.string.toast_lname), Toast.LENGTH_SHORT).show();
+
+        }
+            /*else if(AppUtils.countWordsUsingSplit(etName.getText().toString()) <= 1)
         {
 
             bool=false;
             hideKeyboard();
             Toast.makeText(EditUserProfileActivity.this, getString(R.string.toast_full_name), Toast.LENGTH_SHORT).show();
 
-        }else if(TextUtils.isEmpty(etCompanyName.getText().toString()))
+        }*/else if(TextUtils.isEmpty(etCompanyName.getText().toString()))
         {
 
             bool=false;
@@ -297,7 +306,8 @@ public class EditUserProfileActivity extends BaseActivity implements NetworkList
 
            Picasso.with(this).load(data.getData().get(0).
                     getProfilePicture()).into(imgUser);
-            etName.setText(data.getData().get(0).getName());
+            etName.setText(data.getData().get(0).getFirstName());
+            etLName.setText(data.getData().get(0).getLastName());
             etEmail.setText(data.getData().get(0).getEmail());
             etPhone.setText(data.getData().get(0).getPhoneNo());
             etCompanyName.setText(data.getData().get(0).getOrganizationName());

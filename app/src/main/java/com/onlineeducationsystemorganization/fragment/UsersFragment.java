@@ -1,10 +1,15 @@
 package com.onlineeducationsystemorganization.fragment;
 
+import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -129,7 +134,37 @@ public class UsersFragment extends BaseFragment implements NetworkListener , Upd
         tvNoRecord.setVisibility(View.VISIBLE);
         recyclerView.setVisibility(View.GONE);
     }
+    public  class ViewDialog {
 
+        public void showDialog(final  Activity activity, final int pos){
+            final Dialog dialog = new Dialog(activity);
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.setCancelable(false);
+            dialog.setContentView(R.layout.dialog_delete_alert);
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+
+            Button btnApply =  dialog.findViewById(R.id.btnApply);
+            btnApply.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                    if (AppUtils.isInternetAvailable(activity)) {
+                        deleteUser(pos);
+                    }
+                }
+            });
+
+            Button btnCancel =  dialog.findViewById(R.id.btnCancel);
+            btnCancel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.cancel();
+                }
+            });
+
+            dialog.show();
+        }
+    }
     @Override
     public void updateCart(int pos, String pos2) {
 
@@ -141,9 +176,9 @@ public class UsersFragment extends BaseFragment implements NetworkListener , Upd
 
     @Override
     public void deleteCart(int pos) {
-        if (AppUtils.isInternetAvailable(activity)) {
-            deleteUser(pos);
-        }
+        ViewDialog alert = new ViewDialog();
+        alert.showDialog(activity,pos);
+
     }
     private void deleteUser(int id)
     {

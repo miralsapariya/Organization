@@ -52,9 +52,6 @@ public class OTPActivity extends BaseActivity implements NetworkListener {
         llMain =findViewById(R.id.llMain);
 
 
-
-
-
         Bundle extras = getIntent().getExtras();
         if (extras == null) {
             return;
@@ -75,7 +72,7 @@ public class OTPActivity extends BaseActivity implements NetworkListener {
             }
         }
         tvResend =findViewById(R.id.tvResend);
-        tvResend.setEnabled(false);
+       // tvResend.setEnabled(false);
       //  tvResend.setVisibility(View.GONE);
         tvResend.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -154,7 +151,7 @@ public class OTPActivity extends BaseActivity implements NetworkListener {
               if(!response_code.equals("403")) {
                   countDownTimer();
                   tvResend.setEnabled(false);
-                  tvResend.setVisibility(View.GONE);
+                  //tvResend.setVisibility(View.GONE);
               }
             }
         }else

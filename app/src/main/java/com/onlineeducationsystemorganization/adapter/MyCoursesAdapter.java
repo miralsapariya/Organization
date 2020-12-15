@@ -97,38 +97,7 @@ public class MyCoursesAdapter extends RecyclerView.Adapter<MyCoursesAdapter.View
                 point.y = location[1];
                 showStatusPopup((Activity)context, point,data,position);
 
-               /* //https://medium.com/@skydoves/how-to-implement-modern-popup-in-android-3d51f4a40c56
-                PopupMenu popup = new PopupMenu(context, holder.imgSetting);
-                popup.inflate(R.menu.menu_my_couses);
-                try {
-                    Method method = popup.getMenu().getClass().getDeclaredMethod("setOptionalIconsVisible", boolean.class);
-                    method.setAccessible(true);
-                    method.invoke(popup.getMenu(), true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                    @Override
-                    public boolean onMenuItemClick(MenuItem item) {
-                        switch (item.getItemId()) {
-                            case R.id.menu1:
-                                if(data.getCertificate_link().length() > 1)
-                                downloadClick.onDownload(position);
-                                else
-                                    Toast.makeText(context, context.getString(R.string.no_download),Toast.LENGTH_SHORT ).show();
-                                break;
-                            case R.id.menu2:
-                                if(data.getIs_coursereset() == 1)
-                                onResetCourse.onReset(position);
-                                else
-                                    Toast.makeText(context, context.getString(R.string.reset_course_no_start),Toast.LENGTH_SHORT ).show();
-                                break;
 
-                        }
-                        return false;
-                    }
-                });
-                popup.show();*/
             }
         });
 

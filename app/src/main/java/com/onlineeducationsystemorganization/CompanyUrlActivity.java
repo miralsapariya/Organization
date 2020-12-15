@@ -51,7 +51,6 @@ public class CompanyUrlActivity extends AppCompatActivity implements NetworkList
             public void onClick(View view) {
                 if (AppUtils.isInternetAvailable(CompanyUrlActivity.this)) {
                     if (isValid()) {
-
                         hintComapanyURL();
                     }
                 }

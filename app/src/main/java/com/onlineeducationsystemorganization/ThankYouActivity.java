@@ -37,6 +37,8 @@ public class ThankYouActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(AppSharedPreference.getInstance().getString(ThankYouActivity.this, AppSharedPreference.USER_TYPE).equalsIgnoreCase("1")) {
                     Intent intent = new Intent(ThankYouActivity.this, MainActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
                     intent.putExtra("from", "thankyou");
                     startActivity(intent);
                     finish();

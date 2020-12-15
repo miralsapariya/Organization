@@ -91,7 +91,7 @@ public class Datum {
     @SerializedName("status")
     @Expose
     private Integer status;
-    @SerializedName("role")
+    @SerializedName("user_role")
     @Expose
     private Integer role;
     @SerializedName("otp")
@@ -115,9 +115,21 @@ public class Datum {
     @SerializedName("created_at")
     @Expose
     private Object createdAt;
+    @SerializedName("country_code")
+    @Expose
+    private String country_code;
+
     @SerializedName("updated_at")
     @Expose
     private Object updatedAt;
+
+    public String getCountry_code() {
+        return country_code;
+    }
+
+    public void setCountry_code(String country_code) {
+        this.country_code = country_code;
+    }
 
     public Integer getId() {
         return id;

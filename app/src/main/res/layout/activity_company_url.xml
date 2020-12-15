@@ -47,7 +47,6 @@
             android:hint="@string/enter_your_company_url"
             android:inputType="text"
             android:layoutDirection="locale"
-            android:maxLength="12"
             android:singleLine="true"
             android:textColor="@color/white"
             android:textColorHint="@color/white"

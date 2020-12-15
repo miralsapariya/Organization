@@ -6,6 +6,7 @@ import com.onlineeducationsystemorganization.model.AddUser;
 import com.onlineeducationsystemorganization.model.AssignCourseUserList;
 import com.onlineeducationsystemorganization.model.BaseBean;
 import com.onlineeducationsystemorganization.model.CartList;
+import com.onlineeducationsystemorganization.model.Category;
 import com.onlineeducationsystemorganization.model.CheckCourse;
 import com.onlineeducationsystemorganization.model.CompanyUrl;
 import com.onlineeducationsystemorganization.model.CompletedCourses;
@@ -87,6 +88,10 @@ public interface ApiInterface {
     Call<User> register(@Header("language") String lang, @FieldMap HashMap<String, String> map);
 
     @FormUrlEncoded
+    @POST("categorieslist")
+    Call<Category> categoryList(@Header("language") String lang, @FieldMap HashMap<String, String> map);
+
+    @FormUrlEncoded
     @POST("verify_otp")
     Call<User> otp(@Header("language") String lang, @FieldMap HashMap<String, String> map);
 
@@ -108,7 +113,8 @@ public interface ApiInterface {
     Call<GetProfile> editProfile(@Header("language") String lang,
                                  @Header("Authorization") String auth,
                                  @Part("user_id") RequestBody userId,
-                                 @Part("name") RequestBody name,
+                                 @Part("first_name") RequestBody name,
+                                 @Part("last_name") RequestBody lname,
                                  @Part("organization_name") RequestBody compname,
                                  @Part("email") RequestBody email,
                                  @Part("phone_no") RequestBody phone,
@@ -120,7 +126,8 @@ public interface ApiInterface {
     Call<GetProfile> editProfile(@Header("language") String lang,
                                  @Header("Authorization") String auth,
                                  @Part("user_id") RequestBody userId,
-                                 @Part("name") RequestBody name,
+                                 @Part("first_name") RequestBody name,
+                                 @Part("last_name") RequestBody lname,
                                  @Part("organization_name") RequestBody compname,
                                  @Part("email") RequestBody email,
                                  @Part("phone_no") RequestBody phone,
@@ -168,6 +175,11 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("courselist")
     Call<Courses> courseList(@Header("language") String lang, @Header("Authorization") String auth, @FieldMap HashMap<String, String> map);
+
+    @FormUrlEncoded
+    @POST("orgusr/courselist")
+    Call<Courses> courseListUser(@Header("language") String lang, @Header("Authorization") String auth, @FieldMap HashMap<String, String> map);
+
 
     @POST("userlist")
     Call<UserList> userList(@Header("language") String lang, @Header("Authorization") String auth);

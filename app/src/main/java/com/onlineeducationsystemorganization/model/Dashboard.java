@@ -285,7 +285,17 @@ public class CoursechartDatum {
     @SerializedName("course_xaxis_dataval")
     @Expose
     private List<CourseXaxisDataval> courseXaxisDataval = null;
+    @SerializedName("course_color_code")
+    @Expose
+    private String course_color_code;
 
+    public String getCourse_color_code() {
+        return course_color_code;
+    }
+
+    public void setCourse_color_code(String course_color_code) {
+        this.course_color_code = course_color_code;
+    }
 
     public String getCourse_name() {
         return course_name;

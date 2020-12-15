@@ -78,6 +78,18 @@ public static class Courseslist {
     @Expose
     private Integer is_assigned;
 
+    @SerializedName("is_started")
+    @Expose
+    private Integer is_started;
+
+    public Integer getIs_started() {
+        return is_started;
+    }
+
+    public void setIs_started(Integer is_started) {
+        this.is_started = is_started;
+    }
+
     private boolean isSelected;
     public boolean isSelected() {
         return isSelected;

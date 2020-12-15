@@ -183,12 +183,22 @@ public class SubscriptionActivity extends AppCompatActivity implements
                             AppSharedPreference.getInstance().getString(SubscriptionActivity.this, AppSharedPreference.LANGUAGE_SELECTED).equalsIgnoreCase(AppConstant.ENG_LANG)) {
                         if(event.getRawX() >= (etSearch.getRight() - etSearch.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
                             // your action here
-                            etSearch.setText("");
+                         //   etSearch.setText("");
+                            hideKeyboard();
+                            if(!TextUtils.isEmpty(etSearch.getText().toString())) {
+
+                                getSubscription(etSearch.getText().toString());
+                            }
                             return true;
                         }
                     }else {
                         if(event.getRawX() <= (etSearch.getCompoundDrawables()[DRAWABLE_LEFT].getBounds().width()+45)){
-                            etSearch.setText("");
+                            //etSearch.setText("");
+                            hideKeyboard();
+                            if(!TextUtils.isEmpty(etSearch.getText().toString())) {
+
+                                getSubscription(etSearch.getText().toString());
+                            }
                             return true;
 
                         }

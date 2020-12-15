@@ -3,6 +3,7 @@ package com.onlineeducationsystemorganization;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -52,14 +53,46 @@ public class MainActivity extends BaseActivity {
         Bundle b = getIntent().getExtras();
         if (b != null && b.containsKey("from")) {
             //gotoMyCourses();
-        } else {
             imgNotification.setVisibility(View.VISIBLE);
+            imgSearch.setVisibility(View.VISIBLE);
+            imgAddUser.setVisibility(View.GONE);
+            toolbar_title.setText(getString(R.string.home));
+            loadFragment(new HomeFragment());
+            Intent intent=new Intent(MainActivity.this,MyCoursesActivity.class);
+            startActivity(intent);
+        }
+            else {
+            imgNotification.setVisibility(View.VISIBLE);
+            imgSearch.setVisibility(View.VISIBLE);
+            imgAddUser.setVisibility(View.GONE);
+            toolbar_title.setText(getString(R.string.home));
             loadFragment(new HomeFragment());
         }
 
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(AppConstant.fromCourseDetail)
+        {
+            AppConstant.fromCourseDetail=false;
+            gotoCart();
+
+        }
+
+        //imgSearch.setVisibility(View.VISIBLE);
+        //imgNotification.setVisibility(View.VISIBLE);
+        //imgAddUser.setVisibility(View.GONE);
+        //toolbar_title.setText(getString(R.string.home));
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+    }
 
     private void setLanguage() {
         if (AppSharedPreference.getInstance().getString(this, AppSharedPreference.LANGUAGE_SELECTED) != null) {
@@ -139,7 +172,7 @@ public class MainActivity extends BaseActivity {
                         break;
                     case R.id.page_3:
 
-                        imgSearch.setVisibility(View.VISIBLE);
+                        imgSearch.setVisibility(View.GONE);
                         imgNotification.setVisibility(View.GONE);
                         imgAddUser.setVisibility(View.GONE);
                         toolbar_title.setText(getString(R.string.courses));
@@ -177,7 +210,27 @@ public class MainActivity extends BaseActivity {
         //toolbar_title.setText(getString(R.string.category));
         // loadFragment(new CategoryFragment());
     }
+    public void gotoMainCategory() {
 
+        // nav_view.getMenu().findItem(R.id.page_2).setChecked(true);
+
+        imgSearch.setVisibility(View.GONE);
+        imgNotification.setVisibility(View.GONE);
+        toolbar_title.setText(getString(R.string.category));
+        Intent intent=new Intent(MainActivity.this,CategoryFragment.class);
+        startActivity(intent);
+
+         //loadFragment(new CategoryFragment());
+    }
+
+    public void gotoCart()
+    {
+        Log.d("CALL CART:: ", "========");
+        nav_view.getMenu().findItem(R.id.page_2).setChecked(true);
+        imgSearch.setVisibility(View.GONE);
+        imgNotification.setVisibility(View.GONE);
+        loadFragment(new CartFragment());
+    }
    /* public void gotoMyCourses()
     {
         nav_view.getMenu().findItem(R.id.page_3).setChecked(true);

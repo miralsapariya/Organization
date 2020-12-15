@@ -3,6 +3,7 @@ package com.onlineeducationsystemorganization;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -34,6 +35,7 @@ import com.onlineeducationsystemorganization.util.AppUtils;
 import com.onlineeducationsystemorganization.util.DownloadTask;
 
 import java.util.HashMap;
+import java.util.Locale;
 
 import retrofit2.Call;
 
@@ -61,6 +63,15 @@ public class MyCoursesActivity extends BaseActivity implements OnItemClick, Netw
     public void onResume() {
         super.onResume();
         initUI();
+        if (AppSharedPreference.getInstance().getString(MyCoursesActivity.this, AppSharedPreference.LANGUAGE_SELECTED)!= null && AppSharedPreference.getInstance().getString(MyCoursesActivity.this, AppSharedPreference.LANGUAGE_SELECTED).equalsIgnoreCase(AppConstant.ARABIC_LANG)) {
+            String languageToLoad = "ar"; // your language
+            Locale locale = new Locale(languageToLoad);
+            Locale.setDefault(locale);
+            Configuration config = new Configuration();
+            config.locale = locale;
+            getBaseContext().getResources().updateConfiguration(config, MyCoursesActivity.this.getBaseContext().getResources().getDisplayMetrics());
+
+        }
     }
 
     private void initUI() {

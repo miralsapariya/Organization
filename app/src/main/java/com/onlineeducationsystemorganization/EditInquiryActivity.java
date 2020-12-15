@@ -84,16 +84,21 @@ public class EditInquiryActivity extends BaseActivity implements NetworkListener
         });
 
         etNoOfUser.addTextChangedListener(new TextWatcher() {
-
             @Override
             public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
-
                 if(etNoOfUser.getText().toString().length() >0) {
-                    int u = Integer.parseInt(etNoOfUser.getText().toString()) * data.getPrice();
+                    double u = Integer.parseInt(etNoOfUser.getText().toString()) *data.getSinglePrice();
                     Log.d("==== ", Integer.parseInt(etNoOfUser.getText().toString()) + " " + data.getPrice());
                     Log.d("------------", u + "");
                     etPrice.setText(u + "");
-                }else{
+                    if(Integer.parseInt(etNoOfUser.getText().toString()) == 0)
+                    {
+                        etNoOfUser.setText("" );
+                        etPrice.setText("");
+                    }
+                }
+
+                else{
                     etPrice.setText("");
                 }
             }
@@ -136,6 +141,7 @@ public class EditInquiryActivity extends BaseActivity implements NetworkListener
             if (data.getStatus() == ServerConstents.CODE_SUCCESS) {
 
                 Toast.makeText(EditInquiryActivity.this, data.getMessage(), Toast.LENGTH_SHORT).show();
+                finish();
             }
         }
     }

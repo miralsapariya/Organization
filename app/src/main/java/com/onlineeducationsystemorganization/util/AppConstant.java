@@ -30,6 +30,8 @@ public class AppConstant {
     public static String ASSIGN_COURSES="";
     public static String ASSIGN_COURSES_Id="";
 
+    public static boolean fromCourseDetail=false;
+
     //
     //QUESTION_TYPE
     public static int SINGLE_CHOICE=1;

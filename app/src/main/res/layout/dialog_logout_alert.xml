@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/_15sdp"
+    android:orientation="vertical"
+    android:layoutDirection="locale"
+    android:textDirection="locale"
+    android:background="@drawable/round_rect"
+    android:layout_margin="@dimen/_10sdp"
+    >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/logout_alert"
+        android:textColor="@color/black"
+        android:layoutDirection="locale"
+        android:textDirection="locale"
+        />
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:textDirection="locale"
+        android:layoutDirection="locale"
+        >
+
+        <Button
+            android:id="@+id/btnApply"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:background="@drawable/button"
+            android:text="@string/ok"
+            />
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:background="@drawable/button"
+            android:text="@string/cancel"
+            android:layout_marginStart="@dimen/_16sdp"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

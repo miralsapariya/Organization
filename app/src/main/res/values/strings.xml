@@ -133,14 +133,16 @@
         character,upper case and lowercase character and should be minimum 6 character</string>
 
     <string name="no_record">No record found</string>
+    <string name="no_search">No search result found</string>
     <string name="toast_name">Please enter name</string>
+    <string name="toast_fname">Please enter first name</string>
     <string name="toast_lname">Please enter Last name</string>
     <string name="toast_role">Please select role</string>
     <string name="toast_slect_course">Please select course</string>
     <string name="toast_full_name">Please enter full name</string>
     <string name="toast_email">Please enter email</string>
     <string name="toast_valid_email">Please enter valid email.</string>
-    <string name="toast_phone">Please enter phone number</string>
+    <string name="toast_phone">Please enter mobile number</string>
     <string name="toast_phone_length">Phone number should be 10 digits.</string>
     <string name="toast_password">Please enter password</string>
     <string name="no_login">You haven\'t login, Please login first.</string>
@@ -193,7 +195,7 @@
     <string name="add_user">Add User</string>
     <string name="edit_user">Edit User</string>
     <string name="admin">Admin</string>
-    <string name="select_courses">Selelct Courses</string>
+    <string name="select_courses">Select Courses</string>
     <string name="done">Done</string>
     <string name="toast_started_course">You can not assigned user after course started</string>
     <string name="toast_assined_user">You can unassign only assign user.</string>
@@ -208,6 +210,7 @@
     <string name="course_">Course :</string>
     <string name="users_">Users :</string>
     <string name="price">Price </string>
+    <string name="price_usd">Price (USD)</string>
     <string name="price_">Price :</string>
     <string name="add_more_users">Add More Users</string>
     <string name="view_history">View History</string>
@@ -244,4 +247,8 @@
     <string name="user_activity">User Activity</string>
     <string name="thank_inq">Thank you for making inquiry. One of our representatives will get back to you very soon.</string>
     <string name="alert_unassign">Are you sure you want to Unassign the User ?</string>
+    <string name="logout_alert">Do you want to logout?</string>
+    <string name="delete">Delete</string>
+    <string name="delete_alert">Are you sure you want to delete user ?</string>
+    <string name="status">Status</string>
 </resources>

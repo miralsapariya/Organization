@@ -1,5 +1,6 @@
 package com.onlineeducationsystemorganization;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -28,12 +29,18 @@ public class ThankYouInquiry extends AppCompatActivity {
         tvBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(ThankYouInquiry.this, MainActivity.class);
+                //intent.putExtra("fromInq", "inquiry");
+                startActivity(intent);
                 finish();
             }
         });
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(ThankYouInquiry.this, MainActivity.class);
+               // intent.putExtra("fromInq", "inquiry");
+                startActivity(intent);
                 finish();
             }
         });

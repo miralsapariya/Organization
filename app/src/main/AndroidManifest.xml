@@ -204,6 +204,11 @@
             android:configChanges="locale"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".CategoryFragment"
+            android:configChanges="locale"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
        <!-- <meta-data
             android:name="com.google.android.actions"
             android:resource="@xml/attrs" />

@@ -71,7 +71,7 @@ public class Subscriptionhistorylist {
     private Integer noOfUser;
     @SerializedName("price")
     @Expose
-    private Integer price;
+    private String price;
 
     public String getInquiryDate() {
         return inquiryDate;
@@ -97,11 +97,11 @@ public class Subscriptionhistorylist {
         this.noOfUser = noOfUser;
     }
 
-    public Integer getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 

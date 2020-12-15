@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".ThankYouInquiry"
     android:orientation="vertical"
+    android:textDirection="locale"
+    android:layoutDirection="locale"
     android:padding="@dimen/_10sdp"
     tools:showIn="@layout/activity_thank_you_inquiry"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
@@ -15,11 +17,15 @@
         android:gravity="center_vertical"
         android:layout_gravity="center_vertical"
         android:layout_width="match_parent"
+        android:textDirection="locale"
+        android:layoutDirection="locale"
         android:layout_height="match_parent">
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/img"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textDirection="locale"
+            android:layoutDirection="locale"
             android:layout_gravity="center_vertical"
             android:layout_margin="@dimen/_20sdp"
             android:src="@mipmap/check_mark" />
@@ -30,6 +36,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:textColor="@color/black"
+            android:layoutDirection="locale"
             android:textDirection="locale"
             android:text="@string/thank_you"
             android:textSize="@dimen/_20ssp" />
@@ -38,6 +45,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:textDirection="locale"
+            android:layoutDirection="locale"
             android:text="@string/thank_inq"
             android:layout_margin="@dimen/_9sdp"
             android:textSize="@dimen/_12ssp" />
@@ -51,6 +59,7 @@
             android:background="@drawable/button"
             android:paddingTop="@dimen/_7sdp"
             android:paddingBottom="@dimen/_7sdp"
+            android:layoutDirection="locale"
             android:paddingLeft="@dimen/_15sdp"
             android:paddingRight="@dimen/_15sdp"
             android:layout_marginTop="@dimen/_10sdp"

@@ -45,11 +45,9 @@ public class DashboardReportAdapter extends RecyclerView.Adapter<DashboardReport
         holder.tvSlide.setText(context.getString(R.string.slide)+": "+data.getSlide());
         holder.tvAttemp.setText(context.getString(R.string.attempts)+": "+data.getAttempts());
         holder.tvStatus.setText(data.getStatus());
-        if(TextUtils.isEmpty(data.getBtnStatus()))
-        {
+        if(TextUtils.isEmpty(data.getBtnStatus())) {
             holder.btnStatus.setVisibility(View.GONE);
-        }else
-        {
+        }else {
             holder.btnStatus.setVisibility(View.VISIBLE);
         }
         holder.btnStatus.setText(data.getButton());

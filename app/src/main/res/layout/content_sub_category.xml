@@ -25,6 +25,7 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:visibility="gone"
+        android:textSize="@dimen/_15sdp"
         android:text="@string/no_record"
         />
 

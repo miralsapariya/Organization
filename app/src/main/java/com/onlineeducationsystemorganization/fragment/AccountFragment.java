@@ -1,5 +1,6 @@
 package com.onlineeducationsystemorganization.fragment;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -88,7 +90,7 @@ public class AccountFragment extends BaseFragment implements NetworkListener
         listAboutUs.add(getString(R.string.dasahboard));
         listAboutUs.add(getString(R.string.my_courses));
         listAboutUs.add(getString(R.string.inquires));
-        listAboutUs.add(getString(R.string.subscribers));
+        listAboutUs.add(getString(R.string.subscriptions));
         listAboutUs.add(getString(R.string.my_profile));
         listAboutUs.add(getString(R.string.change_pwd));
         listAboutUs.add(getString(R.string.whishlist));
@@ -142,18 +144,71 @@ public class AccountFragment extends BaseFragment implements NetworkListener
         tvSignOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AppSharedPreference.getInstance().clearAllPrefs(activity);
+                ViewDialog alert = new ViewDialog();
+                alert.showDialog(activity);
+
+               /* AppSharedPreference.getInstance().clearAllPrefs(activity);
                 llWithLogin.setVisibility(View.GONE);
                 tvSignIn.setVisibility(View.VISIBLE);
+                //set eng lang
+                String languageToLoad = "en"; // your language
+                Locale locale = new Locale(languageToLoad);
+                Locale.setDefault(locale);
+                config = new Configuration();
+                config.locale = locale;
+                activity.getBaseContext().getResources().updateConfiguration(config, activity.getBaseContext().getResources().getDisplayMetrics());
+
+
                 Intent intent = new Intent(activity, CompanyUrlActivity.class);
-                startActivity(intent);
+                startActivity(intent);*/
             }
         });
 
 
         imgUser = view.findViewById(R.id.imgUser);
     }
+    public  class ViewDialog {
 
+        public void showDialog(final Activity activity){
+            final Dialog dialog = new Dialog(activity);
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.setCancelable(false);
+            dialog.setContentView(R.layout.dialog_logout_alert);
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+
+            Button btnApply =  dialog.findViewById(R.id.btnApply);
+            btnApply.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AppSharedPreference.getInstance().clearAllPrefs(activity);
+                    llWithLogin.setVisibility(View.GONE);
+                    tvSignIn.setVisibility(View.VISIBLE);
+                    //set eng lang
+                    String languageToLoad = "en"; // your language
+                    Locale locale = new Locale(languageToLoad);
+                    Locale.setDefault(locale);
+                    config = new Configuration();
+                    config.locale = locale;
+                    activity.getBaseContext().getResources().updateConfiguration(config, activity.getBaseContext().getResources().getDisplayMetrics());
+
+
+                    Intent intent = new Intent(activity, CompanyUrlActivity.class);
+                    startActivity(intent);
+                    dialog.dismiss();
+                }
+            });
+
+            Button btnCancel =  dialog.findViewById(R.id.btnCancel);
+            btnCancel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.cancel();
+                }
+            });
+
+            dialog.show();
+        }
+    }
     @Override
     public void onResume() {
         super.onResume();

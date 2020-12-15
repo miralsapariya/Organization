@@ -9,13 +9,14 @@ import java.util.List;
 
 public class DefaultCategory implements Serializable
 {
-
     @SerializedName("status")
     @Expose
     private Integer status;
+
     @SerializedName("message")
     @Expose
     private String message;
+
     @SerializedName("data")
     @Expose
     private List<Datum> data = null;
@@ -48,13 +49,14 @@ public class DefaultCategory implements Serializable
 
     public class Datum implements Serializable
     {
-
         @SerializedName("title")
         @Expose
         private String title;
+
         @SerializedName("categories")
         @Expose
         private ArrayList<Category> categories = null;
+
         private final static long serialVersionUID = 8083280329208032982L;
 
         public String getTitle() {
@@ -87,6 +89,15 @@ public class DefaultCategory implements Serializable
         @SerializedName("category_icon")
         @Expose
         private String categoryIcon;
+
+        @SerializedName("total_course")
+        @Expose
+        private Integer total_course;
+
+        public Integer getTotal_course() {
+            return total_course;
+        }
+
         private final static long serialVersionUID = 2268342625711373244L;
 
         public Integer getId() {

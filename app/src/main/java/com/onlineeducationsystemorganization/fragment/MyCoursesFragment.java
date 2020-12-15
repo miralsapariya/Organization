@@ -57,22 +57,22 @@ public class MyCoursesFragment extends BaseFragment implements OnItemClick, Netw
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view =inflater.inflate(R.layout.fragment_my_courses, container, false);
-
+        initUI();
         return view;
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        initUI();
+        if (AppUtils.isInternetAvailable(activity)) {
+            getMyCourseList();
+        }
     }
 
     private void initUI() {
         rvMyCourses = view.findViewById(R.id.rvMyCourses);
         tvNoData = view.findViewById(R.id.tvNoData);
-        if (AppUtils.isInternetAvailable(activity)) {
-            getMyCourseList();
-        }
+
     }
     private void getMyCourseList() {
         String lang = "";

@@ -188,7 +188,7 @@ public class AddUserActivity extends BaseActivity implements NetworkListener {
     @Override
     protected void onResume() {
         super.onResume();
-        Log.d("=============== >>> ", "resume :: "+AppConstant.ASSIGN_COURSES);
+        Log.d("============ >>> ", "resume :: "+AppConstant.ASSIGN_COURSES);
         if(AppConstant.ASSIGN_COURSES.length()>0)
         {
             tvAssignCourse.setText(AppConstant.ASSIGN_COURSES);
@@ -280,6 +280,7 @@ public class AddUserActivity extends BaseActivity implements NetworkListener {
         {
             Toast.makeText(AddUserActivity.this, data.getMessage(), Toast.LENGTH_SHORT).show();
 
+            finish();
         }
     }
 
@@ -325,7 +326,7 @@ public class AddUserActivity extends BaseActivity implements NetworkListener {
         if (TextUtils.isEmpty(etName.getText().toString())) {
             bool = false;
             hideKeyboard();
-            Toast.makeText(AddUserActivity.this, getString(R.string.toast_name), Toast.LENGTH_SHORT).show();
+            Toast.makeText(AddUserActivity.this, getString(R.string.toast_fname), Toast.LENGTH_SHORT).show();
 
         }else if(TextUtils.isEmpty(etLName.getText().toString()))
         {
@@ -371,12 +372,12 @@ public class AddUserActivity extends BaseActivity implements NetworkListener {
             bool=false;
             hideKeyboard();
             Toast.makeText(AddUserActivity.this, getString(R.string.toast_role), Toast.LENGTH_SHORT).show();
-        }else if(TextUtils.isEmpty(AppConstant.ASSIGN_COURSES_Id))
+        }/*else if(TextUtils.isEmpty(AppConstant.ASSIGN_COURSES_Id))
         {
             bool=false;
             hideKeyboard();
             Toast.makeText(AddUserActivity.this, getString(R.string.toast_slect_course), Toast.LENGTH_SHORT).show();
-        }
+        }*/
         return bool;
     }
 
@@ -685,5 +686,7 @@ public class AddUserActivity extends BaseActivity implements NetworkListener {
         }
         return result;
     }
+
+
 
 }

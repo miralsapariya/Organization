@@ -142,7 +142,7 @@ public class DashboardReportActivity extends BaseActivity implements View.OnClic
                 tvMonthly.setPadding(0, 20,0, 20);
                 tvYearly.setBackground(getResources().getDrawable(R.drawable.button_select));
                 tvYearly.setPadding(0, 20,0, 20);
-
+                mode=AppConstant.CUSTOM;
                 showDateDialog();
                 break;
             case R.id.tvDaily:
@@ -219,10 +219,9 @@ public class DashboardReportActivity extends BaseActivity implements View.OnClic
             if(startDate.length() >0 && endDate.length() >0) {
                 params.put("start_date", startDate);
                 params.put("end_date", endDate);
-            }else
-            {
-                params.put("mode", mode);
             }
+                params.put("mode", mode);
+
 
             ApiInterface apiInterface = RestApi.getConnection(ApiInterface.class, ServerConstents.API_URL);
             if (AppSharedPreference.getInstance().getString(DashboardReportActivity.this, AppSharedPreference.LANGUAGE_SELECTED) == null ||
@@ -352,6 +351,7 @@ public class DashboardReportActivity extends BaseActivity implements View.OnClic
                 lineChart.getLegend().setEnabled(true);
                 lineChart.setDescription(null);
                 lineChart.setPinchZoom(false);
+                lineChart.setTouchEnabled(false);
                 lineChart.getLegend().setWordWrapEnabled(true);
                 lineChart.setData(pieData);
 
@@ -409,6 +409,8 @@ public class DashboardReportActivity extends BaseActivity implements View.OnClic
                 dialog.dismiss();
                 if(!TextUtils.isEmpty(tvFrom.getText().toString()) && !TextUtils.isEmpty(tvTo.getText().toString()))
                 {
+                    if(tvTo.getText().toString().equals(getString(R.string.to_date)))
+                        tvTo.setText("");
                     setChart(tvFrom.getText().toString(),tvTo.getText().toString());
                 }
             }

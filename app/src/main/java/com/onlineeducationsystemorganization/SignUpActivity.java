@@ -39,7 +39,7 @@ import retrofit2.Call;
 
 public class SignUpActivity extends BaseActivity implements NetworkListener
 {
-    private EditText etName,etEmail,etPhone,etPassword,etCompanyName,etURL;
+    private EditText etName,etLName,etEmail,etPhone,etPassword,etCompanyName,etURL;
     private LinearLayout llMain;
     private TextView tvLogin,btnSignUp;
     private ImageView imgBack;
@@ -59,6 +59,8 @@ public class SignUpActivity extends BaseActivity implements NetworkListener
         android_id = Settings.Secure.getString(SignUpActivity.this.getContentResolver(),
                 Settings.Secure.ANDROID_ID);
         etName = findViewById(R.id.etName);
+        etLName =findViewById(R.id.etLName);
+
         etEmail = findViewById(R.id.etEmail);
         etPhone = findViewById(R.id.etPhone);
         etPassword = findViewById(R.id.etPassword);
@@ -68,9 +70,13 @@ public class SignUpActivity extends BaseActivity implements NetworkListener
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(SignUpActivity.this, CompanyUrlActivity.class);
+                startActivity(intent);
                 finish();
             }
         });
+
+
         llMain = findViewById(R.id.llMain);
         tvLogin = findViewById(R.id.tvLogin);
         tvLogin.setOnClickListener(new View.OnClickListener() {
@@ -121,13 +127,23 @@ public class SignUpActivity extends BaseActivity implements NetworkListener
                 });
 
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(SignUpActivity.this, CompanyUrlActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
     private void hintRegister()
     {
         String lang="";
         AppUtils.showDialog(this, getString(R.string.pls_wait));
         ApiInterface apiInterface = RestApi.getConnection(ApiInterface.class, ServerConstents.API_URL);
         final HashMap params = new HashMap<>();
-        params.put("name", etName.getText().toString());
+        params.put("first_name", etName.getText().toString());
+        params.put("last_name", etLName.getText().toString());
         params.put("email", etEmail.getText().toString());
         params.put("device_id", android_id);
         params.put("password", etPassword.getText().toString());
@@ -159,7 +175,8 @@ public class SignUpActivity extends BaseActivity implements NetworkListener
 
         AppConstant.registerData =data;
         Intent intent =new Intent(SignUpActivity.this, OTPActivity.class);
-        intent.putExtra("name", etName.getText().toString());
+        intent.putExtra("first_name", etName.getText().toString());
+        intent.putExtra("last_name", etLName.getText().toString());
         intent.putExtra("password", etPassword.getText().toString());
         intent.putExtra("email", etEmail.getText().toString());
         intent.putExtra("phone", etPhone.getText().toString());
@@ -177,7 +194,8 @@ public class SignUpActivity extends BaseActivity implements NetworkListener
 
         if(errorCode == 403) {
             Intent intent = new Intent(SignUpActivity.this, OTPActivity.class);
-            intent.putExtra("name", etName.getText().toString());
+            intent.putExtra("first_name", etName.getText().toString());
+            intent.putExtra("last_name", etLName.getText().toString());
             intent.putExtra("password", etPassword.getText().toString());
             intent.putExtra("email", etEmail.getText().toString());
             intent.putExtra("phone", etPhone.getText().toString());
@@ -203,23 +221,25 @@ public class SignUpActivity extends BaseActivity implements NetworkListener
             hideKeyboard();
             Toast.makeText(SignUpActivity.this, getString(R.string.toast_name), Toast.LENGTH_SHORT).show();
            // L.showSnackbar(llLogin, getString(R.string.toast_Ic));
-
-        }
-        else if(AppUtils.countWordsUsingSplit(etName.getText().toString()) <= 1)
+        }else  if(TextUtils.isEmpty(etLName.getText().toString()))
         {
-
+            bool=false;
+            hideKeyboard();
+            Toast.makeText(SignUpActivity.this, getString(R.string.toast_lname), Toast.LENGTH_SHORT).show();
+            // L.showSnackbar(llLogin, getString(R.string.toast_Ic));
+        }
+       /* else if(AppUtils.countWordsUsingSplit(etName.getText().toString()) <= 1)
+        {
              bool=false;
             hideKeyboard();
             Toast.makeText(SignUpActivity.this, getString(R.string.toast_full_name), Toast.LENGTH_SHORT).show();
-
-        }
+        }*/
 
         else if(TextUtils.isEmpty(etEmail.getText().toString()))
         {
             bool=false;
             hideKeyboard();
             Toast.makeText(SignUpActivity.this, getString(R.string.toast_email), Toast.LENGTH_SHORT).show();
-
             //L.showSnackbar(llLogin, getString(R.string.toast_pwd));
         }
         else if(! AppUtils.validEmail(etEmail.getText().toString()))
@@ -227,7 +247,6 @@ public class SignUpActivity extends BaseActivity implements NetworkListener
             bool=false;
             hideKeyboard();
             Toast.makeText(SignUpActivity.this, getString(R.string.toast_valid_email), Toast.LENGTH_SHORT).show();
-
         }
         else if(TextUtils.isEmpty(etPhone.getText().toString()))
         { bool=false;

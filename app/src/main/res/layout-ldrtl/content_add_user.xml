@@ -86,9 +86,13 @@
         android:textCursorDrawable="@drawable/custom_cursor"
         />
     <LinearLayout
+        android:layoutDirection="locale"
+        android:textDirection="locale"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <LinearLayout
+            android:layoutDirection="locale"
+            android:textDirection="locale"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -100,13 +104,13 @@
                 app:ccp_arrowColor="@color/black"
                 app:ccp_contentColor="@color/black"
                 app:ccp_flagBorderColor="@color/white"
-                android:textDirection="locale"
                 android:layout_marginTop="@dimen/_3sdp"
                 android:layout_gravity="center_vertical"
                 app:ccp_showFullName="false"
                 app:ccp_showNameCode="false"
                 app:ccp_showPhoneCode="true"
                 app:ccp_textSize="@dimen/_14sdp"
+
                 app:ccpDialog_textColor="@color/black"
                 app:ccpDialog_backgroundColor="@color/white"
                 app:ccp_autoDetectCountry="true"/>
@@ -221,7 +225,6 @@
                 android:layout_gravity="center_vertical"
                 android:drawablePadding="@dimen/_10sdp"
                 android:textSize="@dimen/_14sdp"
-                android:singleLine="true"
                 android:drawableEnd="@drawable/ic_down_arrow"
                 />
 

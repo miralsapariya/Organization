@@ -1,8 +1,12 @@
 package com.onlineeducationsystemorganization;
 
+import android.app.Activity;
+import android.app.Dialog;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -202,7 +206,39 @@ public class AssignActivity extends BaseActivity implements NetworkListener, Del
     @Override
     public void deleteCart(int pos) {
         if (isValidForUnassing(pos)) {
-            callUnAssign(data.getData().get(0).getUsers().get(pos).getId() + "");
+            ViewDialog alert = new ViewDialog();
+            alert.showDialog(AssignActivity.this,pos);
+
+            //callUnAssign(data.getData().get(0).getUsers().get(pos).getId() + "");
+        }
+    }
+    public  class ViewDialog {
+
+        public void showDialog(Activity activity, final int pos){
+            final Dialog dialog = new Dialog(activity);
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.setCancelable(false);
+            dialog.setContentView(R.layout.dialog_unassign_alert);
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+
+            Button btnApply =  dialog.findViewById(R.id.btnApply);
+            btnApply.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                    callUnAssign(data.getData().get(0).getUsers().get(pos).getId() + "");
+                }
+            });
+
+            Button btnCancel =  dialog.findViewById(R.id.btnCancel);
+            btnCancel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.cancel();
+                }
+            });
+
+            dialog.show();
         }
     }
 

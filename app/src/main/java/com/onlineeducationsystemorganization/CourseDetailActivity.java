@@ -89,7 +89,6 @@ public class CourseDetailActivity extends BaseActivity implements NetworkListene
                         ContextCompat.checkSelfPermission(CourseDetailActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                     ActivityCompat.requestPermissions(CourseDetailActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, PERMISSION_PHOTO);
                 } else {
-
                     share();
                 }
             }
@@ -97,19 +96,62 @@ public class CourseDetailActivity extends BaseActivity implements NetworkListene
     }
     private void share() {
 
-
+        //https://developers.facebook.com/docs/sharing/android
         Target target = new Target() {
             @Override
             public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-
+//data.getData().get(0).getShare_url()
                 String path = MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, "SomeText", null);
                 Log.d("Path", path);
-                Intent intent = new Intent(Intent.ACTION_SEND);
-                intent.putExtra(Intent.EXTRA_TEXT, data.getData().get(0).getShare_url());
-                Uri screenshotUri = Uri.parse(path);
-                intent.putExtra(Intent.EXTRA_STREAM, screenshotUri);
-                intent.setType("image/*");
-                startActivity(Intent.createChooser(intent, data.getData().get(0).getCourseName()));
+               Intent intent = new Intent(Intent.ACTION_SEND);
+               intent.putExtra(Intent.EXTRA_TEXT, data.getData().get(0).getShare_url());
+               Uri screenshotUri = Uri.parse(path);
+               intent.putExtra(Intent.EXTRA_STREAM, screenshotUri);
+               intent.setType("image/*");
+              //  intent.setType("text/plain");
+
+               startActivity(Intent.createChooser(intent, data.getData().get(0).getCourseName()));
+
+
+                           //
+              /*  String application = "com.facebook.katana";
+                    Intent mIntentShare = new Intent(Intent.ACTION_SEND);
+                String mStrExtension = android.webkit.MimeTypeMap.getFileExtensionFromUrl(path);
+
+                String mStrMimeType = android.webkit.MimeTypeMap.getSingleton().getMimeTypeFromExtension(mStrExtension);
+
+                        mIntentShare.setType(mStrMimeType);
+
+                    mIntentShare.putExtra(Intent.EXTRA_STREAM,screenshotUri);
+                    mIntentShare.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
+                    mIntentShare.setPackage(application);
+                    startActivity(mIntentShare);
+*/
+
+                //
+                // See if official Facebook app is found
+               /* boolean facebookAppFound = false;
+                List<ResolveInfo> matches = getPackageManager()
+                        .queryIntentActivities(intent, 0);
+                for (ResolveInfo info : matches) {
+                    if (info.activityInfo.packageName.toLowerCase()
+                            .startsWith("com.facebook.katana")) {
+                        intent.setPackage(info.activityInfo.packageName);
+                        Log.d("============>FBBBB ", "======");
+                        facebookAppFound = true;
+                        break;
+                    }
+                }
+
+                if (!facebookAppFound) {
+                    String sharerUrl = "https://www.facebook.com/sharer/sharer.php?u="
+                            + data.getData().get(0).getShare_url();
+                    intent = new Intent(Intent.ACTION_VIEW, Uri
+                            .parse(sharerUrl));
+                }
+*/
+                //startActivity(intent);
             }
 
             @Override
@@ -175,7 +217,6 @@ public class CourseDetailActivity extends BaseActivity implements NetworkListene
                 if (AppSharedPreference.getInstance().getString(CourseDetailActivity.this, AppSharedPreference.USERID) == null) {
                     AppUtils.loginAlert(CourseDetailActivity.this);
                 } else {
-
                     callCart();
                 }
             }
@@ -194,9 +235,7 @@ public class CourseDetailActivity extends BaseActivity implements NetworkListene
         imgWhishList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 if (AppUtils.isInternetAvailable(CourseDetailActivity.this)) {
-
                     if (AppSharedPreference.getInstance().getString(CourseDetailActivity.this, AppSharedPreference.USERID) == null) {
                         Toast.makeText(CourseDetailActivity.this, getString(R.string.toast_login_first), Toast.LENGTH_SHORT).show();
                     } else {
@@ -212,12 +251,9 @@ public class CourseDetailActivity extends BaseActivity implements NetworkListene
             }
         });
 
-
         if (AppUtils.isInternetAvailable(CourseDetailActivity.this)) {
-
             hintCourseDetail();
         }
-
 
     }
 
@@ -302,26 +338,25 @@ public class CourseDetailActivity extends BaseActivity implements NetworkListene
                 Toast.makeText(CourseDetailActivity.this, data.getMessage(), Toast.LENGTH_SHORT).show();
             }
         } else if (requestCode == ServerConstents.CART) {
-
             BaseBean baseBean = (BaseBean) response;
             Toast.makeText(CourseDetailActivity.this, baseBean.getMessage().toString(), Toast.LENGTH_SHORT).show();
 
+            AppConstant.fromCourseDetail=true;
+            finish();
+            //gotoCart();
         } else {
-
             data = (CourseDetail) response;
-
             if (data.getStatus() == ServerConstents.CODE_SUCCESS) {
                 AppUtils.loadImageWithPicasso
                         (data.getData().get(0).getImage(), imgCourse, CourseDetailActivity.this, 0, 0);
                 tvCourseTitle.setText(data.getData().get(0).getCourseName());
                 tvTitle1.setText(data.getData().get(0).getCourseName());
-
+                tvDuration.setText(data.getData().get(0).getCourse_duration());
               /*  if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
                     tvCourseDetail.setText(Html.fromHtml(data.getData().get(0).getDescription(),Html.FROM_HTML_MODE_LEGACY));
                 } else {
                     tvCourseDetail.setText(Html.fromHtml(data.getData().get(0).getDescription()));
                 }*/
-
                 tvCourseDetail.getSettings().setJavaScriptEnabled(true);
                 tvCourseDetail.loadDataWithBaseURL(null, data.getData().get(0).getDescription(), "text/html", "utf-8", null);
                 // tvCourseDetail.loadData(data.getData().get(0).getDescription(), "text/html; charset=utf-8", "UTF-8");

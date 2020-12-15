@@ -241,6 +241,7 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
                 tvMonthly.setPadding(0, 20,0, 20);
                 tvYearly.setBackground(getResources().getDrawable(R.drawable.button_select));
                 tvYearly.setPadding(0, 20,0, 20);
+                mode=AppConstant.CUSTOM;
                 showDateDialog();
                 break;
             case R.id.tvDaily:
@@ -341,6 +342,8 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
                 dialog.dismiss();
                 if(!TextUtils.isEmpty(tvFrom.getText().toString()) && !TextUtils.isEmpty(tvTo.getText().toString()))
                 {
+                    if(tvTo.getText().toString().equals(getString(R.string.to_date)))
+                      tvTo.setText("");
                     setChart(data1.getData().get(0).getCoursechartDropdownlist(),tvFrom.getText().toString(),tvTo.getText().toString());
                 }
             }
@@ -427,8 +430,8 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
                     }
 
                     LineDataSet dataSet = new LineDataSet(yEntrys, data.getData().get(0).getCoursechartData().get(i).getCourse_name());
-                    dataSet.setColor(Color.parseColor("#e98074"));
-                    dataSet.setCircleColor(Color.parseColor("#e98074"));
+                    dataSet.setColor(Color.parseColor(data.getData().get(0).getCoursechartData().get(i).getCourse_color_code()));
+                    dataSet.setCircleColor(Color.parseColor(data.getData().get(0).getCoursechartData().get(i).getCourse_color_code()));
                     dataSet.setLineWidth(1f);
                     dataSet.setCircleRadius(5f);
                     dataSet.setDrawCircleHole(false);
@@ -461,10 +464,11 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
                 lineChart.getAxisRight().setDrawAxisLine(false);
                 lineChart.getAxisLeft().setDrawLabels(true);
                 lineChart.getAxisRight().setDrawLabels(true);
-                lineChart.getLegend().setEnabled(true);
+                lineChart.getLegend().setEnabled(false);
                 lineChart.setDescription(null);
                 lineChart.setPinchZoom(false);
-                lineChart.getLegend().setWordWrapEnabled(true);
+                lineChart.setTouchEnabled(false);
+                //lineChart.getLegend().setWordWrapEnabled(true);
                 lineChart.setData(pieData);
 
                 lineChart.invalidate();
@@ -494,9 +498,9 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
                 params.put("start_date", startDate);
                 String date = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
                 params.put("end_date", date);
-            }else {
-                params.put("mode", mode);
             }
+                params.put("mode", mode);
+
 
             ApiInterface apiInterface = RestApi.getConnection(ApiInterface.class, ServerConstents.API_URL);
             if (AppSharedPreference.getInstance().getString(DashboardActivity.this, AppSharedPreference.LANGUAGE_SELECTED) == null ||
@@ -540,7 +544,9 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
                 myCalendarStart= (Calendar)myCalendar.clone();
 
                 String myFormat="dd/MM/yyyy";
-                startDate[0]=new SimpleDateFormat(myFormat).format(myCalendar.getTime());
+                String languageToLoad = "en"; // your language
+                Locale locale = new Locale(languageToLoad);
+                startDate[0]=new SimpleDateFormat(myFormat,locale).format(myCalendar.getTime());
                 tvFrom.setText(startDate[0]);
                 //tvTo.setText(startDate[0]);
                 if (!tvTo.getText().toString().equals(getString(R.string.to_date))) {
@@ -577,7 +583,9 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
                 myCalnederEnd= (Calendar)myCalendar.clone();
 
                 String myFormat="dd/MM/yyyy";
-                startDate[0]=new SimpleDateFormat(myFormat).format(myCalendar.getTime());
+                String languageToLoad = "en"; // your language
+                Locale locale = new Locale(languageToLoad);
+                startDate[0]=new SimpleDateFormat(myFormat,locale).format(myCalendar.getTime());
                 tvTo.setText(startDate[0]);
                 if (!tvFrom.getText().toString().equals(R.string.from_date)) {
                     if (compareDate(tvFrom.getText().toString(), startDate[0], "after")) {
