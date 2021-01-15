@@ -114,6 +114,8 @@ public class EditUserProfileActivity extends BaseActivity implements NetworkList
                 if (AppUtils.isInternetAvailable(EditUserProfileActivity.this)) {
                    if(isValid())
                     editProfile();
+                }else {
+                    AppUtils.showAlertDialog(EditUserProfileActivity.this,getString(R.string.no_internet),getString(R.string.alter_net));
                 }
             }
         });
@@ -134,9 +136,13 @@ public class EditUserProfileActivity extends BaseActivity implements NetworkList
         }
 
         ccp=findViewById(R.id.ccp);
+        if (AppSharedPreference.getInstance().getString(EditUserProfileActivity.this, AppSharedPreference.LANGUAGE_SELECTED) != null &&
+                AppSharedPreference.getInstance().getString(EditUserProfileActivity.this, AppSharedPreference.LANGUAGE_SELECTED).equalsIgnoreCase(AppConstant.ARABIC_LANG)) {
+            ccp.setTextDirection(View.TEXT_DIRECTION_RTL);
+        }
+
         selectedCountryCode =ccp.getSelectedCountryCodeWithPlus();
         selectedCountry =ccp.getSelectedCountryName();
-
         ccp.setOnCountryChangeListener(new CountryCodePicker.OnCountryChangeListener() {
             @Override
             public void onCountrySelected() {
@@ -144,8 +150,6 @@ public class EditUserProfileActivity extends BaseActivity implements NetworkList
                 selectedCountry =ccp.getSelectedCountryName();
             }
         });
-
-
     }
 
     private void editProfile()
@@ -310,9 +314,10 @@ public class EditUserProfileActivity extends BaseActivity implements NetworkList
             etLName.setText(data.getData().get(0).getLastName());
             etEmail.setText(data.getData().get(0).getEmail());
             etPhone.setText(data.getData().get(0).getPhoneNo());
+
             etCompanyName.setText(data.getData().get(0).getOrganizationName());
-            if(AppSharedPreference.getInstance().getString(EditUserProfileActivity.this, AppSharedPreference.USER_TYPE).equalsIgnoreCase("2")) {
-                etCompanyName.setEnabled(false);
+            if(AppSharedPreference.getInstance().getString(EditUserProfileActivity.this, AppSharedPreference.USER_TYPE).equalsIgnoreCase(AppConstant.USER_TYPE_USER)) {
+                etCompanyName.setVisibility(View.GONE);
             }
         }else
         {

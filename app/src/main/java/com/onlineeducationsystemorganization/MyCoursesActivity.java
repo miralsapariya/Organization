@@ -86,6 +86,8 @@ public class MyCoursesActivity extends BaseActivity implements OnItemClick, Netw
         tvNoData = findViewById(R.id.tvNoData);
         if (AppUtils.isInternetAvailable(MyCoursesActivity.this)) {
             getMyCourseList();
+        }else {
+            AppUtils.showAlertDialog(MyCoursesActivity.this,getString(R.string.no_internet),getString(R.string.alter_net));
         }
     }
     private void getMyCourseList() {

@@ -53,6 +53,8 @@ public class CompanyUrlActivity extends AppCompatActivity implements NetworkList
                     if (isValid()) {
                         hintComapanyURL();
                     }
+                }else {
+                    AppUtils.showAlertDialog(CompanyUrlActivity.this,getString(R.string.no_internet),getString(R.string.alter_net));
                 }
             }
         });

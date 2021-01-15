@@ -182,6 +182,10 @@ public class EditUserActivity extends BaseActivity implements NetworkListener {
 
         llMain = findViewById(R.id.llMain);
         ccp = findViewById(R.id.ccp);
+        if (AppSharedPreference.getInstance().getString(EditUserActivity.this, AppSharedPreference.LANGUAGE_SELECTED) != null &&
+                AppSharedPreference.getInstance().getString(EditUserActivity.this, AppSharedPreference.LANGUAGE_SELECTED).equalsIgnoreCase(AppConstant.ARABIC_LANG)) {
+            ccp.setTextDirection(View.TEXT_DIRECTION_RTL);
+        }
         selectedCountryCode = ccp.getSelectedCountryCodeWithPlus();
         selectedCountry = ccp.getSelectedCountryName();
         ccp.setOnCountryChangeListener(new CountryCodePicker.OnCountryChangeListener() {
@@ -352,6 +356,8 @@ public class EditUserActivity extends BaseActivity implements NetworkListener {
 
                 if (AppUtils.isInternetAvailable(EditUserActivity.this)) {
                     getCourses();
+                }else {
+                    AppUtils.showAlertDialog(EditUserActivity.this,getString(R.string.no_internet),getString(R.string.alter_net));
                 }
             }
         } else if (requestCode == ServerConstents.COURSE_LIST) {

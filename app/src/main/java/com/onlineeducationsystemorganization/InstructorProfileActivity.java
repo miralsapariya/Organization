@@ -71,6 +71,8 @@ public class InstructorProfileActivity extends BaseActivity implements
         //
         if (AppUtils.isInternetAvailable(InstructorProfileActivity.this)) {
             getList();
+        }else {
+            AppUtils.showAlertDialog(InstructorProfileActivity.this,getString(R.string.no_internet),getString(R.string.alter_net));
         }
     }
 

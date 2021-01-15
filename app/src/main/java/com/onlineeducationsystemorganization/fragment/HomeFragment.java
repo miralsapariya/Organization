@@ -1,6 +1,7 @@
 package com.onlineeducationsystemorganization.fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,7 +49,7 @@ public class HomeFragment extends BaseFragment  implements OnItemClick, OnViewAl
         view =inflater.inflate(R.layout.fragment_home, container, false);
 
         //initViewPager();
-        iniUI();
+        //iniUI();
 
         return  view;
     }
@@ -57,9 +58,17 @@ public class HomeFragment extends BaseFragment  implements OnItemClick, OnViewAl
     {
          viewPager = view.findViewById(R.id.view_pager);
          if (AppUtils.isInternetAvailable(activity)) {
-                hintHome();
+                hintHome(); }else {
+             AppUtils.showAlertDialog(activity,activity.getString(R.string.no_internet),activity.getString(R.string.alter_net));
          }
         recyclerView =view.findViewById(R.id.recyclerView);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((MainActivity)activity).toolbar_title.setText(getString(R.string.home));
+        iniUI();
     }
 
     private void hintHome()
@@ -75,7 +84,8 @@ public class HomeFragment extends BaseFragment  implements OnItemClick, OnViewAl
         {
             lang= AppConstant.ARABIC_LANG;
         }
-        Call<Home> call = apiInterface.getHome(lang,params);
+        Call<Home> call = apiInterface.getHome(lang,AppSharedPreference.getInstance().
+                getString(activity, AppSharedPreference.ACCESS_TOKEN),params);
 
         ApiCall.getInstance().hitService(activity, call, this, ServerConstents.HOME);
 
@@ -97,6 +107,14 @@ public class HomeFragment extends BaseFragment  implements OnItemClick, OnViewAl
             viewPager.setCurrentItem(0);
             //
             data.getData().remove(0);
+            Log.d("is read:: ====", data.getData().get(data.getData().size()-1).getIs_read()+"");
+
+            if(data.getData().get(data.getData().size()-1).getIs_read().equals("1"))
+                ((MainActivity)activity).imgIsReadNotification.setVisibility(View.GONE);
+            else
+                ((MainActivity)activity).imgIsReadNotification.setVisibility(View.VISIBLE);
+
+            data.getData().remove(data.getData().size()-1);
             HomeAdapter homeAdapter =
                     new HomeAdapter(activity, data.getData(),this,this);
 

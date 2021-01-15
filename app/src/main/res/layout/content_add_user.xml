@@ -99,7 +99,6 @@
                 android:layout_height="wrap_content"
                 app:ccp_arrowColor="@color/black"
                 android:layoutDirection="locale"
-
                 app:ccp_contentColor="@color/black"
                 app:ccp_flagBorderColor="@color/white"
                 android:textDirection="locale"

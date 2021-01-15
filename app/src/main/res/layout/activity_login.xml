@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:gravity="center_horizontal"
-            android:src="@mipmap/ic_launcher"
+            android:src="@mipmap/logo"
             android:textColor="@color/colorPrimary"
             android:textStyle="bold" />
 

@@ -116,6 +116,8 @@ public class UserCourseDetailActivity extends BaseActivity implements OnChildIte
         super.onResume();
         if (AppUtils.isInternetAvailable(UserCourseDetailActivity.this)) {
             getCourseDetail();
+        }else {
+            AppUtils.showAlertDialog(UserCourseDetailActivity.this,getString(R.string.no_internet),getString(R.string.alter_net));
         }
     }
 

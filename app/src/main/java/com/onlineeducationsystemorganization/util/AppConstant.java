@@ -32,6 +32,8 @@ public class AppConstant {
 
     public static boolean fromCourseDetail=false;
 
+  //  public static boolean isReadNotification=true;
+
     //
     //QUESTION_TYPE
     public static int SINGLE_CHOICE=1;

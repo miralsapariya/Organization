@@ -130,6 +130,8 @@ public class SubscriptionActivity extends AppCompatActivity implements
         super.onResume();
         if (AppUtils.isInternetAvailable(SubscriptionActivity.this)) {
             getSubscription("");
+        }else {
+            AppUtils.showAlertDialog(SubscriptionActivity.this,getString(R.string.no_internet),getString(R.string.alter_net));
         }
     }
 
@@ -158,6 +160,8 @@ public class SubscriptionActivity extends AppCompatActivity implements
                     hideKeyboard();
                     if (AppUtils.isInternetAvailable(SubscriptionActivity.this)) {
                         getSubscription("");
+                    }else {
+                        AppUtils.showAlertDialog(SubscriptionActivity.this,getString(R.string.no_internet),getString(R.string.alter_net));
                     }
                 }
             }

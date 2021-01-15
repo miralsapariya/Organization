@@ -68,7 +68,7 @@ public class Inquirylist implements Serializable {
     private Integer noOfUser;
     @SerializedName("price")
     @Expose
-    private Double price;
+    private String price;
     @SerializedName("single_price")
     @Expose
     private Double singlePrice;
@@ -129,11 +129,11 @@ public class Inquirylist implements Serializable {
         this.noOfUser = noOfUser;
     }
 
-    public Double getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(String  price) {
         this.price = price;
     }
 

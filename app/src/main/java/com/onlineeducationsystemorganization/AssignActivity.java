@@ -87,6 +87,8 @@ public class AssignActivity extends BaseActivity implements NetworkListener, Del
         super.onResume();
         if (AppUtils.isInternetAvailable(AssignActivity.this)) {
             getAssignList();
+        }else {
+            AppUtils.showAlertDialog(AssignActivity.this,getString(R.string.no_internet),getString(R.string.alter_net));
         }
     }
 
@@ -292,9 +294,9 @@ public class AssignActivity extends BaseActivity implements NetworkListener, Del
             BaseBean data = (BaseBean) response;
             if (data.getStatus() == ServerConstents.CODE_SUCCESS) {
                 Toast.makeText(AssignActivity.this, data.getMessage(), Toast.LENGTH_SHORT).show();
+                finish();
             }
-
-            getAssignList();
+           //getAssignList();
         }
     }
 

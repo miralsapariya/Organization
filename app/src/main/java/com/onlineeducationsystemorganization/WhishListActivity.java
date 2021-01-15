@@ -90,6 +90,8 @@ public class WhishListActivity extends BaseActivity implements OnItemClick, Dele
         });
         if (AppUtils.isInternetAvailable(WhishListActivity.this)) {
             getWhishList();
+        }else {
+            AppUtils.showAlertDialog(WhishListActivity.this,getString(R.string.no_internet),getString(R.string.alter_net));
         }
 
     }

@@ -101,6 +101,7 @@
         />
     <LinearLayout
         android:layout_width="match_parent"
+
         android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="wrap_content"
@@ -114,12 +115,14 @@
                 app:ccp_arrowColor="@color/black"
                 app:ccp_contentColor="@color/black"
                 app:ccp_flagBorderColor="@color/white"
-                android:textDirection="locale"
                 android:layout_marginTop="@dimen/_7sdp"
                 android:layout_gravity="center_vertical"
                 app:ccp_showFullName="false"
                 app:ccp_showNameCode="false"
                 app:ccp_showPhoneCode="true"
+                android:layoutDirection="locale"
+                android:textDirection="rtl"
+                app:ccp_textGravity="RIGHT"
                 app:ccpDialog_textColor="@color/black"
                 app:ccpDialog_backgroundColor="@color/white"
                 app:ccp_autoDetectCountry="true"/>

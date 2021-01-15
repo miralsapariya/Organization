@@ -74,6 +74,8 @@ public class UsersFragment extends BaseFragment implements NetworkListener , Upd
         super.onResume();
         if (AppUtils.isInternetAvailable(activity)) {
             getUsers();
+        }else {
+            AppUtils.showAlertDialog(activity,activity.getString(R.string.no_internet),activity.getString(R.string.alter_net));
         }
     }
 

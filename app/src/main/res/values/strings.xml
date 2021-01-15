@@ -251,4 +251,7 @@
     <string name="delete">Delete</string>
     <string name="delete_alert">Are you sure you want to delete user ?</string>
     <string name="status">Status</string>
+
+    <string name="no_internet">No Internet</string>
+    <string name="alter_net">Please check your internet connection status and try again</string>
 </resources>

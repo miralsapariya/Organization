@@ -128,6 +128,8 @@ public class ReportActivity extends BaseActivity implements NetworkListener {
 
         if (AppUtils.isInternetAvailable(ReportActivity.this)) {
             callResult();
+        }else {
+            AppUtils.showAlertDialog(ReportActivity.this,getString(R.string.no_internet),getString(R.string.alter_net));
         }
         /*ArrayList<Header> listDataHeader = new ArrayList<Header>();
         HashMap<Header, ArrayList<ContentItem>> listDataChild = new HashMap<Header, ArrayList<ContentItem>>();

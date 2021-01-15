@@ -29,6 +29,7 @@ import com.github.mikephil.charting.formatter.DefaultValueFormatter;
 import com.github.mikephil.charting.utils.ViewPortHandler;
 import com.onlineeducationsystemorganization.CourseDetailActivity;
 import com.onlineeducationsystemorganization.LessionSlideActivity;
+import com.onlineeducationsystemorganization.MainUserActivity;
 import com.onlineeducationsystemorganization.R;
 import com.onlineeducationsystemorganization.UserCourseDetailActivity;
 import com.onlineeducationsystemorganization.adapter.DashboardUserAdapter;
@@ -91,6 +92,8 @@ public class DashboardUserFragment extends BaseFragment implements NetworkListen
         if (AppUtils.isInternetAvailable(
                 activity)) {
             getCompletedCourses();
+        }else {
+            AppUtils.showAlertDialog(activity,activity.getString(R.string.no_internet),activity.getString(R.string.alter_net));
         }
 
     }
@@ -155,6 +158,11 @@ public class DashboardUserFragment extends BaseFragment implements NetworkListen
                 {
                     tvMyCourse.setVisibility(View.GONE);
                 }
+                if(data.getData().get(data.getData().size()-1).getIs_read().equals("1"))
+                    ((MainUserActivity)activity).imgIsReadNotification.setVisibility(View.GONE);
+                else
+                    ((MainUserActivity)activity).imgIsReadNotification.setVisibility(View.VISIBLE);
+
                 DashboardUserAdapter dashboardAdapter =
                         new DashboardUserAdapter(activity, data.getData().get(0).getMycourselist(),this);
                 recyclerView.setItemAnimator(new DefaultItemAnimator());

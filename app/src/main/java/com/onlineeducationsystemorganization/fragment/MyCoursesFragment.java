@@ -66,6 +66,8 @@ public class MyCoursesFragment extends BaseFragment implements OnItemClick, Netw
         super.onResume();
         if (AppUtils.isInternetAvailable(activity)) {
             getMyCourseList();
+        }else {
+            AppUtils.showAlertDialog(activity,activity.getString(R.string.no_internet),activity.getString(R.string.alter_net));
         }
     }
 

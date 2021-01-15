@@ -34,7 +34,7 @@
             android:layout_gravity="center_horizontal"
             android:gravity="center_horizontal"
             android:layoutDirection="locale"
-            android:src="@mipmap/ic_launcher"
+            android:src="@mipmap/logo"
             android:textColor="@color/colorPrimary"
             android:textDirection="locale"
             android:textStyle="bold" />

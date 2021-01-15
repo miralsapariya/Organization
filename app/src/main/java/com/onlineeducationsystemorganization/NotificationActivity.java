@@ -51,6 +51,8 @@ public class NotificationActivity extends AppCompatActivity implements NetworkLi
         if (AppUtils.isInternetAvailable(
                 NotificationActivity.this)) {
             getNotification();
+        }else {
+            AppUtils.showAlertDialog(NotificationActivity.this,getString(R.string.no_internet),getString(R.string.alter_net));
         }
     }
     private void getNotification()

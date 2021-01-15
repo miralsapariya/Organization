@@ -56,6 +56,10 @@ public class ForgotPwdActivity extends AppCompatActivity implements NetworkListe
         etNewPwd =findViewById(R.id.etNewPwd);
         etResetPwd =findViewById(R.id.etResetPwd);
         ccp=findViewById(R.id.ccp);
+        if (AppSharedPreference.getInstance().getString(ForgotPwdActivity.this, AppSharedPreference.LANGUAGE_SELECTED) != null &&
+                AppSharedPreference.getInstance().getString(ForgotPwdActivity.this, AppSharedPreference.LANGUAGE_SELECTED).equalsIgnoreCase(AppConstant.ARABIC_LANG)) {
+            ccp.setTextDirection(View.TEXT_DIRECTION_RTL);
+        }
         selectedCountryCode =ccp.getSelectedCountryCodeWithPlus();
 
         ccp.setOnCountryChangeListener(new CountryCodePicker.OnCountryChangeListener() {
@@ -84,10 +88,10 @@ public class ForgotPwdActivity extends AppCompatActivity implements NetworkListe
 
                 if (AppUtils.isInternetAvailable(ForgotPwdActivity.this)) {
                     if (isValidResetPwd()) {
-
                         hintResetPwd();
-
                     }
+                }else {
+                    AppUtils.showAlertDialog(ForgotPwdActivity.this,getString(R.string.no_internet),getString(R.string.alter_net));
                 }
 
             }

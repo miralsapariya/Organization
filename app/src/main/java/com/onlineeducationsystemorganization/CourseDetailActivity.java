@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -19,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -73,7 +75,6 @@ public class CourseDetailActivity extends BaseActivity implements NetworkListene
 
         initToolbar();
         initUI();
-
     }
 
 
@@ -83,17 +84,31 @@ public class CourseDetailActivity extends BaseActivity implements NetworkListene
         tvViewProfile =findViewById(R.id.tvViewProfile);
         imgShare = findViewById(R.id.imgShare);
         imgShare.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP_MR1)
             @Override
             public void onClick(View view) {
                 if (ContextCompat.checkSelfPermission(CourseDetailActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ||
                         ContextCompat.checkSelfPermission(CourseDetailActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                     ActivityCompat.requestPermissions(CourseDetailActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, PERMISSION_PHOTO);
                 } else {
-                    share();
+                   // share();
+                    shareIt();
                 }
             }
         });
     }
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP_MR1)
+    public void shareIt(){
+
+
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.putExtra(Intent.EXTRA_SUBJECT, data.getData().get(0).getCourseName());
+        intent.putExtra(Intent.EXTRA_TEXT, data.getData().get(0).getShare_url());
+        intent.setType("text/plain");
+        startActivity(Intent.createChooser(intent, data.getData().get(0).getCourseName()));
+
+    }
+
     private void share() {
 
         //https://developers.facebook.com/docs/sharing/android
@@ -253,6 +268,8 @@ public class CourseDetailActivity extends BaseActivity implements NetworkListene
 
         if (AppUtils.isInternetAvailable(CourseDetailActivity.this)) {
             hintCourseDetail();
+        }else {
+            AppUtils.showAlertDialog(CourseDetailActivity.this,getString(R.string.no_internet),getString(R.string.alter_net));
         }
 
     }
@@ -276,6 +293,8 @@ public class CourseDetailActivity extends BaseActivity implements NetworkListene
                     getString(CourseDetailActivity.this, AppSharedPreference.ACCESS_TOKEN), params);
             ApiCall.getInstance().hitService(CourseDetailActivity.this, call, this, ServerConstents.CART);
 
+        }else {
+            AppUtils.showAlertDialog(CourseDetailActivity.this,getString(R.string.no_internet),getString(R.string.alter_net));
         }
     }
 

@@ -266,6 +266,8 @@ public class ExamActivity extends BaseActivity implements NetworkListener {
 
         if (AppUtils.isInternetAvailable(ExamActivity.this)) {
             callQuizStart();
+        }else {
+            AppUtils.showAlertDialog(ExamActivity.this,getString(R.string.no_internet),getString(R.string.alter_net));
         }
 
         imgPrev.setOnClickListener(new View.OnClickListener() {

@@ -57,6 +57,11 @@
                     android:paddingRight="@dimen/_4sdp"
 
                     />
+
+                <RelativeLayout
+                    android:id="@+id/rrNotification"
+                    android:layout_width="@dimen/_27sdp"
+                    android:layout_height="@dimen/_27sdp">
                 <ImageView
                     android:id="@+id/imgNotification"
                     android:layout_width="wrap_content"
@@ -65,8 +70,17 @@
                     android:visibility="gone"
                     android:paddingStart="@dimen/_4sdp"
                     android:paddingRight="@dimen/_4sdp"
-
                     />
+                <ImageView
+                    android:id="@+id/imgIsReadNotification"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                     android:src="@drawable/ic_circle"
+                    android:visibility="gone"
+                    />
+                </RelativeLayout>
             </LinearLayout>
         </androidx.appcompat.widget.Toolbar>
 

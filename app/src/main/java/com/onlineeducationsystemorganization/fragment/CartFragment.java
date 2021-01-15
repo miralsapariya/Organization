@@ -62,12 +62,16 @@ public class CartFragment extends BaseFragment implements NetworkListener
             public void onClick(View view) {
                 if (AppUtils.isInternetAvailable(activity)) {
                     callInquire();
+                }else {
+                    AppUtils.showAlertDialog(activity,activity.getString(R.string.no_internet),activity.getString(R.string.alter_net));
                 }
             }
         });
         recyclerView=view.findViewById(R.id.recyclerView);
         if (AppUtils.isInternetAvailable(activity)) {
             getCartList();
+        }else {
+            AppUtils.showAlertDialog(activity,activity.getString(R.string.no_internet),activity.getString(R.string.alter_net));
         }
     }
 
@@ -150,6 +154,8 @@ public class CartFragment extends BaseFragment implements NetworkListener
     public void updateCart(int pos, String pos2) {
         if (AppUtils.isInternetAvailable(activity)) {
             updateCartList(data.getData().get(0).getList().get(pos).getCourseid()+"",pos2);
+        }else {
+            AppUtils.showAlertDialog(activity,activity.getString(R.string.no_internet),activity.getString(R.string.alter_net));
         }
     }
 

@@ -91,6 +91,8 @@ public class OTPActivity extends BaseActivity implements NetworkListener {
                     if (isValid()) {
                         hintOtp();
                     }
+                }else {
+                    AppUtils.showAlertDialog(OTPActivity.this,getString(R.string.no_internet),getString(R.string.alter_net));
                 }
             }
         });

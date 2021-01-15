@@ -87,9 +87,9 @@ public class LoginActivity extends BaseActivity implements NetworkListener {
                         AppSharedPreference.getInstance().putString(LoginActivity.this, AppSharedPreference.DEVICE_TOKEN, token);
                     }
                 });
-    /*    FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(instanceIdResult -> {
+      /*  FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(instanceIdResult -> {
             String token = instanceIdResult.getToken();
-            Log.d("fcmToken", "Fcm Device Token ::: " + token);
+            Log.d("fcmToken", "Token ::: " + token);
         });*/
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -99,6 +99,8 @@ public class LoginActivity extends BaseActivity implements NetworkListener {
                     if (isValid()) {
                         hintLogin();
                     }
+                }else {
+                    AppUtils.showAlertDialog(LoginActivity.this,getString(R.string.no_internet),getString(R.string.alter_net));
                 }
             }
         });
@@ -179,7 +181,6 @@ public class LoginActivity extends BaseActivity implements NetworkListener {
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                i.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 startActivity(i);
                 finish();
             }else
@@ -189,7 +190,6 @@ public class LoginActivity extends BaseActivity implements NetworkListener {
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                i.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 startActivity(i);
                 finish();
             }

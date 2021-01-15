@@ -97,7 +97,7 @@ public interface ApiInterface {
 
     @FormUrlEncoded
     @POST("homescreen")
-    Call<Home> getHome(@Header("language") String lang, @FieldMap HashMap<String, String> map);
+    Call<Home> getHome(@Header("language") String lang,@Header("Authorization") String auth, @FieldMap HashMap<String, String> map);
 
     @FormUrlEncoded
     @POST("coursedetails")
@@ -383,5 +383,9 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("globalsearchsuggestion")
     Call<Suggestion> getSuggestion(@Header("language") String lang, @Header("Authorization")String auth, @FieldMap HashMap<String, String> map);
+
+    @FormUrlEncoded
+    @POST("logout")
+    Call<BaseBean> doLogout(@Header("Authorization")String auth, @FieldMap HashMap<String, String> map);
 
 }

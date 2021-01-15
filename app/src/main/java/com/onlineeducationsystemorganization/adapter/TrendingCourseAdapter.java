@@ -60,13 +60,17 @@ public class TrendingCourseAdapter extends RecyclerView.Adapter<TrendingCourseAd
         holder.tvDate.setText(data.getPublishOn());
         holder.tvPriceOld.setText(data.getCourseOldPrice());
         holder.tvPriceOld.setPaintFlags( holder.tvPriceOld.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-        holder.tvDescription.setText(data.getInstructorName());
+
+        if(!data.getInstructorName().equals("")) {
+            holder.tvDescription.setText(data.getInstructorName());
+        } else {
+            holder.tvDescription.setVisibility(View.GONE);
+        }
         AppUtils.loadImageWithPicasso(data.getImage() , holder.img, context, 0, 0);
 
         holder.imgCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 addItemInCart.addToCart(position);
             }
         });

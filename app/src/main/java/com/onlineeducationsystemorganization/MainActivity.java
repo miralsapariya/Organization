@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -28,9 +29,10 @@ public class MainActivity extends BaseActivity {
 
     public BottomNavigationView nav_view;
     public ImageView imgAddUser;
-    private TextView toolbar_title;
-    private ImageView imgSearch,imgNotification;
+    public TextView toolbar_title;
+    public ImageView imgSearch,imgNotification,imgIsReadNotification;
     private Configuration config;
+    private RelativeLayout rrNotification;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,9 +43,13 @@ public class MainActivity extends BaseActivity {
 
         toolbar_title = findViewById(R.id.toolbar_title);
         imgNotification=findViewById(R.id.imgNotification);
+        rrNotification=findViewById(R.id.rrNotification);
+        rrNotification.setVisibility(View.VISIBLE);
+        imgIsReadNotification=findViewById(R.id.imgIsReadNotification);
         imgNotification.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                imgIsReadNotification.setVisibility(View.GONE);
                 Intent intent =new Intent(MainActivity.this,NotificationActivity.class);
                 startActivity(intent);
             }
@@ -55,13 +61,14 @@ public class MainActivity extends BaseActivity {
             //gotoMyCourses();
             imgNotification.setVisibility(View.VISIBLE);
             imgSearch.setVisibility(View.VISIBLE);
+            rrNotification.setVisibility(View.VISIBLE);
             imgAddUser.setVisibility(View.GONE);
             toolbar_title.setText(getString(R.string.home));
             loadFragment(new HomeFragment());
             Intent intent=new Intent(MainActivity.this,MyCoursesActivity.class);
             startActivity(intent);
-        }
-            else {
+        } else {
+            rrNotification.setVisibility(View.VISIBLE);
             imgNotification.setVisibility(View.VISIBLE);
             imgSearch.setVisibility(View.VISIBLE);
             imgAddUser.setVisibility(View.GONE);
@@ -79,7 +86,6 @@ public class MainActivity extends BaseActivity {
         {
             AppConstant.fromCourseDetail=false;
             gotoCart();
-
         }
 
         //imgSearch.setVisibility(View.VISIBLE);
@@ -121,7 +127,6 @@ public class MainActivity extends BaseActivity {
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-
     }
 
 
@@ -159,12 +164,15 @@ public class MainActivity extends BaseActivity {
                         imgSearch.setVisibility(View.VISIBLE);
                         imgNotification.setVisibility(View.VISIBLE);
                         imgAddUser.setVisibility(View.GONE);
+                        rrNotification.setVisibility(View.VISIBLE);
                         toolbar_title.setText(getString(R.string.home));
                         loadFragment(new HomeFragment());
                         break;
                     case R.id.page_2:
                         imgSearch.setVisibility(View.GONE);
                         imgNotification.setVisibility(View.GONE);
+                        imgIsReadNotification.setVisibility(View.GONE);
+                        rrNotification.setVisibility(View.GONE);
                         imgAddUser.setVisibility(View.GONE);
                         toolbar_title.setText(getString(R.string.cart));
                         loadFragment(new CartFragment());
@@ -174,6 +182,8 @@ public class MainActivity extends BaseActivity {
 
                         imgSearch.setVisibility(View.GONE);
                         imgNotification.setVisibility(View.GONE);
+                        imgIsReadNotification.setVisibility(View.GONE);
+                        rrNotification.setVisibility(View.GONE);
                         imgAddUser.setVisibility(View.GONE);
                         toolbar_title.setText(getString(R.string.courses));
                         loadFragment(new CoursesFragment());
@@ -182,6 +192,8 @@ public class MainActivity extends BaseActivity {
                     case R.id.page_4:
                         imgSearch.setVisibility(View.GONE);
                         imgNotification.setVisibility(View.GONE);
+                        imgIsReadNotification.setVisibility(View.GONE);
+                        rrNotification.setVisibility(View.GONE);
                         imgAddUser.setVisibility(View.VISIBLE);
                         toolbar_title.setText(getString(R.string.users));
                         loadFragment(new UsersFragment());
@@ -190,6 +202,8 @@ public class MainActivity extends BaseActivity {
                     case R.id.page_5:
                         imgSearch.setVisibility(View.GONE);
                         imgNotification.setVisibility(View.GONE);
+                        imgIsReadNotification.setVisibility(View.GONE);
+                        rrNotification.setVisibility(View.GONE);
                         imgAddUser.setVisibility(View.GONE);
                         toolbar_title.setText(getString(R.string.account));
                         loadFragment(new AccountFragment());
@@ -214,8 +228,8 @@ public class MainActivity extends BaseActivity {
 
         // nav_view.getMenu().findItem(R.id.page_2).setChecked(true);
 
-        imgSearch.setVisibility(View.GONE);
-        imgNotification.setVisibility(View.GONE);
+        //imgSearch.setVisibility(View.GONE);
+       // imgNotification.setVisibility(View.GONE);
         toolbar_title.setText(getString(R.string.category));
         Intent intent=new Intent(MainActivity.this,CategoryFragment.class);
         startActivity(intent);

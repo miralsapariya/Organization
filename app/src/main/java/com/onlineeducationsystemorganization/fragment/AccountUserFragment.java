@@ -1,5 +1,6 @@
 package com.onlineeducationsystemorganization.fragment;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -7,12 +8,14 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,6 +36,7 @@ import com.onlineeducationsystemorganization.interfaces.NetworkListener;
 import com.onlineeducationsystemorganization.interfaces.OnItemClick;
 import com.onlineeducationsystemorganization.interfaces.OnSubItemClick;
 import com.onlineeducationsystemorganization.model.GetProfile;
+import com.onlineeducationsystemorganization.model.User;
 import com.onlineeducationsystemorganization.network.ApiCall;
 import com.onlineeducationsystemorganization.network.ApiInterface;
 import com.onlineeducationsystemorganization.network.RestApi;
@@ -57,7 +61,7 @@ public class AccountUserFragment extends BaseFragment implements NetworkListener
     private View view;
     private Configuration config;
     private CircularImageView imgUser;
-
+    private String android_id;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -69,6 +73,8 @@ public class AccountUserFragment extends BaseFragment implements NetworkListener
     }
 
     private void initUI() {
+        android_id = Settings.Secure.getString(activity.getContentResolver(),
+                Settings.Secure.ANDROID_ID);
        /* ArrayList<String> list = new ArrayList<>();
 
         list.add(getString(R.string.about));
@@ -133,27 +139,67 @@ public class AccountUserFragment extends BaseFragment implements NetworkListener
         tvSignOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AppSharedPreference.getInstance().clearAllPrefs(activity);
-                llWithLogin.setVisibility(View.GONE);
-                tvSignIn.setVisibility(View.VISIBLE);
-                Intent intent = new Intent(activity, CompanyUrlActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                startActivity(intent);
+                ViewDialog alert = new ViewDialog();
+                alert.showDialog(activity);
+
             }
         });
 
 
         imgUser = view.findViewById(R.id.imgUser);
     }
+    private void doLogout()
+    {
+        AppUtils.showDialog(activity, getString(R.string.pls_wait));
+        ApiInterface apiInterface = RestApi.getConnection(ApiInterface.class, ServerConstents.API_URL);
+        final HashMap params = new HashMap<>();
+        params.put("device_token", AppSharedPreference.getInstance().getString(activity, AppSharedPreference.DEVICE_TOKEN));
+        params.put("device_id", android_id);
+        params.put("device_type", ServerConstents.DEVICE_TYPE);
 
+        Call<User> call = apiInterface.doLogout(AppSharedPreference.getInstance().
+                getString(activity, AppSharedPreference.ACCESS_TOKEN),params);
+
+        ApiCall.getInstance().hitService(activity, call, this, ServerConstents.LOGOUT);
+
+    }
+    public  class ViewDialog {
+
+        public void showDialog(final Activity activity){
+            final Dialog dialog = new Dialog(activity);
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.setCancelable(false);
+            dialog.setContentView(R.layout.dialog_logout_alert);
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+
+            Button btnApply =  dialog.findViewById(R.id.btnApply);
+            btnApply.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    doLogout();
+                    dialog.dismiss();
+
+                }
+            });
+
+            Button btnCancel =  dialog.findViewById(R.id.btnCancel);
+            btnCancel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.cancel();
+                }
+            });
+
+            dialog.show();
+        }
+    }
     @Override
     public void onResume() {
         super.onResume();
         if (AppUtils.isInternetAvailable(activity)) {
             getProfile();
+        }else {
+            AppUtils.showAlertDialog(activity,activity.getString(R.string.no_internet),activity.getString(R.string.alter_net));
         }
     }
 
@@ -189,6 +235,27 @@ public class AccountUserFragment extends BaseFragment implements NetworkListener
             tvCountry.setText(data.getData().get(0).getCountryName());
             tvCourse.setText(data.getData().get(0).getCourse() + "");
             tvName.setText(data.getData().get(0).getName());
+        }else
+        {
+            //logout
+
+            AppSharedPreference.getInstance().clearAllPrefs(activity);
+            llWithLogin.setVisibility(View.GONE);
+            tvSignIn.setVisibility(View.VISIBLE);
+            //set eng lang
+            String languageToLoad = "en"; // your language
+            Locale locale = new Locale(languageToLoad);
+            Locale.setDefault(locale);
+            config = new Configuration();
+            config.locale = locale;
+            activity.getBaseContext().getResources().updateConfiguration(config, activity.getBaseContext().getResources().getDisplayMetrics());
+
+            Intent intent = new Intent(activity, CompanyUrlActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+            startActivity(intent);
         }
 
     }

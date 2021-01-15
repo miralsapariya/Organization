@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "618222239442-0sj3ik7es4950s5ujjou6jvsqhqfc4t8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.onlineeducationsystemorganization",
+            "certificate_hash": "7acfda0cef1c8be188e4248dc5e429d511f6e39c"
+          }
+        },
+        {
           "client_id": "618222239442-307ivktmtucbdtjf1pjl9jaq2ghnt3eq.apps.googleusercontent.com",
           "client_type": 3
         }

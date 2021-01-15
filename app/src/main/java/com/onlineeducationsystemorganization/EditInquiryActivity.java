@@ -25,6 +25,7 @@ import com.onlineeducationsystemorganization.util.AppConstant;
 import com.onlineeducationsystemorganization.util.AppSharedPreference;
 import com.onlineeducationsystemorganization.util.AppUtils;
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
 
 import retrofit2.Call;
@@ -72,6 +73,8 @@ public class EditInquiryActivity extends BaseActivity implements NetworkListener
                     editUser();
                     else
                         Toast.makeText(EditInquiryActivity.this, getString(R.string.toast_no_of_user), Toast.LENGTH_SHORT).show();
+                }else {
+                    AppUtils.showAlertDialog(EditInquiryActivity.this,getString(R.string.no_internet),getString(R.string.alter_net));
                 }
             }
         });
@@ -88,9 +91,11 @@ public class EditInquiryActivity extends BaseActivity implements NetworkListener
             public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
                 if(etNoOfUser.getText().toString().length() >0) {
                     double u = Integer.parseInt(etNoOfUser.getText().toString()) *data.getSinglePrice();
-                    Log.d("==== ", Integer.parseInt(etNoOfUser.getText().toString()) + " " + data.getPrice());
-                    Log.d("------------", u + "");
-                    etPrice.setText(u + "");
+                    //Log.d("==== ", Integer.parseInt(etNoOfUser.getText().toString()) + " " + data.getPrice());
+                    Log.d("------------", u + " ");
+                    DecimalFormat df = new DecimalFormat("####0.00");
+
+                    etPrice.setText(  df.format(u)+"");
                     if(Integer.parseInt(etNoOfUser.getText().toString()) == 0)
                     {
                         etNoOfUser.setText("" );

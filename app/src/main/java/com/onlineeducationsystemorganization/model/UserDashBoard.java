@@ -44,6 +44,10 @@ this.data = data;
 //
 public class Datum {
 
+    @SerializedName("is_read")
+    @Expose
+    private String is_read;
+
     @SerializedName("total_users")
     @Expose
     private Integer totalUsers;
@@ -62,6 +66,14 @@ public class Datum {
     @SerializedName("mycourselist")
     @Expose
     private ArrayList<Mycourselist> mycourselist = null;
+
+    public String getIs_read() {
+        return is_read;
+    }
+
+    public void setIs_read(String is_read) {
+        this.is_read = is_read;
+    }
 
     public Integer getTotalUsers() {
         return totalUsers;

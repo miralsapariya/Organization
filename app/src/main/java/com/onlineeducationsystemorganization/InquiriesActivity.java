@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -137,6 +136,8 @@ public class InquiriesActivity extends AppCompatActivity implements
         super.onResume();
         if (AppUtils.isInternetAvailable(InquiriesActivity.this)) {
             getInquiries("");
+        }else {
+            AppUtils.showAlertDialog(InquiriesActivity.this,getString(R.string.no_internet),getString(R.string.alter_net));
         }
     }
 
@@ -161,10 +162,11 @@ public class InquiriesActivity extends AppCompatActivity implements
             public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
                 if(cs.toString().length() ==0)
                 {
-                    Log.d("=====emapty:: ", "========");
                     hideKeyboard();
                     if (AppUtils.isInternetAvailable(InquiriesActivity.this)) {
                         getInquiries("");
+                    }else {
+                        AppUtils.showAlertDialog(InquiriesActivity.this,getString(R.string.no_internet),getString(R.string.alter_net));
                     }
                 }
             }

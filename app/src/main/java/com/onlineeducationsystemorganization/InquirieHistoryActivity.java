@@ -59,6 +59,8 @@ public class InquirieHistoryActivity extends BaseActivity implements NetworkList
 
         if (AppUtils.isInternetAvailable(InquirieHistoryActivity.this)) {
             getInquiries();
+        }else {
+            AppUtils.showAlertDialog(InquirieHistoryActivity.this,getString(R.string.no_internet),getString(R.string.alter_net));
         }
     }
 

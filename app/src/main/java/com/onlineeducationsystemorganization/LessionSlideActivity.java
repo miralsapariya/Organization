@@ -38,14 +38,14 @@ import retrofit2.Call;
 
 public class LessionSlideActivity extends BaseActivity implements NetworkListener, View.OnClickListener {
 
+    SectionSlideDetail data;
     private WebView tvDescription;
     private NestedWebView webView;
     private ProgressBar progressbar;
-    private TextView tvSlideId,tvCourseName,tvSectionName,tvSlideName;
+    private TextView tvSlideId, tvCourseName, tvSectionName, tvSlideName;
     private WebView videoView;
-    private ImageView imgSlide,imgNext,imgPrev,imgBackgroundImage,imgBack;
-    private String course_id="",section_id="",slide_id="";
-    SectionSlideDetail data;
+    private ImageView imgSlide, imgNext, imgPrev, imgBackgroundImage, imgBack;
+    private String course_id = "", section_id = "", slide_id = "";
     private NestedScrollView nestedScroll;
     //private ScrollView scrollView;
     //
@@ -60,48 +60,50 @@ public class LessionSlideActivity extends BaseActivity implements NetworkListene
     }
 
 
-    private void initUI()
-    {
-        imgBack=findViewById(R.id.imgBack);
+    private void initUI() {
+        imgBack = findViewById(R.id.imgBack);
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
             }
         });
-        nestedScroll =findViewById(R.id.nestedScroll);
-        nestedScroll.scrollTo(0,0);
-        course_id =getIntent().getExtras().getString("course_id");
-        section_id =getIntent().getExtras().getString("section_id");
-        slide_id=getIntent().getExtras().getString("slide_id");
+        nestedScroll = findViewById(R.id.nestedScroll);
+        nestedScroll.scrollTo(0, 0);
+        course_id = getIntent().getExtras().getString("course_id");
+        section_id = getIntent().getExtras().getString("section_id");
+        slide_id = getIntent().getExtras().getString("slide_id");
         //scrollView =findViewById(R.id.scrollView);
-        tvDescription=findViewById(R.id.tvDescription);
-        videoView =findViewById(R.id.videoView);
-        imgSlide =findViewById(R.id.imgSlide);
-        imgNext =findViewById(R.id.imgNext);
+        tvDescription = findViewById(R.id.tvDescription);
+        videoView = findViewById(R.id.videoView);
+        imgSlide = findViewById(R.id.imgSlide);
+        imgNext = findViewById(R.id.imgNext);
         imgNext.setOnClickListener(this);
-        imgBackgroundImage =findViewById(R.id.imgBackgroundImage);
-        tvSlideId =findViewById(R.id.tvSlideId);
-        imgPrev =findViewById(R.id.imgPrev);
+        imgBackgroundImage = findViewById(R.id.imgBackgroundImage);
+        tvSlideId = findViewById(R.id.tvSlideId);
+        imgPrev = findViewById(R.id.imgPrev);
         imgPrev.setOnClickListener(this);
-        tvCourseName =findViewById(R.id.tvCourseName);
-        tvSectionName =findViewById(R.id.tvSectionName);
-        tvSlideName=findViewById(R.id.tvSlideName);
-        webView= findViewById(R.id.webView);
+        tvCourseName = findViewById(R.id.tvCourseName);
+        tvSectionName = findViewById(R.id.tvSectionName);
+        tvSlideName = findViewById(R.id.tvSlideName);
+        webView = findViewById(R.id.webView);
 
-       // playVideo();
+        // playVideo();
         callApi();
 
     }
-    private void callApi()
-    {
+
+    private void callApi() {
         if (AppUtils.isInternetAvailable(LessionSlideActivity.this)) {
             getSectionSlide();
+        } else {
+            AppUtils.showAlertDialog(LessionSlideActivity.this
+                    , getString(R.string.no_internet), getString(R.string.alter_net));
         }
     }
-    private void getSectionSlide()
-    {
-        String lang="";
+
+    private void getSectionSlide() {
+        String lang = "";
         AppUtils.showDialog(LessionSlideActivity.this, getString(R.string.pls_wait));
         ApiInterface apiInterface = RestApi.getConnection(ApiInterface.class, ServerConstents.API_URL);
         final HashMap params = new HashMap<>();
@@ -115,19 +117,18 @@ public class LessionSlideActivity extends BaseActivity implements NetworkListene
         if (AppSharedPreference.getInstance().getString(LessionSlideActivity.this, AppSharedPreference.LANGUAGE_SELECTED) == null ||
                 AppSharedPreference.getInstance().getString(LessionSlideActivity.this, AppSharedPreference.LANGUAGE_SELECTED).equalsIgnoreCase(AppConstant.ENG_LANG)) {
             lang = AppConstant.ENG_LANG;
-        }else
-        {
-            lang= AppConstant.ARABIC_LANG;
+        } else {
+            lang = AppConstant.ARABIC_LANG;
         }
-        Call<SectionSlideDetail> call = apiInterface.getSectionSlide(lang,AppSharedPreference.getInstance().
-                getString(LessionSlideActivity.this, AppSharedPreference.ACCESS_TOKEN),params);
+        Call<SectionSlideDetail> call = apiInterface.getSectionSlide(lang, AppSharedPreference.getInstance().
+                getString(LessionSlideActivity.this, AppSharedPreference.ACCESS_TOKEN), params);
         ApiCall.getInstance().hitService(LessionSlideActivity.this, call, this, ServerConstents.COURSE_LIST);
     }
 
 
     @Override
     public void onSuccess(int responseCode, Object response, int requestCode) {
-        if(requestCode == ServerConstents.COURSE_LIST) {
+        if (requestCode == ServerConstents.COURSE_LIST) {
             data = (SectionSlideDetail) response;
             if (data.getStatus() == ServerConstents.CODE_SUCCESS) {
                 tvCourseName.setText(data.getData().get(0).getCourseTitle());
@@ -135,10 +136,8 @@ public class LessionSlideActivity extends BaseActivity implements NetworkListene
                 tvSlideName.setText(data.getData().get(0).getSectionSlideDetails().getSlideName());
 
                 //String value = response.body().getAsJsonObject().get("pair_name").getAsString();
-                if(data.getData().get(0).getSectionSlideDetails()== null || data.getData().get(0).getSectionSlideDetails().getSlideDesc()==null)
-                {
-                    Log.d("============nullllll","nullllll");
-                }else {
+                if (data.getData().get(0).getSectionSlideDetails() == null || data.getData().get(0).getSectionSlideDetails().getSlideDesc() == null) {
+                } else {
 
                     if (!data.getData().get(0).getSectionSlideDetails().getSlideDesc().equals("")) {
                         tvDescription.setVisibility(View.VISIBLE);
@@ -174,25 +173,22 @@ public class LessionSlideActivity extends BaseActivity implements NetworkListene
                     }
                 }
             }
-        }else if(requestCode == ServerConstents.CHECK_COURSE)
-        {
-            CheckCourse checkCourse =(CheckCourse) response;
+        } else if (requestCode == ServerConstents.CHECK_COURSE) {
+            CheckCourse checkCourse = (CheckCourse) response;
             if (checkCourse.getStatus() == ServerConstents.CODE_SUCCESS) {
-                if(checkCourse.getData().get(0).getNoOfQue() >0 && checkCourse.getData().get(0).getQuiz().equalsIgnoreCase("no"))
-                {
-                    Intent intent = new Intent(LessionSlideActivity.this,ExamActivity.class);
+                if (checkCourse.getData().get(0).getNoOfQue() > 0 && checkCourse.getData().get(0).getQuiz().equalsIgnoreCase("no")) {
+                    Intent intent = new Intent(LessionSlideActivity.this, ExamActivity.class);
                     intent.putExtra("course_id", course_id);
                     startActivity(intent);
-                }else if(checkCourse.getData().get(0).getCert().equalsIgnoreCase("no")) {
+                } else if (checkCourse.getData().get(0).getCert().equalsIgnoreCase("no")) {
 
-                    Intent intent = new Intent(LessionSlideActivity.this,ReportActivity.class);
+                    Intent intent = new Intent(LessionSlideActivity.this, ReportActivity.class);
                     intent.putExtra("course_id", course_id);
                     startActivity(intent);
-                }else if(checkCourse.getData().get(0).getQuiz().equalsIgnoreCase("yes") && checkCourse.getData().get(0).getCert().equalsIgnoreCase("yes"))
-                {
-                    Intent intent = new Intent(LessionSlideActivity.this,ThankYouActivity.class);
+                } else if (checkCourse.getData().get(0).getQuiz().equalsIgnoreCase("yes") && checkCourse.getData().get(0).getCert().equalsIgnoreCase("yes")) {
+                    Intent intent = new Intent(LessionSlideActivity.this, ThankYouActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    intent.putExtra("course_name",data.getData().get(0).getCourseTitle());
+                    intent.putExtra("course_name", data.getData().get(0).getCourseTitle());
                     startActivity(intent);
                     finish();
                 }
@@ -201,57 +197,52 @@ public class LessionSlideActivity extends BaseActivity implements NetworkListene
 
     }
 
-    private void loadBackgroundImage()
-    {
-        AppUtils.loadImageWithPicasso(data.getData().get(0).getSectionSlideDetails().getSlideBackgroundImage() , imgSlide, LessionSlideActivity.this, 0, 0);
+    private void loadBackgroundImage() {
+        AppUtils.loadImageWithPicasso(data.getData().get(0).getSectionSlideDetails().getSlideBackgroundImage(), imgSlide, LessionSlideActivity.this, 0, 0);
     }
 
-    private void loadImage()
-    {
-        AppUtils.loadImageWithPicasso(data.getData().get(0).getSectionSlideDetails().getSlideImage() , imgSlide, LessionSlideActivity.this, 0, 0);
+    private void loadImage() {
+        AppUtils.loadImageWithPicasso(data.getData().get(0).getSectionSlideDetails().getSlideImage(), imgSlide, LessionSlideActivity.this, 0, 0);
     }
-    private void loadDescription()
-    {
+
+    private void loadDescription() {
         tvDescription.getSettings().setJavaScriptEnabled(true);
         tvDescription.loadDataWithBaseURL(null, data.getData().get(0).getSectionSlideDetails().getSlideDesc(), "text/html", "utf-8", null);
     }
+
     @Override
     public void onClick(View view) {
-        switch (view.getId())
-        {
+        switch (view.getId()) {
             case R.id.imgPrev:
-                section_id=data.getData().get(0).getPreviousSection();
-                slide_id =data.getData().get(0).getPreviousSlide();
+                section_id = data.getData().get(0).getPreviousSection();
+                slide_id = data.getData().get(0).getPreviousSlide();
 
-                if(videoView.getVisibility() ==View.VISIBLE) {
-                   // videoView.onPause();
+                if (videoView.getVisibility() == View.VISIBLE) {
+                    // videoView.onPause();
                    /* videoView.loadData("","","");
                     videoView.clearCache(true);
                     videoView.reload();
                     videoView.clearCache(true);*/
-                   clearVideoView();
+                    clearVideoView();
                 }
 
-                if(section_id.length()>0 && slide_id.length()>0)
+                if (section_id.length() > 0 && slide_id.length() > 0)
                     callApi();
                 break;
             case R.id.imgNext:
-                section_id=data.getData().get(0).getNextSection();
-                slide_id =data.getData().get(0).getNextSlide();
+                section_id = data.getData().get(0).getNextSection();
+                slide_id = data.getData().get(0).getNextSlide();
 
-                if(videoView.getVisibility() ==View.VISIBLE) {
-                   clearVideoView();
+                if (videoView.getVisibility() == View.VISIBLE) {
+                    clearVideoView();
                 }
 
-                if(section_id.length()>0 && slide_id.length()>0)
-                {
-                callApi();
-                }
-                else{
-                    if(data.getData().get(0).getIs_completed() ==1)
-                    {
-                     finish();
-                    }else {
+                if (section_id.length() > 0 && slide_id.length() > 0) {
+                    callApi();
+                } else {
+                    if (data.getData().get(0).getIs_completed() == 1) {
+                        finish();
+                    } else {
                         if (AppUtils.isInternetAvailable(LessionSlideActivity.this)) {
                             checkIfQuizOptionalOrNot();
                         }
@@ -263,11 +254,10 @@ public class LessionSlideActivity extends BaseActivity implements NetworkListene
         }
     }
 
-    private void clearVideoView()
-    {
-        videoView=findViewById(R.id.videoView);
+    private void clearVideoView() {
+        videoView = findViewById(R.id.videoView);
         videoView.setVisibility(View.GONE);
-        videoView.setWebViewClient(new WebViewClient(){
+        videoView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 return false;
@@ -284,9 +274,9 @@ public class LessionSlideActivity extends BaseActivity implements NetworkListene
 
         videoView.setVisibility(View.GONE);
     }
-    private void checkIfQuizOptionalOrNot()
-    {
-        String lang="";
+
+    private void checkIfQuizOptionalOrNot() {
+        String lang = "";
         AppUtils.showDialog(LessionSlideActivity.this, getString(R.string.pls_wait));
         ApiInterface apiInterface = RestApi.getConnection(ApiInterface.class, ServerConstents.API_URL);
         final HashMap params = new HashMap<>();
@@ -295,15 +285,15 @@ public class LessionSlideActivity extends BaseActivity implements NetworkListene
         if (AppSharedPreference.getInstance().getString(LessionSlideActivity.this, AppSharedPreference.LANGUAGE_SELECTED) == null ||
                 AppSharedPreference.getInstance().getString(LessionSlideActivity.this, AppSharedPreference.LANGUAGE_SELECTED).equalsIgnoreCase(AppConstant.ENG_LANG)) {
             lang = AppConstant.ENG_LANG;
-        }else
-        {
-            lang= AppConstant.ARABIC_LANG;
+        } else {
+            lang = AppConstant.ARABIC_LANG;
         }
-        Call<CheckCourse> call = apiInterface.checkCourse(lang,AppSharedPreference.getInstance().
-                getString(LessionSlideActivity.this, AppSharedPreference.ACCESS_TOKEN),params);
+        Call<CheckCourse> call = apiInterface.checkCourse(lang, AppSharedPreference.getInstance().
+                getString(LessionSlideActivity.this, AppSharedPreference.ACCESS_TOKEN), params);
         ApiCall.getInstance().hitService(LessionSlideActivity.this, call, this, ServerConstents.CHECK_COURSE);
 
     }
+
     @Override
     public void onError(String response, int requestCode, int errorCode) {
 
@@ -319,10 +309,7 @@ public class LessionSlideActivity extends BaseActivity implements NetworkListene
         progressDialog.setMessage("Loading Data...");
         progressDialog.setCancelable(false);
         progressDialog.show();
-     // String embeded_url ="https://www.youtube.com/embed/T3q6QcCQZQg";
-     // String embeded_url="https://player.vimeo.com/video/76979871";
-      //  String embeded_url="http://1.22.161.26:9875/online_education_system/public/images/Courses/24/SlideVideo/1595486192.webm";
-        videoView.setWebViewClient(new WebViewClient(){
+        videoView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 return false;
@@ -330,7 +317,7 @@ public class LessionSlideActivity extends BaseActivity implements NetworkListene
         });
         videoView.setWebChromeClient(new MyChrome());
 
-          WebSettings webSettings = videoView.getSettings();
+        WebSettings webSettings = videoView.getSettings();
         webSettings.setAllowFileAccess(true);
         webSettings.setAppCacheEnabled(true);
         webSettings.setJavaScriptEnabled(true);
@@ -339,7 +326,7 @@ public class LessionSlideActivity extends BaseActivity implements NetworkListene
       /* webSettings.setLoadWithOverviewMode(true);
         webSettings.setUseWideViewPort(true);*/
 
-        videoView.loadData("<iframe width=\"100%\" height=\"100%\"src="+embeded_url+" frameborder=\"0\" allow=\"autoplay; fullscreen\" allowfullscreen >\n" +
+        videoView.loadData("<iframe width=\"100%\" height=\"100%\"src=" + embeded_url + " frameborder=\"0\" allow=\"autoplay; fullscreen\" allowfullscreen >\n" +
                 "</iframe>", "text/html", "utf-8");
 
         videoView.setWebViewClient(new WebViewClient() {
@@ -353,21 +340,17 @@ public class LessionSlideActivity extends BaseActivity implements NetworkListene
 
         });
     }
-    private void initToolBar()
-    {
+
+    private void initToolBar() {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
     }
 
-    private void loadWebview(String myPdfUrl)
-    {
+    private void loadWebview(final String myPdfUrl) {
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading Data...");
         progressDialog.setCancelable(false);
         progressDialog.show();
-        webView = findViewById(R.id.webView);
-        // progressbar =findViewById(R.id.progressbar);
-
         if (Build.VERSION.SDK_INT >= 19) {
             webView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
         }
@@ -381,74 +364,40 @@ public class LessionSlideActivity extends BaseActivity implements NetworkListene
         webView.setVerticalScrollBarEnabled(true);
         webView.setHorizontalScrollBarEnabled(false);
         webView.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
-        /*webView.getSettings().setUseWideViewPort(true);
-        webView.setScrollX(1000);
-        webView.setScrollY(1000);*/
+        // myPdfUrl="http://1.22.161.26:9875/online_education_system/public/images/Courses/104/SlideDocument/1605077355.docx";
 
-        //String myPdfUrl = "https://mindorks.s3.ap-south-1.amazonaws.com/courses/MindOrks_Android_Online_Professional_Course-Syllabus.pdf";
-        // String myPdfUrl="https://brevity.symmetryplatform.com/brevity/uploads/Course/Document_Files/1594213922_6Cz.docx";
-        // String myPdfUrl ="https://brevity.symmetryplatform.com/brevity/uploads/Course/Document_Files/1594214645_wJv.ppt";
-        //String myPdfUrl ="https://file-examples.com/wp-content/uploads/2017/02/file_example_XLSX_5000.xlsx";
-
-        // String myPdfUrl = "https://docs.google.com/spreadsheets/d/1zdFhFWbprCVFdPCypu_ToRkKCEAIY8TVn2balQh5Cao/edit#gid=0";
         String url = "https://docs.google.com/gview?embedded=true&url="+myPdfUrl;
-        webView.loadUrl(url);
-        webView.setWebViewClient(new WebViewClient() {
 
+        webView.loadUrl(url);
+        Log.d("URL DOC:: ", " "+url);
+        webView.setWebViewClient(new WebViewClient() {
+            boolean checkhasOnPageStarted = false;
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                view.loadUrl(url);
+                return true;
+            }
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                Log.d("PAGE START :: ", "CAL PAGE START===== ");
+                checkhasOnPageStarted = true;
+                super.onPageStarted(view, url, favicon);
+            }
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
-                // progressbar.setVisibility(View.GONE);
+                Log.d("PAGE  :: ", "CAL PAGE FINISHHH===== ");
+                if (checkhasOnPageStarted ) {
+                    webView.loadUrl("javascript:(function() { document.querySelector('[role=\"toolbar\"]').remove();})()");
+                } else {
+                    loadWebview(myPdfUrl);
+                }
                 progressDialog.dismiss();
             }
 
+
         });
 
-    }
-
-
-    private class MyChrome extends WebChromeClient {
-
-        private View mCustomView;
-        private CustomViewCallback mCustomViewCallback;
-        protected FrameLayout mFullscreenContainer;
-        private int mOriginalOrientation;
-        private int mOriginalSystemUiVisibility;
-
-        MyChrome() {}
-
-        public Bitmap getDefaultVideoPoster()
-        {
-            if (mCustomView == null) {
-                return null;
-            }
-            return BitmapFactory.decodeResource(getApplicationContext().getResources(), 2130837573);
-        }
-
-        public void onHideCustomView()
-        {
-            ((FrameLayout)getWindow().getDecorView()).removeView(this.mCustomView);
-            this.mCustomView = null;
-            getWindow().getDecorView().setSystemUiVisibility(this.mOriginalSystemUiVisibility);
-            setRequestedOrientation(this.mOriginalOrientation);
-            this.mCustomViewCallback.onCustomViewHidden();
-            this.mCustomViewCallback = null;
-        }
-
-        public void onShowCustomView(View paramView, CustomViewCallback paramCustomViewCallback)
-        {
-            if (this.mCustomView != null)
-            {
-                onHideCustomView();
-                return;
-            }
-            this.mCustomView = paramView;
-            this.mOriginalSystemUiVisibility = getWindow().getDecorView().getSystemUiVisibility();
-            this.mOriginalOrientation = getRequestedOrientation();
-            this.mCustomViewCallback = paramCustomViewCallback;
-            ((FrameLayout)getWindow().getDecorView()).addView(this.mCustomView, new FrameLayout.LayoutParams(-1, -1));
-            getWindow().getDecorView().setSystemUiVisibility(3846 | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
-        }
     }
 
     @Override
@@ -461,6 +410,47 @@ public class LessionSlideActivity extends BaseActivity implements NetworkListene
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         videoView.restoreState(savedInstanceState);
+    }
+
+    private class MyChrome extends WebChromeClient {
+
+        protected FrameLayout mFullscreenContainer;
+        private View mCustomView;
+        private CustomViewCallback mCustomViewCallback;
+        private int mOriginalOrientation;
+        private int mOriginalSystemUiVisibility;
+
+        MyChrome() {
+        }
+
+        public Bitmap getDefaultVideoPoster() {
+            if (mCustomView == null) {
+                return null;
+            }
+            return BitmapFactory.decodeResource(getApplicationContext().getResources(), 2130837573);
+        }
+
+        public void onHideCustomView() {
+            ((FrameLayout) getWindow().getDecorView()).removeView(this.mCustomView);
+            this.mCustomView = null;
+            getWindow().getDecorView().setSystemUiVisibility(this.mOriginalSystemUiVisibility);
+            setRequestedOrientation(this.mOriginalOrientation);
+            this.mCustomViewCallback.onCustomViewHidden();
+            this.mCustomViewCallback = null;
+        }
+
+        public void onShowCustomView(View paramView, CustomViewCallback paramCustomViewCallback) {
+            if (this.mCustomView != null) {
+                onHideCustomView();
+                return;
+            }
+            this.mCustomView = paramView;
+            this.mOriginalSystemUiVisibility = getWindow().getDecorView().getSystemUiVisibility();
+            this.mOriginalOrientation = getRequestedOrientation();
+            this.mCustomViewCallback = paramCustomViewCallback;
+            ((FrameLayout) getWindow().getDecorView()).addView(this.mCustomView, new FrameLayout.LayoutParams(-1, -1));
+            getWindow().getDecorView().setSystemUiVisibility(3846 | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+        }
     }
 
 

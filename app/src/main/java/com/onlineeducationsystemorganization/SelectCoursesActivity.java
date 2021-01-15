@@ -55,6 +55,8 @@ public class SelectCoursesActivity extends BaseActivity
         tvDone =findViewById(R.id.tvDone);
         if (AppUtils.isInternetAvailable(SelectCoursesActivity.this)) {
             getCourses();
+        }else {
+            AppUtils.showAlertDialog(SelectCoursesActivity.this,getString(R.string.no_internet),getString(R.string.alter_net));
         }
         tvDone.setOnClickListener(new View.OnClickListener() {
             @Override

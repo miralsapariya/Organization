@@ -144,6 +144,8 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
         if (AppUtils.isInternetAvailable(
                 DashboardActivity.this)) {
                 getCompletedCourses();
+        }else {
+            AppUtils.showAlertDialog(DashboardActivity.this,getString(R.string.no_internet),getString(R.string.alter_net));
         }
     }
 

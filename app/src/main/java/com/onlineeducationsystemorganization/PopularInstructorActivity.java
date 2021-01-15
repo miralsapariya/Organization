@@ -59,6 +59,8 @@ public class PopularInstructorActivity extends BaseActivity implements OnItemCli
         rvInstructor =findViewById(R.id.rvInstructor);
         if (AppUtils.isInternetAvailable(PopularInstructorActivity.this)) {
             getList();
+        }else {
+            AppUtils.showAlertDialog(PopularInstructorActivity.this,getString(R.string.no_internet),getString(R.string.alter_net));
         }
     }
 

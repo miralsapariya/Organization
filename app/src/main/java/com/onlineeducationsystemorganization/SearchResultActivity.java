@@ -83,12 +83,16 @@ public class SearchResultActivity extends AppCompatActivity
 
         if (AppUtils.isInternetAvailable(SearchResultActivity.this)) {
             hintGetSearchResult();
+        }else {
+            AppUtils.showAlertDialog(SearchResultActivity.this,getString(R.string.no_internet),getString(R.string.alter_net));
         }
 
     }
     private void getDefaultCategory() {
         if (AppUtils.isInternetAvailable(SearchResultActivity.this)) {
             hintDefulatCategory();
+        }else {
+            AppUtils.showAlertDialog(SearchResultActivity.this,getString(R.string.no_internet),getString(R.string.alter_net));
         }
     }
     private void hintDefulatCategory() {

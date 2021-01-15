@@ -67,6 +67,8 @@ public class CategoryFragment extends BaseActivity implements OnItemClick, Netwo
         });
         if (AppUtils.isInternetAvailable(CategoryFragment.this)) {
             getCategory();
+        }else {
+            AppUtils.showAlertDialog(CategoryFragment.this,getString(R.string.no_internet),getString(R.string.alter_net));
         }
 
         recyclerView =findViewById(R.id.recyclerView);

@@ -50,6 +50,11 @@ public class Home implements Serializable {
         @SerializedName("banners_list")
         @Expose
         private ArrayList<BannersList> bannersList = null;
+
+        @SerializedName("is_read")
+        @Expose
+        private String is_read;
+
         @SerializedName("title")
         @Expose
         private String title;
@@ -67,6 +72,14 @@ public class Home implements Serializable {
 
         public void setBannersList(ArrayList<BannersList> bannersList) {
             this.bannersList = bannersList;
+        }
+
+        public String getIs_read() {
+            return is_read;
+        }
+
+        public void setIs_read(String is_read) {
+            this.is_read = is_read;
         }
 
         public String getTitle() {

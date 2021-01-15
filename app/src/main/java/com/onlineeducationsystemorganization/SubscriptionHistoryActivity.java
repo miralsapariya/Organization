@@ -59,6 +59,8 @@ public class SubscriptionHistoryActivity extends BaseActivity implements Network
 
         if (AppUtils.isInternetAvailable(SubscriptionHistoryActivity.this)) {
             getInquiries();
+        }else {
+            AppUtils.showAlertDialog(SubscriptionHistoryActivity.this,getString(R.string.no_internet),getString(R.string.alter_net));
         }
     }
 

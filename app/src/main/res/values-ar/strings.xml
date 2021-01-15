@@ -250,4 +250,7 @@
     <string name="delete_alert">هل أنت متأكد أنك تريد حذف المستخدم؟</string>
     <string name="delete">حذف</string>
     <string name="status">الحالة</string>
+
+    <string name="no_internet">بدون انترنت</string>
+    <string name="alter_net">يرجى التحقق من حالة اتصالك بالإنترنت وحاول مرة أخرى</string>
 </resources>

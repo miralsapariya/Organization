@@ -99,10 +99,9 @@ public class TrendingCourseActivity extends BaseActivity implements OnItemClick,
 
         if (AppUtils.isInternetAvailable(TrendingCourseActivity.this)) {
                 hintCourseList();
+        }else {
+            AppUtils.showAlertDialog(TrendingCourseActivity.this,getString(R.string.no_internet),getString(R.string.alter_net));
         }
-
-
-
     }
     private void hintAddToCart(int pos)
     {

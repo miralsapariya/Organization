@@ -6,6 +6,7 @@
 
     <color name="bg">#f7f7f7</color>
     <color name="white">#ffffff</color>
+    <color name="red">#ff0000</color>
 
     <color name="button_bg">#e98074</color>
     <color name="primary_trans">#90e98074</color>

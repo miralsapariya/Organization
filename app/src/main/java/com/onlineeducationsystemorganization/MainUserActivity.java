@@ -3,10 +3,10 @@ package com.onlineeducationsystemorganization;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -30,7 +30,8 @@ public class MainUserActivity extends BaseActivity {
     private ImageView imgSearch;
     private Configuration config;
     public ImageView imgAddUser;
-
+    private RelativeLayout rrNotification;
+    public ImageView imgIsReadNotification,imgNotification;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +40,19 @@ public class MainUserActivity extends BaseActivity {
         setContentView(R.layout.activity_main_user);
 
         toolbar_title = findViewById(R.id.toolbar_title);
+        imgNotification=findViewById(R.id.imgNotification);
+        rrNotification=findViewById(R.id.rrNotification);
+        rrNotification.setVisibility(View.VISIBLE);
+        imgIsReadNotification=findViewById(R.id.imgIsReadNotification);
+        imgIsReadNotification.setVisibility(View.VISIBLE);
+        imgNotification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                imgIsReadNotification.setVisibility(View.GONE);
+                Intent intent =new Intent(MainUserActivity.this,NotificationActivity.class);
+                startActivity(intent);
+            }
+        });
         initBottomNavigationBar();
 
         Bundle b=getIntent().getExtras();
@@ -96,7 +110,6 @@ public class MainUserActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 Fragment f= getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
-                Log.d("fffffffffffffff ", f.toString());
 
                 if(f instanceof HomeFragment) {
                     Intent intent = new Intent(MainUserActivity.this, HomeSearchActivity.class);
@@ -113,6 +126,7 @@ public class MainUserActivity extends BaseActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.page_1:
+                        rrNotification.setVisibility(View.VISIBLE);
                         imgSearch.setVisibility(View.GONE);
                         imgAddUser.setVisibility(View.GONE);
                         toolbar_title.setText(getString(R.string.dasahboard));
@@ -120,6 +134,7 @@ public class MainUserActivity extends BaseActivity {
                         break;
 
                     case R.id.page_2:
+                        rrNotification.setVisibility(View.GONE);
                         imgSearch.setVisibility(View.GONE);
                         imgAddUser.setVisibility(View.GONE);
                         toolbar_title.setText(getString(R.string.my_courses));
@@ -127,6 +142,7 @@ public class MainUserActivity extends BaseActivity {
                         break;
 
                     case R.id.page_3:
+                        rrNotification.setVisibility(View.GONE);
                         imgSearch.setVisibility(View.GONE);
                         imgAddUser.setVisibility(View.GONE);
                         toolbar_title.setText(getString(R.string.account));
@@ -151,7 +167,7 @@ public class MainUserActivity extends BaseActivity {
     public void gotoMyCourses()
     {
         nav_view.getMenu().findItem(R.id.page_2).setChecked(true);
-
+        toolbar_title.setText(getString(R.string.my_courses));
         imgSearch.setVisibility(View.GONE);
         loadFragment(new MyCoursesFragment());
     }

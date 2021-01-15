@@ -329,7 +329,6 @@ public class AppUtils {
         if (!TextUtils.isEmpty(title)) {
             builder.setTitle(title);
         }
-
         builder.show();
     }
 

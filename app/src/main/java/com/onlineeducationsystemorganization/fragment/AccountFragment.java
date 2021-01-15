@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,6 +42,7 @@ import com.onlineeducationsystemorganization.interfaces.NetworkListener;
 import com.onlineeducationsystemorganization.interfaces.OnItemClick;
 import com.onlineeducationsystemorganization.interfaces.OnSubItemClick;
 import com.onlineeducationsystemorganization.model.GetProfile;
+import com.onlineeducationsystemorganization.model.User;
 import com.onlineeducationsystemorganization.network.ApiCall;
 import com.onlineeducationsystemorganization.network.ApiInterface;
 import com.onlineeducationsystemorganization.network.RestApi;
@@ -66,7 +68,7 @@ public class AccountFragment extends BaseFragment implements NetworkListener
     private View view;
     private Configuration config;
     private CircularImageView imgUser;
-
+    private String android_id;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -78,6 +80,9 @@ public class AccountFragment extends BaseFragment implements NetworkListener
     }
 
     private void initUI() {
+        android_id = Settings.Secure.getString(activity.getContentResolver(),
+                Settings.Secure.ANDROID_ID);
+
         ArrayList<String> list = new ArrayList<>();
 
         list.add(getString(R.string.about));
@@ -180,21 +185,10 @@ public class AccountFragment extends BaseFragment implements NetworkListener
             btnApply.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    AppSharedPreference.getInstance().clearAllPrefs(activity);
-                    llWithLogin.setVisibility(View.GONE);
-                    tvSignIn.setVisibility(View.VISIBLE);
-                    //set eng lang
-                    String languageToLoad = "en"; // your language
-                    Locale locale = new Locale(languageToLoad);
-                    Locale.setDefault(locale);
-                    config = new Configuration();
-                    config.locale = locale;
-                    activity.getBaseContext().getResources().updateConfiguration(config, activity.getBaseContext().getResources().getDisplayMetrics());
 
-
-                    Intent intent = new Intent(activity, CompanyUrlActivity.class);
-                    startActivity(intent);
+                    doLogout();
                     dialog.dismiss();
+
                 }
             });
 
@@ -209,11 +203,29 @@ public class AccountFragment extends BaseFragment implements NetworkListener
             dialog.show();
         }
     }
+
+    private void doLogout()
+    {
+        AppUtils.showDialog(activity, getString(R.string.pls_wait));
+        ApiInterface apiInterface = RestApi.getConnection(ApiInterface.class, ServerConstents.API_URL);
+        final HashMap params = new HashMap<>();
+        params.put("device_token", AppSharedPreference.getInstance().getString(activity, AppSharedPreference.DEVICE_TOKEN));
+        params.put("device_id", android_id);
+        params.put("device_type", ServerConstents.DEVICE_TYPE);
+
+        Call<User> call = apiInterface.doLogout(AppSharedPreference.getInstance().
+                getString(activity, AppSharedPreference.ACCESS_TOKEN),params);
+
+        ApiCall.getInstance().hitService(activity, call, this, ServerConstents.LOGOUT);
+
+    }
     @Override
     public void onResume() {
         super.onResume();
         if (AppUtils.isInternetAvailable(activity)) {
             getProfile();
+        }else {
+            AppUtils.showAlertDialog(activity,activity.getString(R.string.no_internet),activity.getString(R.string.alter_net));
         }
     }
 
@@ -249,6 +261,24 @@ public class AccountFragment extends BaseFragment implements NetworkListener
             tvCountry.setText(data.getData().get(0).getCountryName());
             tvCourse.setText(data.getData().get(0).getCourse() + "");
             tvName.setText(data.getData().get(0).getName());
+        }else
+        {
+            //logout
+            AppSharedPreference.getInstance().clearAllPrefs(activity);
+
+            llWithLogin.setVisibility(View.GONE);
+            tvSignIn.setVisibility(View.VISIBLE);
+            //set eng lang
+            String languageToLoad = "en"; // your language
+            Locale locale = new Locale(languageToLoad);
+            Locale.setDefault(locale);
+            config = new Configuration();
+            config.locale = locale;
+            activity.getBaseContext().getResources().updateConfiguration(config, activity.getBaseContext().getResources().getDisplayMetrics());
+            Intent intent = new Intent(activity, CompanyUrlActivity.class);
+            startActivity(intent);
+
+
         }
 
     }

@@ -174,6 +174,10 @@ public class AddUserActivity extends BaseActivity implements NetworkListener {
 
         llMain =findViewById(R.id.llMain);
         ccp=findViewById(R.id.ccp);
+        if (AppSharedPreference.getInstance().getString(AddUserActivity.this, AppSharedPreference.LANGUAGE_SELECTED) != null &&
+                AppSharedPreference.getInstance().getString(AddUserActivity.this, AppSharedPreference.LANGUAGE_SELECTED).equalsIgnoreCase(AppConstant.ARABIC_LANG)) {
+            ccp.setTextDirection(View.TEXT_DIRECTION_RTL);
+        }
         selectedCountryCode =ccp.getSelectedCountryCodeWithPlus();
         selectedCountry =ccp.getSelectedCountryName();
         ccp.setOnCountryChangeListener(new CountryCodePicker.OnCountryChangeListener() {
